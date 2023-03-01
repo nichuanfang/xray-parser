@@ -60,7 +60,8 @@ for item in lines:
             domain.append(qx.path)
 
         xray = XrayPolicy("field", outboundTag, domain)
-        routingrules.insert(1, xray.__dict__)
+        if not routingrules.__contains__(xray.__dict__):
+            routingrules.insert(1, xray.__dict__)
 
 # 更新脚本文件
 routing.update(rules=routingrules)
