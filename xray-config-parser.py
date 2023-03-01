@@ -40,14 +40,14 @@ for item in lines:
         # 格式化qx
         outboundTag = "direct"
         # 处理outboundTag
-        if qx.policy == "DIRECT":
+        if qx.policy.strip().upper() == "DIRECT":
             outboundTag = "direct"
-        elif qx.policy == "PROXY":
+        elif qx.policy.strip().upper() == "PROXY":
             outboundTag = "proxy"
-        elif qx.policy == "REJECT":
+        elif qx.policy.strip().upper() == "REJECT":
             outboundTag = "block"
         # 针对pikpak的策略 默认为proxy
-        elif qx.policy == "Pikpak":
+        elif qx.policy.strip().upper() == "Pikpak":
             outboundTag = "proxy"
         # 其他策略默认为代理
         else:
@@ -61,7 +61,8 @@ for item in lines:
             domain.append(qx.path)
 
         xray = XrayPolicy("field", outboundTag, domain)
-        if not routingrules.__contains__(xray.__dict__):
+        #  todo 判断是否包含有bug
+        if xray.__dict__ in routingrules:
             routingrules.insert(1, xray.__dict__)
 
 # 更新脚本文件
@@ -71,5 +72,3 @@ config = open(configPath, "w+")
 # ensure_ascii=False防止中文乱码
 json.dump(res, config, ensure_ascii=False)
 config.close()
-# 重启xray 执行脚本
-subprocess.getoutput("restart.bat")
