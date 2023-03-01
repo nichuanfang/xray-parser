@@ -1,16 +1,71 @@
 #!/usr/bin/python3
-import urllib3
-
-from urllib3.response import HTTPResponse
+# coding=utf-8”；
+import json
+from logging import log
+from urllib import request
+from webbrowser import get
+from xml import dom
+from entity.QxPolicy import QxPolicy
+from entity.XrayPolicy import XrayPolicy
+from entity.OutBounds import OutBounds
 
 # 自定义分流规则
 # https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list
-url = "https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list"
+url = request.urlopen(
+    "https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list"
+)
+configPath: str = "D:\soft\Xray-windows-64\config.json"
+# 读取xray配置文件config.json
+config = open(configPath, "r")
+res: dict = json.load(config)
+config.close()
+routing: dict = res.get("routing")
+routingrules: list = routing.get("rules")
 
-print("downloading MyProxyConfig file with urllib3")
+# 每次都从更新第1条之后 以及倒数第二条之前 中间的数据
 
-connection = urllib3.connection_from_url(url)
+myPolicy: str = url.read().decode()
 
-response = HTTPResponse(connection.request(method="GET", url=url, fields=None, headers=None))
+lines: list = myPolicy.splitlines()
 
-print(response.data)
+lines.reverse()
+for item in lines:
+    if item != "" and not item.startswith("#"):
+        arr = item.split(",")
+        # 封装成规则对象
+        qx = QxPolicy(arr.__getitem__(0), arr.__getitem__(1),
+                      arr.__getitem__(2))
+        # 追加到本地的config.json中 当前目录
+        # 格式化qx
+        outboundTag = "direct"
+        # 处理outboundTag
+        if qx.policy == "DIRECT":
+            outboundTag = "direct"
+        elif qx.policy == "PROXY":
+            outboundTag = "proxy"
+        elif qx.policy == "REJECT":
+            outboundTag = "block"
+        # 针对pikpak的策略 默认为proxy
+        elif qx.policy == "Pikpak":
+            outboundTag = "proxy"
+        # 其他策略默认为代理
+        else:
+            outboundTag = "proxy"
+        # 处理domain
+        domain: list = []
+        if qx.typeOf == "HOST":
+            domain.append("full:" + qx.path)
+            pass
+        elif qx.typeOf == "HOST-SUFFIX":
+            domain.append(qx.path)
+
+        xray = XrayPolicy("field", outboundTag, domain)
+        routingrules.insert(1, xray.__dict__)
+
+# 更新脚本文件
+routing.update(rules=routingrules)
+res.update(routing=routing)
+config = open(configPath, "w+")
+# ensure_ascii=False防止中文乱码
+json.dump(res, config, ensure_ascii=False)
+config.close()
