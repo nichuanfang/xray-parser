@@ -68,4 +68,5 @@ res.update(routing=routing)
 config = open(configPath, "w+")
 # ensure_ascii=False防止中文乱码
 json.dump(res, config, ensure_ascii=False)
+print("转换完成!!")
 config.close()
