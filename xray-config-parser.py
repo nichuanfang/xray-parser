@@ -8,20 +8,23 @@ from xml import dom
 from entity.QxPolicy import QxPolicy
 from entity.XrayPolicy import XrayPolicy
 from entity.OutBounds import OutBounds
-import subprocess
+import logging
 
+
+logging.getLogger().setLevel(logging.INFO)
+logging.info("==========开始更新xray配置文件==============")
 # 自定义分流规则
 # https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list
 url = request.urlopen(
     "https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list"
 )
-configPath: str = "D:\soft\Xray-windows-64\config.json"
+configPath: str = "D:\Xray-windows-64\config.json"
 # 读取xray配置文件config.json
 config = open(configPath, "r")
 res: dict = json.load(config)
 config.close()
 routing: dict = res.get("routing")
-routingrules: list = routing.get("rules")
+routingrules:list[dict] = routing.get("rules")
 
 # 每次都从更新第1条之后 以及倒数第二条之前 中间的数据
 
@@ -61,9 +64,15 @@ for item in lines:
             domain.append(qx.path)
 
         xray = XrayPolicy("field", outboundTag, domain)
-        #  todo 判断是否包含有bug
-        if xray.__dict__ in routingrules:
-            routingrules.insert(1, xray.__dict__)
+        # 代表不包含该域名
+        flag:bool = False
+        for rule in routingrules:
+            domain:list=rule.get("domain")
+            if domain==xray.domain:
+                rule.__setitem__("outboundTag",xray.outboundTag)
+                flag = True
+        if not flag:
+            routingrules.insert(routingrules.__len__()-3,xray.__dict__)
 
 # 更新脚本文件
 routing.update(rules=routingrules)
@@ -72,3 +81,4 @@ config = open(configPath, "w+")
 # ensure_ascii=False防止中文乱码
 json.dump(res, config, ensure_ascii=False)
 config.close()
+logging.info("==========xray配置文件更新完毕!==============")
