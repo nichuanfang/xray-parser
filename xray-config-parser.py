@@ -8,6 +8,7 @@ from xml import dom
 from entity.QxPolicy import QxPolicy
 from entity.XrayPolicy import XrayPolicy
 from entity.OutBounds import OutBounds
+import subprocess
 
 # 自定义分流规则
 # https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list
@@ -70,3 +71,5 @@ config = open(configPath, "w+")
 # ensure_ascii=False防止中文乱码
 json.dump(res, config, ensure_ascii=False)
 config.close()
+# 重启xray 执行脚本
+subprocess.getoutput("restart.bat")
