@@ -12,7 +12,7 @@ logging.info("==========开始更新xray配置文件==============")
 # 自定义分流规则
 # https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list
 url = request.urlopen(
-    "https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list"
+    "https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list"
 )
 configPath: str = "D:\soft\Xray-windows-64\config.json"
 # 读取xray配置文件config.json
