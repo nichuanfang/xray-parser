@@ -3,7 +3,6 @@
 import json
 from tkinter.messagebox import NO
 from urllib import request
-from xml import dom
 from entity.QxPolicy import QxPolicy
 from entity.XrayPolicy import XrayPolicy
 import logging
@@ -79,7 +78,6 @@ for item in lines:
             if domain is None:
                 continue
             for url in domain:
-                url = url
                 if url != "geosite:category-ads-all" and url != "geosite:gfw" and url != "geosite:greatfire" and url != "geoip:telegram":
                     if url.startswith("full:"):
                         url = url.replace("full:", "")
