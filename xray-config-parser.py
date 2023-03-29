@@ -9,7 +9,6 @@ import logging
 
 logging.getLogger().setLevel(logging.INFO)
 logging.info("==========开始更新xray配置文件==============")
-
 # 自定义分流规则
 # https://ghproxy.com/https://raw.githubusercontent.com/nichuanfang/config-server/master/QX/MyPolicy.list
 url = request.urlopen(
