@@ -1,0 +1,12 @@
+{
+  "domainStrategy": "AsIs",
+  "rules": [
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "full:duangks.com"
+      ]
+    }
+  ]
+}
