@@ -21,7 +21,6 @@ res: dict = json.load(config)
 config.close()
 routing: dict = res.get("routing")
 routingrules: list = routing.get("rules")
-
 # 每次都从更新第1条之后 以及倒数第二条之前 中间的数据
 
 myPolicy: str = url.read().decode()
