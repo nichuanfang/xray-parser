@@ -18,6 +18,7 @@ configPath: str = "D:\soft\Xray-windows-64\config.json"
 # 读取xray配置文件config.json
 config = open(configPath, "r") 
 res: dict = json.load(config)
+
 config.close()
 routing: dict = res.get("routing")
 routingrules: list = routing.get("rules")
