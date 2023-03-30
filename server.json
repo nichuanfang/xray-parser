@@ -9,7 +9,6 @@
             "tag": "direct",
             "protocol": "freedom"
         },
-        //黑洞 阻断所有流量
         {
             "tag": "block",
             "protocol": "blackhole",
@@ -19,7 +18,6 @@
                 }
             }
         },
-        //回国流量导入Cloudflare
         {
             "protocol": "wireguard",
             "settings": {
