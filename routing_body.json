@@ -14,13 +14,6 @@
       "domain": [
         "amazon.com"
       ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "proxy",
-      "domain": [
-        "spankbang.com"
-      ]
     }
   ]
 }
