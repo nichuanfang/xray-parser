@@ -20,7 +20,7 @@ for dir_path,dir_list,file_list in os.walk('inbounds'):
         with open(dir_path+'/'+file) as inbound_file:
             inbounds.append(json.load(inbound_file))
 
-# 拼到client中  
+# 拼到client中 
 with open('server.json') as server_file:
     server = json.load(server_file)
 
@@ -32,4 +32,4 @@ server['dns'] = dns
 server['inbounds'] = inbounds
 
 # 持久化
-json.dump(server,open('config.json','w+'))
+json.dump(server,open('/root/assets/config/server/config.json','w+'))
