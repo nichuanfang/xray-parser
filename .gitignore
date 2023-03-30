@@ -4,7 +4,4 @@
 .idea/vcs.xml
 .idea/xray-parser.iml
 .idea/inspectionProfiles/profiles_settings.xml
-entity/__pycache__/__init__.cpython-38.pyc
-entity/__pycache__/QxPolicy.cpython-38.pyc
-entity/__pycache__/OutBounds.cpython-38.pyc
-entity/__pycache__/XrayPolicy.cpython-38.pyc
+*.pyc
