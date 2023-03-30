@@ -2,6 +2,13 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
+          "type": "field",
+          "outboundTag": "proxy",
+          "domain": [
+            "deliver.ptgncdn.com"
+          ]
+        },
+        {
             "type": "field",
             "outboundTag": "block",
             "domain": [
