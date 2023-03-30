@@ -36,7 +36,6 @@ for item in lines:
 
 for item in lines:
     if item != "" and not item.startswith("#"):
-
         arr = item.split(",")
         # 封装成规则对象
         qx = QxPolicy(arr.__getitem__(0), arr.__getitem__(1),
