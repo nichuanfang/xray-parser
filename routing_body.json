@@ -21,13 +21,6 @@
       "domain": [
         "spankbang.com"
       ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "proxy",
-      "domain": [
-        "deliver.ptgncdn.com"
-      ]
     }
   ]
 }
