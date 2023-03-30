@@ -1,0 +1,49 @@
+{
+    "log": {
+        "access": "/var/log/xray/access.log",
+        "error": "/var/log/xray/error.log",
+        "loglevel": "warning"
+    },
+    "outbounds": [
+        {
+            "tag": "direct",
+            "protocol": "freedom"
+        },
+        //黑洞 阻断所有流量
+        {
+            "tag": "block",
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "none"
+                }
+            }
+        },
+        //回国流量导入Cloudflare
+        {
+            "protocol": "wireguard",
+            "settings": {
+                "secretKey": "UKWw2MPcdIcUkPO8mWJSHUZDBpCT1aVnNjFnmh+ICG0=",
+                "address": [
+                    "172.16.0.2/32",
+                    "2606:4700:110:8819:2bcb:26ac:4708:f072/128"
+                ],
+                "peers": [
+                    {
+                        "publicKey": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+                        "endpoint": "engage.cloudflareclient.com:2408"
+                    }
+                ]
+            },
+            "tag": "wireguard-1"
+        }
+    ],
+    "policy": {
+        "levels": {
+            "0": {
+                "handshake": 2,
+                "connIdle": 120
+            }
+        }
+    }
+}
