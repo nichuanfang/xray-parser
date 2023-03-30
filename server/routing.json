@@ -1,0 +1,12 @@
+{
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+        {
+            "type": "field",
+            "ip": [
+                "geoip:cn"
+            ],
+            "outboundTag": "block"
+        }
+    ]
+}
