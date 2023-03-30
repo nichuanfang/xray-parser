@@ -22,7 +22,7 @@ for dir_path,dir_list,file_list in os.walk('inbounds'):
 
 # 拼到client中 
 with open('server.json') as server_file:
-    server = json.load(server_file)
+    server = json.load(server_file) 
 
 # 配置路由
 server['routing'] = routing
