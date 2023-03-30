@@ -56,12 +56,9 @@
                         "port": 443,
                         "users": [
                             {
-                                "id": "a9371b0a-84d3-4d25-90dd-d0a314c0c04a",
-                                "alterId": 0,
-                                "email": "t@t.tt",
-                                "security": "auto",
-                                "encryption": "none",
-                                "flow": "xtls-rprx-vision"
+                                "id": "a09dd771-0174-4edb-80a1-d9fed944fa65",
+                                "flow": "xtls-rprx-vision",
+                                "encryption": "none"
                             }
                         ]
                     }
@@ -69,16 +66,15 @@
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": false,
-                    "serverName": "www.cinima.asia",
-                    "fingerprint": "ios"
+                "security": "reality",
+                "realitySettings": {
+                    "show": false,
+                    "fingerprint": "chrome",
+                    "serverName": "www.leercapitulo.com",
+                    "publicKey": "5K6iUHU_sn9hjbIPX5cQBYI1FGVmYhl2ZITEZkrbfho",
+                    "shortId": "be91e734e22750b4",
+                    "spiderX": "/"
                 }
-            },
-            "mux": {
-                "enabled": false,
-                "concurrency": -1
             }
         },
         {
