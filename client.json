@@ -2,7 +2,7 @@
     "log": {
         "access": "/var/log/xray/access.log",
         "error": "/var/log/xray/error.log",
-        "loglevel": "info",
+        "loglevel": "warning",
         "dnsLog": true
     },
     "inbounds": [
@@ -56,9 +56,12 @@
                         "port": 443,
                         "users": [
                             {
-                                "id": "a09dd771-0174-4edb-80a1-d9fed944fa65",
-                                "flow": "xtls-rprx-vision",
-                                "encryption": "none"
+                                "id": "4dabb83e-ac68-4cf4-ac81-380197130eed",
+                                "alterId": 0,
+                                "email": "t@t.tt",
+                                "security": "auto",
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision"
                             }
                         ]
                     }
@@ -66,15 +69,16 @@
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "reality",
-                "realitySettings": {
-                    "show": false,
-                    "fingerprint": "chrome",
-                    "serverName": "www.leercapitulo.com",
-                    "publicKey": "5K6iUHU_sn9hjbIPX5cQBYI1FGVmYhl2ZITEZkrbfho",
-                    "shortId": "be91e734e22750b4",
-                    "spiderX": "/"
+                "security": "tls",
+                "tlsSettings": {
+                    "allowInsecure": false,
+                    "serverName": "www.cinima.asia",
+                    "fingerprint": "ios"
                 }
+            },
+            "mux": {
+                "enabled": false,
+                "concurrency": -1
             }
         },
         {
