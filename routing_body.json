@@ -7,13 +7,6 @@
       "domain": [
         "full:duangks.com"
       ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "proxy",
-      "domain": [
-        "full:github.com"
-      ]
     }
   ]
 }
