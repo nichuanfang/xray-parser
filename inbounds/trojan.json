@@ -5,7 +5,19 @@
     "settings": {
         "clients": [
             {
-                "password": "3cb5d5a9"
+                "password": "3cb5d5a9",
+                "flow": "xtls-rprx-direct"
+            }
+        ],
+        "fallbacks": [
+            {
+                "dest": "/dev/shm/default.sock",
+                "xver": 1
+            },
+            {
+                "alpn": "h2",
+                "dest": "/dev/shm/h2c.sock",
+                "xver": 1
             }
         ]
     },
