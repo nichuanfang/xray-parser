@@ -1,22 +1,12 @@
 {
+    "listen": "0.0.0.0",
     "port": 16789,
     "protocol": "trojan",
     "settings": {
         "clients": [
             {
                 "password": "3cb5d5a9",
-                "flow": "xtls-rprx-direct"
-            }
-        ],
-        "fallbacks": [
-            {
-                "dest": "/dev/shm/default.sock",
-                "xver": 1
-            },
-            {
-                "alpn": "h2",
-                "dest": "/dev/shm/h2c.sock",
-                "xver": 1
+                "flow": "xtls-rprx-vision"
             }
         ]
     },
@@ -30,8 +20,8 @@
             ],
             "certificates": [
                 {
-                    "certificateFile": "/usr/local/etc/cert.pem",
-                    "keyFile": "/usr/local/etc/key.pem",
+                    "certificateFile": "/usr/local/etc/xray/cert.pem",
+                    "keyFile": "/usr/local/etc/xray/key.pem",
                     "ocspStapling": 3600
                 }
             ],
