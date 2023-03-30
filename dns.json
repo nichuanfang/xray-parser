@@ -1,1 +1,13 @@
-{}
+{
+    "hosts": {
+        "dns.google": "8.8.4.4"
+    },
+    "servers": [
+        "https+local://dns.google/dns-query"
+    ],
+    "queryStrategy": "UseIP",
+    "disableCache": false,
+    "disableFallback": false,
+    "disableFallbackIfMatch": false,
+    "tag": "dns_inbound"
+}
