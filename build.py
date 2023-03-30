@@ -41,7 +41,7 @@ client['routing'] = {'domainStrategy': strategy,'rules': rules}
 client['dns'] = dns
 
 # 持久化
-json.dump(client,open('/root/assets/config/config.json','w+'))
+json.dump(client,open('/root/assets/config/client/config.json','w+'))
 
 outbound_tag_map = {
     'direct': 'DIRECT',
@@ -51,7 +51,7 @@ outbound_tag_map = {
 
 
 # 转化为QX的路由配置文件
-with open('/root/assets/config/QxPolicy.list','w+') as qx:
+with open('/root/assets/config/client/QxPolicy.list','w+') as qx:
     for rule in rb['rules']:
         # 把规则写到list里
         outboundTag:str = rule['outboundTag']
