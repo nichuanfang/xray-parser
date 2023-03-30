@@ -22,7 +22,7 @@
             "dest": "www.leercapitulo.com:443",
             "xver": 0,
             "serverNames": [
-                "www.leercapitulo.com"
+                "leercapitulo.com"
             ],
             "privateKey": "ILr1i_Y-dF6T6Vf9RgFbWSBd1wUp515mH5BMXSuvx0g",
             "shortIds": [

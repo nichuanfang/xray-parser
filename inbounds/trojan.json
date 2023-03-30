@@ -1,0 +1,41 @@
+{
+    "port": 16789,
+    "protocol": "trojan",
+    "settings": {
+        "clients": [
+            {
+                "password": "3cb5d5a9",
+                "flow": "xtls-rprx-direct"
+            }
+        ],
+        "fallbacks": [
+            {
+                "dest": "/dev/shm/default.sock",
+                "xver": 1
+            },
+            {
+                "alpn": "h2",
+                "dest": "/dev/shm/h2c.sock",
+                "xver": 1
+            }
+        ]
+    },
+    "streamSettings": {
+        "network": "tcp",
+        "security": "xtls",
+        "xtlsSettings": {
+            "alpn": [
+                "http/1.1",
+                "h2"
+            ],
+            "certificates": [
+                {
+                    "certificateFile": "/usr/local/etc/cert.pem",
+                    "keyFile": "/usr/local/etc/key.pem",
+                    "ocspStapling": 3600
+                }
+            ],
+            "minVersion": "1.2"
+        }
+    }
+}
