@@ -7,6 +7,13 @@
       "domain": [
         "full:duangks.com"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "amazon.com"
+      ]
     }
   ]
 }
