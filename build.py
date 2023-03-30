@@ -17,7 +17,7 @@ inbounds = []
 # 构建inbounds   文件夹路径 文件夹集合 文件集合
 for dir_path,dir_list,file_list in os.walk('inbounds'):
     for file in file_list:
-        with open(dir_path+'/'+'qx.json') as inbound_file:
+        with open(dir_path+'/'+file) as inbound_file:
             inbounds.append(json.load(inbound_file))
 
 # 拼到client中 
