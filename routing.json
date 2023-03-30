@@ -2,6 +2,20 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
         {
+            "inboundTag": [
+                "api"
+            ],
+            "outboundTag": "api",
+            "type": "field"
+        },
+        {
+            "type": "field",
+            "protocol": [
+                "bittorrent"
+            ],
+            "outboundTag": "block"
+        },
+        {
             "type": "field",
             "ip": [
                 "geoip:cn"
