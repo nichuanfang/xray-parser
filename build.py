@@ -49,7 +49,6 @@ outbound_tag_map = {
     'proxy': 'PROXY'
 }
 
-
 # 转化为QX的路由配置文件
 with open('/root/assets/config/client/QxPolicy.list','w+') as qx:
     for rule in rb['rules']:
