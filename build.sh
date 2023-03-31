@@ -3,5 +3,5 @@
 /usr/bin/python3 build.py
 # 重启nginx服务 向外部提供https服务
 docker restart nginx
-
-# 通知远程服务器更新脚本
+sleep 1s
+ssh -p 60022 -o StrictHostKeyChecking=no -t root@154.202.60.190 </root/code/xray-parser/restart_xray.sh
