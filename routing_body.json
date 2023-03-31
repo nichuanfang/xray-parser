@@ -14,6 +14,13 @@
       "domain": [
         "amazon.com"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "docker.com"
+      ]
     }
   ]
 }
