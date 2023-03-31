@@ -12,7 +12,7 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "amazon.com"
+        "amazon.com" 
       ] 
     },
     {
