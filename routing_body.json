@@ -21,6 +21,13 @@
       "domain": [
         "docker.com"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "domain": [
+        "baidu.com"
+      ]
     }
   ]
 }
