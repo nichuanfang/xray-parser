@@ -7,13 +7,6 @@
                 "bittorrent"
             ],
             "outboundTag": "block"
-        },
-        {
-            "type": "field",
-            "ip": [
-                "geoip:cn"
-            ],
-            "outboundTag": "block"
         }
     ]
 }
