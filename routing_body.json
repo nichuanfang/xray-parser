@@ -15,7 +15,6 @@
         "amazon.com" 
       ] 
     },
-    //===============docker config====================
     {
       "type": "field",
       "outboundTag": "proxy",
