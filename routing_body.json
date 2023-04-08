@@ -19,6 +19,13 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
+        "telghub.com"
+      ]
+    }
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
         "docker.com"
       ]
     },
