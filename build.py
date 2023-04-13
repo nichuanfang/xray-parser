@@ -18,7 +18,7 @@ inbounds = []
 for dir_path,dir_list,file_list in os.walk('inbounds'):
     for file in file_list:
         with open(dir_path+'/'+file) as inbound_file:
-            inbounds.append(json.load(inbound_file))
+            inbounds.append(json.load(inbound_file)) 
 
 # 拼到client中 
 with open('server.json') as server_file:
