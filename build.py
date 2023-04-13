@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python
 # coding=utf-8
 
 # webhook触发更新路由规则

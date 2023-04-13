@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-# coding=utf-8”；
+#!/usr/local/bin/python
+# coding=utf-8
 import json
 from tkinter.messagebox import NO
 from urllib import request
@@ -93,4 +93,3 @@ config = open(configPath, "w+")
 json.dump(res, config, ensure_ascii=False)
 config.close()
 logging.info("==========xray配置文件更新完毕!==============")
-sleep(2)
