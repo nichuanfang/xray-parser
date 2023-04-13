@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-# coding=utf-8”；
+#!/usr/local/bin/python
+# coding=utf-8；
 
 # webhook触发更新路由规则
 import json
