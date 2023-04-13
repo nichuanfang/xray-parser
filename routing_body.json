@@ -19,7 +19,28 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
+        "telghub.com"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
         "docker.com"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "cloudfront.net"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "kejilion.pro"
       ]
     }
   ]
