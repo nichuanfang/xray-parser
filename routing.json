@@ -1,12 +1,4 @@
 {
     "domainStrategy": "IPIfNonMatch",
-    "rules": [
-        {
-            "type": "field",
-            "protocol": [
-                "bittorrent"
-            ],
-            "outboundTag": "block"
-        }
-    ]
+    "rules": []
 }
