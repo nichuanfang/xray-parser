@@ -5,8 +5,15 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "amazon.com"
+        "full:duangks.com"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "amazon.com" 
+      ] 
     },
     {
       "type": "field",
