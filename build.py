@@ -21,7 +21,7 @@ for dir_path,dir_list,file_list in os.walk('/root/code/xray-parser/inbounds'):
             inbounds.append(json.load(inbound_file)) 
 
 # 拼到client中 
-with open('server.json') as server_file:
+with open('/root/code/xray-parser/server.json') as server_file:
     server = json.load(server_file) 
 
 # 配置路由
