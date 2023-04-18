@@ -8,13 +8,13 @@ import json
 # 构建完成后 同步到qx的路由规则里
 rules = []
 
-with open('routing_header.json') as routing_header:
+with open('/root/code/xray-parser/routing_header.json') as routing_header:
     rh = json.load(routing_header)
 
-with open('routing_body.json') as routing_body:
+with open('/root/code/xray-parser/routing_body.json') as routing_body:
     rb = json.load(routing_body)
 
-with open('routing_footer.json') as routing_footer:
+with open('/root/code/xray-parser/routing_footer.json') as routing_footer:
     rf = json.load(routing_footer)
 
 
@@ -28,11 +28,11 @@ for brule in rb['rules']:
 for frule in rf['rules']:
     rules.append(frule)
 
-with open('dns.json') as dns_file:
+with open('/root/code/xray-parser/dns.json') as dns_file:
     dns = json.load(dns_file)
 
 # 拼到client中 
-with open('client.json') as client_file:
+with open('/root/code/xray-parser/client.json') as client_file:
     client = json.load(client_file)
 
 # 配置路由
