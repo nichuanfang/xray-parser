@@ -7,15 +7,15 @@ import os
 
 
 
-with open('routing.json') as routing_file:
+with open('/root/code/xray-parser/routing.json') as routing_file:
     routing = json.load(routing_file)
 
-with open('dns.json') as dns_file:
+with open('/root/code/xray-parser/dns.json') as dns_file:
     dns = json.load(dns_file)
 
 inbounds = []
 # 构建inbounds   文件夹路径 文件夹集合 文件集合
-for dir_path,dir_list,file_list in os.walk('inbounds'):
+for dir_path,dir_list,file_list in os.walk('/root/code/xray-parser/inbounds'):
     for file in file_list:
         with open(dir_path+'/'+file) as inbound_file:
             inbounds.append(json.load(inbound_file)) 
