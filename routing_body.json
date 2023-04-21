@@ -40,13 +40,6 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "kejilion.pro"
-      ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "proxy",
-      "domain": [
         "wallhaven.cc"
       ]
     }
