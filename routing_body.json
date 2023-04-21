@@ -42,6 +42,13 @@
       "domain": [
         "wallhaven.cc"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "paddle.net"
+      ]
     }
   ]
 }
