@@ -60,15 +60,19 @@ jobs:
           user: ${{ secrets.DC_USER }}
           pass: ${{ secrets.DC_PASS }}
           port: ${{ secrets.DC_PORT }}
-          connect_timeout: 10s
+          connect_timeout: 2000s
+          # first_ssh: |
+          #   apt-get install docker.io -y
+          #   curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          #   chmod +x /usr/local/bin/docker-compose
+          #   ln -fs /usr/local/bin/docker-compose /usr/bin/docker-compose
+          scp: |
+            './docker/dockerfile_work/xray/docker-compose.yml' => /root/
           first_ssh: |
             apt-get install docker.io -y
             curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
             ln -fs /usr/local/bin/docker-compose /usr/bin/docker-compose
-          scp: |
-            './docker/dockerfile_work/xray/docker-compose.yml' => /root/
-          last_ssh: |
             # 登录阿里云镜像仓库
             docker login --username=18326186224 --password=0820ncf9270 registry.cn-hangzhou.aliyuncs.com
             docker pull registry.cn-hangzhou.aliyuncs.com/jayzhou/xray:latest
