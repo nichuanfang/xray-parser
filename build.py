@@ -44,7 +44,7 @@ with open('base_nginx.conf', 'r',encoding='utf-8') as f:
     base_nc.data[2]['value'][1]  = tuple(server_3)
 
     server_4 = list(base_nc.data[2]['value'][2])
-    server_4[1] = f'^(.*) {XRAY_DOMAIN}$1 permanent'
+    server_4[1] = f'^(.*) https://{XRAY_DOMAIN}$1 permanent'
     base_nc.data[2]['value'][2]  = tuple(server_4)
 
 
