@@ -67,5 +67,7 @@ jobs:
           scp: |
             './docker/dockerfile_work/xray/docker-compose.yml' => /root/
           last_ssh: |
-            docker-compose -f /root/docker-compose.yml
+            docker-compose -f /root/docker-compose.yml down
+            docker-compose -f /root/docker-compose.yml pull
+            docker-compose -f /root/docker-compose.yml up -d
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
