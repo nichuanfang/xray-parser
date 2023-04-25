@@ -4,32 +4,37 @@
 # webhook触发更新路由规则
 import json
 import os
+import sys
 
-# 读取环境变量
+# 读取参数 ${{ secrets.XRAY_DOMAIN }} ${{ secrets.XRAY_WINDOWS_KEY }} ${{ secrets.XRAY_TROJAN_KEY }}
 
+if len(sys.argv) < 3:
+    raise RuntimeError('请确认XRAY_DOMAIN,XRAY_WINDOWS_KEY,XRAY_TROJAN_KEY都已配置!')
+
+# xray域名
+XRAY_DOMAIN = sys.argv[1]
 # xray协议key
-XRAY_WINDOWS_KEY = os.environ.get('XRAY_WINDOWS_KEY','')
+XRAY_WINDOWS_KEY = sys.argv[2]
 # trojan协议key
-XRAY_TROJAN_KEY = os.environ.get('XRAY_TROJAN_KEY','')
+XRAY_TROJAN_KEY = sys.argv[3]
 
+if XRAY_DOMAIN == '':
+    raise RuntimeError('必须配置变量XRAY_DOMAIN!')
 if XRAY_WINDOWS_KEY == '':
-    raise RuntimeError('必须配置环境变量XRAY_WINDOWS_KEY!')
-
+    raise RuntimeError('必须配置密钥XRAY_WINDOWS_KEY!')
 if XRAY_TROJAN_KEY == '':
-    raise RuntimeError('必须配置环境变量XRAY_TROJAN_KEY!')
+    raise RuntimeError('必须配置密钥XRAY_TROJAN_KEY!')
 
-XRAY_PARSER_PATH = '/xray-parser/'
-XRAY_PATH = '/xray/'
 
-with open(f'{XRAY_PARSER_PATH}routing.json') as routing_file:
+with open(f'routing.json') as routing_file:
     routing = json.load(routing_file)
 
-with open(f'{XRAY_PARSER_PATH}dns.json') as dns_file:
+with open(f'dns.json') as dns_file:
     dns = json.load(dns_file)
 
 inbounds = []
 # 构建inbounds   文件夹路径 文件夹集合 文件集合
-for dir_path,dir_list,file_list in os.walk(f'{XRAY_PARSER_PATH}inbounds'):
+for dir_path,dir_list,file_list in os.walk(f'inbounds'):
     for file in file_list:
         with open(dir_path+'/'+file) as inbound_file:
             server_dict:dict = json.load(inbound_file)
@@ -42,7 +47,7 @@ for dir_path,dir_list,file_list in os.walk(f'{XRAY_PARSER_PATH}inbounds'):
             inbounds.append(server_dict) 
 
 # 拼到client中 
-with open(f'{XRAY_PARSER_PATH}server.json') as server_file:
+with open(f'server.json') as server_file:
     server = json.load(server_file) 
 
 # 配置路由
@@ -53,4 +58,4 @@ server['dns'] = dns
 server['inbounds'] = inbounds
 
 # 持久化
-json.dump(server,open(f'{XRAY_PATH}config.json','w+'))
+json.dump(server,open(f'config.json','w+'))

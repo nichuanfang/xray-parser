@@ -30,8 +30,9 @@ jobs:
       - name: 导入pip依赖
         run: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/requirements.txt
 
-      # - name: 生成config.json 与 nginx配置文件
-      # run: python $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/build.py
+      - name: 生成config.json 与 nginx配置文件
+        working-directory: $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+        run: python $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/build.py ${{ secrets.XRAY_DOMAIN }} ${{ secrets.XRAY_WINDOWS_KEY }} ${{ secrets.XRAY_TROJAN_KEY }}
 
       - name: 启动服务
         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
@@ -54,6 +55,8 @@ jobs:
             './docker/dockerfile_work/xray/.git-credentials' => /root/
             './docker/dockerfile_work/xray/.gitconfig' => /root/
             './docker/dockerfile_work/xray/hook.sh' => /root/
+            './docker/dockerfile_work/xray/xray-parser/config.json' => /root/
+            './docker/dockerfile_work/xray/xray-parser/nginx.conf' => /root/
           last_ssh: |
             chmod +x /root/hook.sh
             bash /root/hook.sh
