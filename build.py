@@ -41,6 +41,7 @@ for dir_path,dir_list,file_list in os.walk(f'inbounds'):
             if file[:-5]=='windows':
                 # 添加密钥
                 server_dict['settings']['clients'][0]['id'] = XRAY_WINDOWS_KEY
+                server_dict['streamSettings']['tlsSettings']['serverName']=XRAY_DOMAIN
             elif file[:-5]=='trojan':
                 # 添加密钥
                 server_dict['settings']['clients'][0]['password'] = XRAY_TROJAN_KEY
