@@ -58,8 +58,9 @@ jobs:
             chmod +x /root/hook.sh
             bash /root/hook.sh
             cd /root/docker/dockerfile_work/xray 
+            chmod +x clear.sh
             docker-compose down
             docker-compose pull
             docker-compose up -d
-            docker rmi -f $(docker images | grep none | awk '{print $3}') 1>/dev/null 2>$1
+            bash clear.sh
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
