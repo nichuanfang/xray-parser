@@ -47,7 +47,6 @@ jobs:
           first_ssh: |
             apt-get install git -y
             apt-get install docker.io -y
-            docker login --username=${{ secrets.ALI_DOCKER_USERNAME }} --password=${{ secrets.ALI_DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
             curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
             ln -fs /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -58,8 +57,8 @@ jobs:
           last_ssh: |
             chmod +x /root/hook.sh
             bash /root/hook.sh
-            docker-compose -f /root/docker-compose.yml down
-            docker-compose -f /root/docker-compose.yml pull
-            docker-compose -f /root/docker-compose.yml up -d
+            docker-compose down
+            docker-compose pull
+            docker-compose up -d
             docker rmi -f $(docker images | grep none | awk '{print $3}')
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
