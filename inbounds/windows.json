@@ -12,11 +12,11 @@
         "decryption": "none",
         "fallbacks": [
             {
-                "dest": 33222
+                "dest": "nginx:8080"
             },
             {
                 "alpn": "h2",
-                "dest": 33223
+                "dest": "nginx:8081"
             }
         ]
     },
