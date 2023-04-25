@@ -62,5 +62,4 @@ jobs:
             docker-compose down
             docker-compose pull
             docker-compose up -d
-            bash clear.sh
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
