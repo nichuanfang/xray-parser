@@ -74,7 +74,7 @@ for item in lines:
                 rule.__setitem__("outboundTag", xray.outboundTag)
                 flag = True
             # 遍历domain 如果该domain的域名在自定义规则集中没有 则移除
-            if domain is None:
+            if domain is None: 
                 continue
             for url in domain:
                 if url != "geosite:category-ads-all" and url != "geosite:gfw" and url != "geosite:greatfire" and url != "geoip:telegram":
