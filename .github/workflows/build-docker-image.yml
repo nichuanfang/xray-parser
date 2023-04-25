@@ -66,16 +66,13 @@ jobs:
             curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
             ln -fs /usr/local/bin/docker-compose /usr/bin/docker-compose
-            docker login --username=${{ secrets.ALI_DOCKER_USERNAME }} --password=${{ secrets.ALI_DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
-            docker-compose -f /root/docker-compose.yml down
-            docker-compose -f /root/docker-compose.yml pull
-            docker-compose -f /root/docker-compose.yml up -d
           scp: |
             './docker/dockerfile_work/xray/docker-compose.yml' => /root/
           last_ssh: |
             # 登录阿里云镜像仓库
-            # docker login --username=${{ secrets.ALI_DOCKER_USERNAME }} --password=${{ secrets.ALI_DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
-            # docker-compose -f /root/docker-compose.yml down
-            # docker-compose -f /root/docker-compose.yml pull
-            # docker-compose -f /root/docker-compose.yml up -d
+            docker login --username=${{ secrets.ALI_DOCKER_USERNAME }} --password=${{ secrets.ALI_DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
+            docker rm -vf xray
+            docker rmi -f $(docker images | grep xray | awk '{print $3}')
+            docker pull registry.cn-hangzhou.aliyuncs.com/jayzhou/xray:latest
+            docker-compose -f /root/docker-compose.yml up -d
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
