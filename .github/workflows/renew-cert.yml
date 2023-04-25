@@ -1,0 +1,12 @@
+# 在目标服务器定期生成证书并提交到docker库中
+name: renew-cert
+on:
+  schedule:
+    - cron: '0 3 1 * *'
+jobs:
+  trigger:
+    name: 生成证书
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        run: ls

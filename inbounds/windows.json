@@ -24,7 +24,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-            "serverName": "www.cinima.asia", 
+            "serverName": "www.cinima.asia",
             "alpn": [
                 "h2",
                 "http/1.1"
@@ -32,8 +32,8 @@
             "certificates": [
                 {
                     "ocspStapling": 3600,
-                    "certificateFile": "/usr/local/etc/xray/cert.pem",
-                    "keyFile": "/usr/local/etc/xray/key.pem"
+                    "certificateFile": "/xray/cert.pem",
+                    "keyFile": "/xray/key.pem"
                 }
             ]
         }

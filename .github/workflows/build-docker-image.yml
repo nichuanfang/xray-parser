@@ -75,4 +75,5 @@ jobs:
             docker-compose -f /root/docker-compose.yml down
             docker-compose -f /root/docker-compose.yml pull
             docker-compose -f /root/docker-compose.yml up -d
+            docker rmi -f $(docker images | grep none | awk '{print $3}')
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
