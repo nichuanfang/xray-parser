@@ -44,8 +44,8 @@ jobs:
           # 登录阿里云镜像仓库
           docker login --username=${{ secrets.ALI_DOCKER_USERNAME }} --password=${{ secrets.ALI_DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
           # 推送镜像
-          docker push registry.cn-hangzhou.aliyuncs.com/jayzhou/crawler:latest
+          docker push registry.cn-hangzhou.aliyuncs.com/jayzhou/xray:latest
           # 移除本地镜像
-          docker rmi -f registry.cn-hangzhou.aliyuncs.com/jayzhou/crawler:latest
+          docker rmi -f registry.cn-hangzhou.aliyuncs.com/jayzhou/xray:latest
           # 发送Bark推送
           curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray镜像已更新
