@@ -64,6 +64,8 @@ jobs:
           first_ssh: |
             apt-get install docker.io -y
             apt-get install docker-compose -y
+            # 防止docker login失败
+            apt purge golang-docker-credential-helpers -y
           scp: |
             './docker/dockerfile_work/xray/docker-compose.yml' => /root/
           last_ssh: |
