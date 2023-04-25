@@ -49,3 +49,23 @@ jobs:
           docker rmi -f registry.cn-hangzhou.aliyuncs.com/jayzhou/xray:latest
           # 发送Bark推送
           curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray镜像已更新
+
+      - name: 启动服务
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: 'ssh scp ssh pipelines'
+          LASTSSH: 'Doing something after copying'
+        with:
+          host: ${{ secrets.DC_HOST }}
+          user: ${{ secrets.DC_USER }}
+          pass: ${{ secrets.DC_PASS }}
+          port: ${{ secrets.DC_PORT }}
+          connect_timeout: 10s
+          first_ssh: |
+            apt-get install docker.io -y
+            apt-get install docker-compose -y
+          scp: |
+            './docker/dockerfile_work/xray/docker-compose.yml' => /root/
+          last_ssh: |
+            docker-compose -f /root/docker-compose.yml
+            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
