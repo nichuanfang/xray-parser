@@ -24,7 +24,7 @@
         "network": "tcp",
         "security": "tls",
         "tlsSettings": {
-            "serverName": "www.cinima.asia",
+            "serverName": "www.cinima.asia", 
             "alpn": [
                 "h2",
                 "http/1.1"
