@@ -5,7 +5,7 @@
     "settings": {
         "clients": [
             {
-                "password": "3cb5d5a9",
+                "password": "",
                 "flow": "xtls-rprx-direct"
             }
         ],

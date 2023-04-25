@@ -5,7 +5,7 @@
     "settings": {
         "clients": [
             {
-                "id": "7f595f98-cc2f-4c0c-a6b5-3a50a23c489a",
+                "id": "",
                 "flow": "xtls-rprx-vision"
             }
         ],

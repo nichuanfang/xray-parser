@@ -1,0 +1,40 @@
+name: 生成自定义xray服务器镜像
+on:
+  push:
+    branches:
+      - 'server'
+jobs:
+  job:
+    name: 构建镜像
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout出xray-parser项目
+        uses: actions/checkout@v3.5.2
+        with:
+          repository: nichuanfang/xray-parser
+          path: xray-parser
+          ref: server
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: checkout出docker项目
+        uses: actions/checkout@v3.5.2
+        with:
+          repository: nichuanfang/docker
+          path: docker
+          ref: master
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: xray-parser=>docker
+        run: mv $GITHUB_WORKSPACE/xray-parser $GITHUB_WORKSPACE/docker/dockerfile_work/xray
+
+      - name: 构建xray服务端镜像
+        run: |
+          # 构建镜像
+          docker build -t registry.cn-hangzhou.aliyuncs.com/jayzhou/xray:latest \
+            --build-arg XRAY_VERSION=${{ vars.XRAY_VERSION }} \
+            --build-arg XRAY_WINDOWS_KEY=${{ secrets.XRAY_WINDOWS_KEY }} \
+            --build-arg XRAY_TROJAN_KEY=${{ secrets.XRAY_TROJAN_KEY }} \
+            $GITHUB_WORKSPACE/docker/dockerfile_work/xray
+          # 消息通知密钥信息
+          curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray镜像更新/xray密钥${{ secrets.XRAY_WINDOWS_KEY }}
+          curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray镜像更新/trojan密钥${{ secrets.XRAY_TROJAN_KEY }}
