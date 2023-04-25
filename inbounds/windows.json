@@ -32,8 +32,8 @@
             "certificates": [
                 {
                     "ocspStapling": 3600,
-                    "certificateFile": "/xray/cert.pem",
-                    "keyFile": "/xray/key.pem"
+                    "certificateFile": "/usr/local/etc/xray/cert/cert.pem",
+                    "keyFile": "/usr/local/etc/xray/cert/key.pem"
                 }
             ]
         }
