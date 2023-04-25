@@ -35,17 +35,39 @@ jobs:
           cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
           python build.py ${{ secrets.XRAY_DOMAIN }} ${{ secrets.XRAY_WINDOWS_KEY }} ${{ secrets.XRAY_TROJAN_KEY }}
 
-      - name: 启动服务
+      - name: 发布xray服务端http服务
         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         env:
           WELCOME: 'ssh scp ssh pipelines'
           LASTSSH: 'Doing something after copying'
         with:
+          # HC代表发布xray配置的服务器
+          host: ${{ secrets.HC_HOST }}
+          user: ${{ secrets.HC_USER }}
+          pass: ${{ secrets.HC_PASS }}
+          port: ${{ secrets.HC_PORT }}
+          connect_timeout: 20s
+          first_ssh: |
+            docker stop nginx
+            mkdir -p /root/assets/config/server
+          scp: |
+            './docker/dockerfile_work/xray/xray-parser/config.json' => /root/assets/config/server
+          last_ssh: |
+            docker start nginx
+            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务端配置已更新
+
+      - name: 部署启动xray
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: 'ssh scp ssh pipelines'
+          LASTSSH: 'Doing something after copying'
+        with:
+          # DC代表部署xray的服务器
           host: ${{ secrets.DC_HOST }}
           user: ${{ secrets.DC_USER }}
           pass: ${{ secrets.DC_PASS }}
           port: ${{ secrets.DC_PORT }}
-          connect_timeout: 2000s
+          connect_timeout: 20s
           first_ssh: |
             apt-get install git -y
             apt-get install docker.io -y
@@ -56,16 +78,13 @@ jobs:
             './docker/dockerfile_work/xray/.git-credentials' => /root/
             './docker/dockerfile_work/xray/.gitconfig' => /root/
             './docker/dockerfile_work/xray/hook.sh' => /root/
-            './docker/dockerfile_work/xray/xray-parser/config.json' => /root/
-            './docker/dockerfile_work/xray/xray-parser/default.conf' => /root/
+            './docker/dockerfile_work/xray/xray-parser/config.json' => /root/docker/dockerfile_work/xray/xray_config
+            './docker/dockerfile_work/xray/xray-parser/default.conf' => /root/docker/dockerfile_work/xray/nginx/conf.d
           last_ssh: |
             chmod +x /root/hook.sh
             bash /root/hook.sh
-            cd /root/docker/dockerfile_work/xray
-            mv -f /root/config.json xray_config
-            mv -f /root/default.conf nginx/conf.d
-            docker-compose down
-            docker-compose pull
-            docker-compose up -d
+            docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml down
+            docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml pull
+            docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml up -d
             docker image prune -f -a
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
