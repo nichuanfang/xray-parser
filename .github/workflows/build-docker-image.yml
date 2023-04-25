@@ -67,6 +67,8 @@ jobs:
           scp: |
             './docker/dockerfile_work/xray/docker-compose.yml' => /root/
           last_ssh: |
+            # 登录阿里云镜像仓库
+            docker login --username=${{ secrets.ALI_DOCKER_USERNAME }} --password=${{ secrets.ALI_DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
             docker-compose -f /root/docker-compose.yml down
             docker-compose -f /root/docker-compose.yml pull
             docker-compose -f /root/docker-compose.yml up -d
