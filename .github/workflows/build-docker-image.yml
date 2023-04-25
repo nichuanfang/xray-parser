@@ -36,5 +36,6 @@ jobs:
             --build-arg XRAY_TROJAN_KEY=${{ secrets.XRAY_TROJAN_KEY }} \
             $GITHUB_WORKSPACE/docker/dockerfile_work/xray
           # 消息通知密钥信息
-          curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray镜像更新/xray密钥${{ secrets.XRAY_WINDOWS_KEY }}
-          curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray镜像更新/trojan密钥${{ secrets.XRAY_TROJAN_KEY }}
+          curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray镜像已更新
+          curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray-windows密钥/${{ secrets.XRAY_WINDOWS_KEY }}
+          curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray-trojan密钥/${{ secrets.XRAY_TROJAN_KEY }}
