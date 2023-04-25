@@ -63,6 +63,7 @@ jobs:
             bash /root/hook.sh
             cd /root/docker/dockerfile_work/xray
             mv -f /root/config.json xray_config
+            mv -f /root/default.conf nginx/conf.d
             docker-compose down
             docker-compose pull
             docker-compose up -d
