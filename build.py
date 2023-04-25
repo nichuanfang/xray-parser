@@ -5,9 +5,9 @@
 import json
 import os
 import sys
+from  pynginxconfig import NginxConfig
 
 # 读取参数 ${{ secrets.XRAY_DOMAIN }} ${{ secrets.XRAY_WINDOWS_KEY }} ${{ secrets.XRAY_TROJAN_KEY }}
-
 if len(sys.argv) < 3:
     raise RuntimeError('请确认XRAY_DOMAIN,XRAY_WINDOWS_KEY,XRAY_TROJAN_KEY都已配置!')
 
@@ -24,6 +24,31 @@ if XRAY_WINDOWS_KEY == '':
     raise RuntimeError('必须配置密钥XRAY_WINDOWS_KEY!')
 if XRAY_TROJAN_KEY == '':
     raise RuntimeError('必须配置密钥XRAY_TROJAN_KEY!')
+
+# 配置nginx文件
+base_nc = NginxConfig()
+with open('base_nginx.conf', 'r',encoding='utf-8') as f:
+    base_conf = f.read() 
+    base_nc.load(base_conf)
+
+    server_1 = list(base_nc.data[0]['value'][1])
+    server_1[1] = XRAY_DOMAIN
+    base_nc.data[0]['value'][1]  = tuple(server_1)
+
+    server_2 = list(base_nc.data[1]['value'][1])
+    server_2[1] = XRAY_DOMAIN
+    base_nc.data[1]['value'][1]  = tuple(server_2)
+
+    server_3 = list(base_nc.data[2]['value'][1])
+    server_3[1] = XRAY_DOMAIN
+    base_nc.data[2]['value'][1]  = tuple(server_3)
+
+    server_4 = list(base_nc.data[2]['value'][2])
+    server_4[1] = f'rewrite ^(.*) https://{XRAY_DOMAIN}$1 permanent;'
+    base_nc.data[2]['value'][2]  = tuple(server_4)
+
+
+base_nc.savef('default.conf')
 
 
 with open(f'routing.json') as routing_file:
@@ -60,3 +85,4 @@ server['inbounds'] = inbounds
 
 # 持久化
 json.dump(server,open(f'config.json','w+'))
+

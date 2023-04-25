@@ -57,7 +57,7 @@ jobs:
             './docker/dockerfile_work/xray/.gitconfig' => /root/
             './docker/dockerfile_work/xray/hook.sh' => /root/
             './docker/dockerfile_work/xray/xray-parser/config.json' => /root/
-            './docker/dockerfile_work/xray/xray-parser/nginx.conf' => /root/
+            './docker/dockerfile_work/xray/xray-parser/default.conf' => /root/
           last_ssh: |
             chmod +x /root/hook.sh
             bash /root/hook.sh
