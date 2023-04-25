@@ -57,6 +57,7 @@ jobs:
           last_ssh: |
             chmod +x /root/hook.sh
             bash /root/hook.sh
+            cd /root/docker/dockerfile_work/xray
             docker-compose down
             docker-compose pull
             docker-compose up -d
