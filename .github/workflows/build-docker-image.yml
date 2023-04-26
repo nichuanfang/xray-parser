@@ -1,4 +1,4 @@
-name: Release
+name: Release Xray Server
 on:
   push:
     branches:
