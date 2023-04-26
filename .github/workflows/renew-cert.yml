@@ -12,9 +12,9 @@ on:
         default: 'warning'
         type: choice
         options:
-        - info
-        - warning
-        - debug
+          - info
+          - warning
+          - debug
       tags:
         description: 'Test scenario tags'
         required: false
@@ -24,16 +24,9 @@ on:
         type: environment
         required: true
   # 定时任务
-  schedule:
-    # https://crontab.guru/
-    # UTC 时间，中国时区应减 8
-    #         ┌────────── minute (0 - 59)
-    #         │ ┌──────── hour (0 - 23)
-    #         │ │ ┌────── day of the month (1 - 31)
-    #         │ │ │ ┌──── month (1 - 12 or JAN-DEC)
-    #         │ │ │ │ ┌── day of the week (0 - 6 or SUN-SAT)
-    #         │ │ │ │ │
-    - cron: '*/10 * * * *'
+  push:
+    branches:
+      - 'server'
 jobs:
   trigger:
     name: 生成证书
