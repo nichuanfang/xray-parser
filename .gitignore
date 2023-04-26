@@ -5,4 +5,6 @@
 .idea/xray-parser.iml
 .idea/inspectionProfiles/profiles_settings.xml
 *.pyc
-dist/*
+dist/*.json
+dist/*.list
+dist/*.txt

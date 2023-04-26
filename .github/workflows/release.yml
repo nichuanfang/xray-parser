@@ -1,4 +1,4 @@
-name: Release Xray Server
+name: Release Xray Client
 
 on:
   push:
