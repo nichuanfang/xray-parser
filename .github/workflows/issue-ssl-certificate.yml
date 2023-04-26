@@ -1,0 +1,65 @@
+# 注: 定时任务的yml只有放在主分支上面才生效!
+name: issue-ssl-certificate
+
+# 全局环境变量
+env:
+  # Checkout 到的目录
+  CERTS_OUTPUT_BASE: certs
+  # 证书输出目录
+  CERTS_OUTPUT_DIRECTORY: www.cinima.asia
+  # 证书文件名
+  FILE_FULLCHAIN: fullchain.pem
+  # 私钥文件名
+  FILE_KEY: privatekey.key
+
+on:
+  # 手动触发 相关文档 https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        required: true
+        type: choice
+        options:
+          - client
+          - server
+
+  schedule:
+    - cron: '0 5 * * *'
+jobs:
+  issue-ssl-certificate:
+    name: Issue SSL certificate
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: Menci/acme@v2
+        with:
+          # 指定 acme.sh 的版本
+          version: 3.0.2
+
+          # 上方保存的以 Base64 编码存储的凭据
+          account-tar: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
+
+          # 域名列表，以空格分隔
+          domains: www.cinima.asia
+          # 是否申请通配符
+          append-wildcard: true
+
+          # 传递给 acme.sh 的额外参数
+          arguments: --dns dns_cf --challenge-alias www.cinima.asia
+
+          # 导出的证书路径
+          output-fullchain: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}
+          output-key: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}
