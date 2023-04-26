@@ -6,7 +6,7 @@ env:
   # Checkout 到的目录
   CERTS_OUTPUT_BASE: certs
   # 证书输出目录
-  CERTS_OUTPUT_DIRECTORY: www.cinima.asia
+  CERTS_OUTPUT_DIRECTORY: cinima.asia
   # 证书文件名
   FILE_FULLCHAIN: fullchain.pem
   # 私钥文件名
@@ -53,12 +53,12 @@ jobs:
           account-tar: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
 
           # 域名列表，以空格分隔
-          domains: www.cinima.asia
+          domains: cinima.asia
           # 是否申请通配符
           append-wildcard: true
 
           # 传递给 acme.sh 的额外参数
-          arguments: --dns dns_cf --challenge-alias www.cinima.asia
+          arguments: --dns dns_cf --challenge-alias cinima.asia
 
           # 导出的证书路径
           output-fullchain: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}
