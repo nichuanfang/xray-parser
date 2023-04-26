@@ -1,5 +1,5 @@
 # 在目标服务器定期生成证书并提交到docker库中
-name: renew-cert
+name: release
 
 # https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#workflow_dispatch
 on:
