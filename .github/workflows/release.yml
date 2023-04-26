@@ -1,0 +1,29 @@
+name: Release Xray Server
+
+on:
+  push:
+    branches:
+      - 'client'
+
+jobs:
+  job1:
+    name: 构建xray客户端配置
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: 生成xray客户端配置
+        run: python build.py ${{ secrets.XRAY_IP }} ${{ secrets.XRAY_DOMAIN }} ${{ secrets.XRAY_WINDOWS_KEY }} ${{ secrets.XRAY_TROJAN_KEY }}
+
+      - name: 查看生成的config.json
+        run: cat dist/config.json
+
+      - name: 查看生成的policy.list
+        run: cat dist/policy.list
+
+      - name: 查看生成的policy.txt
+        run: cat dist/policy.txt
+
+      - name: 查看生成的trojan.txt
+        run: cat dist/trojan.txt

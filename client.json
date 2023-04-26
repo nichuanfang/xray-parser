@@ -52,11 +52,11 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "154.202.60.190",
+                        "address": "你的ip地址",
                         "port": 443,
                         "users": [
                             {
-                                "id": "7f595f98-cc2f-4c0c-a6b5-3a50a23c489a",
+                                "id": "密码",
                                 "alterId": 0,
                                 "email": "t@t.tt",
                                 "security": "auto",
@@ -72,7 +72,7 @@
                 "security": "tls",
                 "tlsSettings": {
                     "allowInsecure": false,
-                    "serverName": "www.cinima.asia",
+                    "serverName": "你的域名",
                     "fingerprint": "ios"
                 }
             },

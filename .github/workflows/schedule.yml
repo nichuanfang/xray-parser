@@ -1,0 +1,11 @@
+name: Renew Xray Cert
+on:
+  schedule:
+    - cron: '0 5 * * *'
+jobs:
+  refresh-cert:
+    name: 刷新证书
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
