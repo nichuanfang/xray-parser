@@ -21,12 +21,15 @@ on:
         type: boolean
       environment:
         description: 'Environment to run tests against'
-        type: environment
+        type: string
         required: true
+        default: dev
+
   # 定时任务
-  push:
-    branches:
-      - 'server'
+  schedule:
+    - cron: '*/5 * * * *'
+
+    
 jobs:
   trigger:
     name: 生成证书
