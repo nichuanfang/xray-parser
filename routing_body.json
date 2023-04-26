@@ -77,6 +77,13 @@
       "domain": [
         "vercel.app"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "cloudflare.com"
+      ]
     }
   ]
 }
