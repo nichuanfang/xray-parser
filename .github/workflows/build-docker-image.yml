@@ -37,12 +37,11 @@ jobs:
           unzip Xray-linux-64.zip
           chmod +x ./xray
           cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-          ping d1.awsstatic.com -c 10
 
-      # - name: 生成config.json
-      #   run: |
-      #     cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-      #     python build.py
+      - name: 生成config.json
+        run: |
+          cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+          python build.py
 
       # - name: 查看生成的配置文件
       #   run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
