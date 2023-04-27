@@ -5,36 +5,26 @@
     "settings": {
         "clients": [
             {
-                "id": "",
+                "id": "ae5cd08c-5260-463c-af58-ab4db740c154",
                 "flow": "xtls-rprx-vision"
             }
         ],
-        "decryption": "none",
-        "fallbacks": [
-            {
-                "dest": "nginx:8080"
-            },
-            {
-                "alpn": "h2",
-                "dest": "nginx:8081"
-            }
-        ]
+        "decryption": "none"
     },
     "streamSettings": {
         "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-            "serverName": "",
-            "alpn": [
-                "h2",
-                "http/1.1"
+        "security": "reality",
+        "realitySettings": {
+            "show": false,
+            "dest": "s0.awsstatic.com:443",
+            "xver": 0,
+            "serverNames": [
+                "s0.awsstatic.com"
             ],
-            "certificates": [
-                {
-                    "ocspStapling": 3600,
-                    "certificateFile": "/usr/local/etc/xray/cert/cert.pem",
-                    "keyFile": "/usr/local/etc/xray/cert/key.pem"
-                }
+            "privateKey": "eK758jHKzoZ1XqDta8nFs04RpLok17v99PT6FF4Rg0E",
+            "shortIds": [
+                "6715f6ecc81e9dd2",
+                "cda4fe7893c17f82"
             ]
         }
     },
