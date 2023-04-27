@@ -37,7 +37,7 @@ jobs:
           unzip Xray-linux-64.zip
           chmod +x ./xray
           cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-          ping s0.awsstatic.com -c 10
+          ping d1.awsstatic.com -c 10
 
       # - name: 生成config.json
       #   run: |
