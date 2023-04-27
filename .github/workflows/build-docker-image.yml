@@ -30,7 +30,7 @@ jobs:
       - name: 导入pip依赖
         run: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/requirements.txt
 
-      - name: 生成config.json 与 nginx配置文件
+      - name: 生成config.json
         run: |
           cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
           python build.py ${{ secrets.VLESS_UUID }} ${{ vars.VLESS_DEST }} '${{ vars.VLESS_SERVER_NAMES }}' ${{ secrets.VLESS_PRIVATE_KEY }} ${{ secrets.VLESS_WINDOWS_SHORT_ID }} ${{ secrets.VLESS_IOS_SHORT_ID }} ${{ secrets.TROJAN_PASSWORD }} ${{ vars.VLESS_PORT }} ${{ vars.TROJAN_PORT }}
