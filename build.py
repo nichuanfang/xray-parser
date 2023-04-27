@@ -32,7 +32,7 @@ def handle_port(vless_port:str,trojan_port:str):
         trojan_port (str): trojan端口
     """    
     # ../docker-compose.yml
-    with open('../docker-compose.yml','rb') as docker_compose_file:
+    with open('../docker-compose.yml','rb') as docker_compose_file: 
         docker_compose:dict = yaml.load(docker_compose_file,yaml.FullLoader)
         # 替换docker-compose.yml中的端口配置
         docker_compose['services']['xray-reality']['ports'] =  \
