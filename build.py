@@ -126,11 +126,11 @@ def create_config():
 
     # 拼到client中 
     with open(f'server.json') as server_file:
-        server = json.load(server_file) 
+        server = json.load(server_file)
 
     server['inbounds'] = inbounds
     # 持久化
-    json.dump(server,open(f'../config/config.json','w+'))
+    json.dump(server,open(f'dist/config.json','w+'))
 
 # 更新配置
 def update_config():
