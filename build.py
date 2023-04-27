@@ -63,7 +63,6 @@ for dir_path,dir_list,file_list in os.walk('inbounds'):
             server_dict:dict = json.load(inbound_file)
             if file[:-5]=='windows':
                 try:
-                    logging.info(f'trojan port: {VLESS_PORT}') 
                     server_dict['port'] = int(VLESS_PORT)
                 except:
                     raise RuntimeError('vars.VLESS_PORT必须为整数！')
@@ -80,7 +79,6 @@ for dir_path,dir_list,file_list in os.walk('inbounds'):
                 server_dict['streamSettings']['realitySettings']['shortIds'] = [VLESS_WINDOWS_SHORT_ID,VLESS_IOS_SHORT_ID]
             elif file[:-5]=='trojan':
                 try: 
-                    logging.info(f'trojan port: {TROJAN_PORT}')
                     server_dict['port'] = int(TROJAN_PORT)
                 except:
                     raise RuntimeError('vars.TROJAN_PORT必须为整数！')
