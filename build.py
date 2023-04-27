@@ -32,6 +32,16 @@ def handle_port(vless_port:str,trojan_port:str):
         vless_port (str): vless端口
         trojan_port (str): trojan端口
     """    
+    try:
+        int(vless_port)
+    except:
+        logging.error(f'vless端口必须是整数!')
+        raise RuntimeError
+    try:
+        int(trojan_port)
+    except:
+        logging.error(f'trojan端口必须是整数!')
+        raise RuntimeError
     # ../docker-compose.yml
     with open('../docker-compose.yml','rb') as docker_compose_file: 
         docker_compose:dict = yaml.load(docker_compose_file,yaml.FullLoader)
@@ -57,9 +67,9 @@ def verify_dest_server_names(VLESS_DEST:str,handled_server_names:list):
             if res != '':
                 server_names = res.split(' ')
                 if set(handled_server_names).issubset(server_names):
-                    logging.info('======================校验dest与serverNames匹配!===================================')
+                    logging.info('======================dest与serverNames匹配!===================================')
                 else:
-                    logging.error('======================校验dest与serverNames不匹配!===================================')
+                    logging.error('======================dest与serverNames不匹配!===================================')
                     raise RuntimeError
             # 只需校验第一个serverNames即可
             break
@@ -67,7 +77,6 @@ def verify_dest_server_names(VLESS_DEST:str,handled_server_names:list):
     if match_res is None:
         logging.error(f'======================目标域名{VLESS_DEST}不可用!===================================')
         raise RuntimeError
-    raise RuntimeError('测试中断!')
 
 def get_assert_arg(index:int,msg:str):
         try:
@@ -185,12 +194,18 @@ def update_config():
         inbounds = server_config['inbounds'][0]
         for inbound in inbounds:
             if inbound['protocol'] == 'vless':
+                inbound['port'] = VLESS_PORT
                 inbound['streamSettings']['realitySettings']['dest'] = 's0.awsstatic.com:443'
                 inbound['streamSettings']['realitySettings']['serverNames'] = handled_server_names
-                pass
             else:
-                pass
-    pass
+                inbound['port'] = TROJAN_PORT
+    logging.info(f'=============更新后的配置信息：{json.dumps(server_config)}===============')
+    
+    raise RuntimeError
+    with open('../config/config.json','wb') as config_file:
+
+        pass
+    
 
 
 # 判断dockerfile/xray下面有没有config.json 文件 有的话直接读取配置 没有就生成
@@ -202,8 +217,12 @@ except:
     config_file_list:dict = []
 
 if len(config_file_list) == 0:
-    logging.info('服务器配置文件不存在,生成基础配置...')
+    logging.info('========================服务器配置文件不存在,生成基础配置========================')
     # 生成基础配置
     create_config()
+    logging.info('========================服务器配置配置构建完成!==================================')
 else:
+    logging.info('========================服务器配置文件已存在,开始更新配置=========================')
+    # 更新配置
     update_config()
+    logging.info('========================服务器配置配置更新完成!==================================')
