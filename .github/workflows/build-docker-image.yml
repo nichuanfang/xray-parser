@@ -27,7 +27,7 @@ jobs:
       - name: xray-parser=>docker
         run: mv $GITHUB_WORKSPACE/xray-parser $GITHUB_WORKSPACE/docker/dockerfile_work/xray
 
-      - name: 导入pip依赖
+      - name: 导入pip依赖 
         run: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/requirements.txt
 
       - name: 生成config.json 与 nginx配置文件
