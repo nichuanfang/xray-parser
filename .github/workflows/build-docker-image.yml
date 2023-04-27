@@ -30,64 +30,77 @@ jobs:
       - name: 导入pip依赖
         run: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/requirements.txt
 
-      - name: 生成config.json
+      - name: 配置xray环境 用来生成服务端和客户端通用数据
         run: |
-          cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-          python build.py ${{ secrets.VLESS_UUID }} ${{ vars.VLESS_DEST }} '${{ vars.VLESS_SERVER_NAMES }}' ${{ secrets.VLESS_PRIVATE_KEY }} ${{ secrets.VLESS_WINDOWS_SHORT_ID }} ${{ secrets.VLESS_IOS_SHORT_ID }} ${{ secrets.TROJAN_PASSWORD }} ${{ vars.VLESS_PORT }} ${{ vars.TROJAN_PORT }}
+          apt-get install wget unzip -y
+          wget https://github.com/XTLS/Xray-core/releases/download/v1.8.1/Xray-linux-64.zip
+          unzip Xray-linux-64.zip
+          chmod +x ./xray
+          cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+          export $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/xray:$PATH
 
-      - name: 查看生成的配置文件
-        run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
+      - name: 查看xray是否正确配置
+        run: |
+          xray version
 
-      - name: 发布xray服务端http服务
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-        env:
-          WELCOME: 'ssh scp ssh pipelines'
-          LASTSSH: 'Doing something after copying'
-        with:
-          # HC代表发布xray配置的服务器
-          host: ${{ secrets.HC_HOST }}
-          user: ${{ secrets.HC_USER }}
-          pass: ${{ secrets.HC_PASS }}
-          port: ${{ secrets.HC_PORT }}
-          connect_timeout: 20s
-          first_ssh: |
-            docker stop nginx
-            mkdir -p /root/assets/config/server
-          scp: |
-            './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/assets/config/server
-          last_ssh: |
-            docker start nginx
-            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务端配置已更新
+      # - name: 生成config.json
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+      #     python build.py
 
-      - name: 部署启动xray
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-        env:
-          WELCOME: 'ssh scp ssh pipelines'
-          LASTSSH: 'Doing something after copying'
-        with:
-          # DC代表部署xray的服务器
-          host: ${{ secrets.DC_HOST }}
-          user: ${{ secrets.DC_USER }}
-          pass: ${{ secrets.DC_PASS }}
-          port: ${{ secrets.DC_PORT }}
-          connect_timeout: 20s
-          first_ssh: |
-            apt-get install git -y
-            apt-get install docker.io -y
-            curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            chmod +x /usr/local/bin/docker-compose
-            ln -fs /usr/local/bin/docker-compose /usr/bin/docker-compose 
-          scp: |
-            './docker/dockerfile_work/xray/.git-credentials' => /root/
-            './docker/dockerfile_work/xray/.gitconfig' => /root/
-            './docker/dockerfile_work/xray/hook.sh' => /root/
-            './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/docker/dockerfile_work/xray/config
-          last_ssh: |
-            chmod +x /root/hook.sh 
-            bash /root/hook.sh
-            chmod +x /root/docker/dockerfile_work/xray/tls-ping.sh
-            docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml down
-            docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml pull
-            docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml up -d
-            docker image prune -f -a
-            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
+      # - name: 查看生成的配置文件
+      #   run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
+
+      # - name: 发布xray服务端http服务
+      #   uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      #   env:
+      #     WELCOME: 'ssh scp ssh pipelines'
+      #     LASTSSH: 'Doing something after copying'
+      #   with:
+      #     # HC代表发布xray配置的服务器
+      #     host: ${{ secrets.HC_HOST }}
+      #     user: ${{ secrets.HC_USER }}
+      #     pass: ${{ secrets.HC_PASS }}
+      #     port: ${{ secrets.HC_PORT }}
+      #     connect_timeout: 20s
+      #     first_ssh: |
+      #       docker stop nginx
+      #       mkdir -p /root/assets/config/server
+      #     scp: |
+      #       './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/assets/config/server
+      #     last_ssh: |
+      #       docker start nginx
+      #       curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务端配置已更新
+
+      # - name: 部署启动xray
+      #   uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      #   env:
+      #     WELCOME: 'ssh scp ssh pipelines'
+      #     LASTSSH: 'Doing something after copying'
+      #   with:
+      #     # DC代表部署xray的服务器
+      #     host: ${{ secrets.DC_HOST }}
+      #     user: ${{ secrets.DC_USER }}
+      #     pass: ${{ secrets.DC_PASS }}
+      #     port: ${{ secrets.DC_PORT }}
+      #     connect_timeout: 20s
+      #     first_ssh: |
+      #       apt-get install git -y
+      #       apt-get install docker.io -y
+      #       curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      #       chmod +x /usr/local/bin/docker-compose
+      #       ln -fs /usr/local/bin/docker-compose /usr/bin/docker-compose
+      #     scp: |
+      #       './docker/dockerfile_work/xray/.git-credentials' => /root/
+      #       './docker/dockerfile_work/xray/.gitconfig' => /root/
+      #       './docker/dockerfile_work/xray/hook.sh' => /root/
+      #       './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/docker/dockerfile_work/xray/config
+      #     last_ssh: |
+      #       chmod +x /root/hook.sh
+      #       bash /root/hook.sh
+      #       chmod +x /root/docker/dockerfile_work/xray/tls-ping.sh
+      #       docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml down
+      #       docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml pull
+      #       docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml up -d
+      #       docker image prune -f -a
+      #       curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
