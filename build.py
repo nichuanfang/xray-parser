@@ -21,7 +21,6 @@ else:
     with open('../config') as exist_config_file:
         exist_config:dict = json.load(exist_config_file)
         # 解析配置
-        logging.log('已存在配置：'
         logging.log(exist_config.__str__())
 
 for config_file in config_file_list:
