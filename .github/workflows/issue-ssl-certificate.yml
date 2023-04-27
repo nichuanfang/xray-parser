@@ -49,12 +49,6 @@ jobs:
         with:
           ref: client
 
-      - name: Checkout output branch
-        uses: actions/checkout@v2
-        with:
-          ref: certs
-          path: ${{ env.CERTS_OUTPUT_BASE }}
-
       # 安装 acme.sh
       - name: Install acme.sh
         shell: bash
