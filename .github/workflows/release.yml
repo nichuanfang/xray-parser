@@ -59,6 +59,26 @@ jobs:
           echo '====================qx-policy.txt配置===================='
           cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt
 
+      - name: 将生成的配置文件保存到docker项目中
+        run: |
+          mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-windows-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-ios-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/trojan.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+
+      - name: 更新docker项目
+        uses: Smart-Transportation/push@v1.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'master'
+          author_email: 'github-actions[bot]@users.noreply.github.com'
+          author_name: 'github-actions[bot]'
+          message: '🐳 chore: 更新xray客户端配置文件'
+          directory: /home/runner/work/xray-parser/xray-parser/docker
+          repository: nichuanfang/docker
+
       # - name: 发布xray客户端http服务
       #   uses: cross-the-world/ssh-scp-ssh-pipelines@latest
       #   env:
