@@ -42,19 +42,32 @@ def handle_port(vless_port:str,trojan_port:str):
         # 保存 sort_keys=False 默认为True 会改变原文件字典的顺序
         yaml.dump(docker_compose,docker_compose_file,encoding='utf-8',allow_unicode=True,sort_keys=False)
 
-def verify_dest_server_names(VLESS_DEST:str,VLESS_SERVER_NAMES:str):
+def verify_dest_server_names(VLESS_DEST:str,handled_server_names:list):
     logging.info('======================校验dest与serverNames========================================')
     tls_ping_list = os.popen(f'./xray tls ping {VLESS_DEST}').readlines()
+    match_res = None
     for tls_ping in tls_ping_list:
         match_res = re.match('^Allowed domains: .+$',tls_ping)
         if match_res is None:
             continue
         else:
+            # Allowed domains:  [s0.awsstatic.com]
             logging.info(f'tls_ping: {match_res.string}')
+            res = match_res.string.split('[')[1].split(']')[0]
+            if res != '':
+                server_names = res.split(' ')
+                if set(handled_server_names).issubset(server_names):
+                    logging.info('======================校验dest与serverNames匹配!===================================')
+                else:
+                    logging.error('======================校验dest与serverNames不匹配!===================================')
+                    raise RuntimeError
+            # 只需校验第一个serverNames即可
             break
 
-    logging.info('======================校验dest与serverNames匹配!===================================')
-    raise RuntimeError('==测试中断!===')
+    if match_res is None:
+        logging.error(f'======================目标域名{VLESS_DEST}不可用!===================================')
+        raise RuntimeError
+    raise RuntimeError('测试中断!')
 
 def get_assert_arg(index:int,msg:str):
         try:
@@ -93,7 +106,12 @@ def create_config():
     VLESS_DEST = get_assert_arg(1,'vars.VLESS_DEST: 目标域名未配置！')
     # 逗号分割的，{VLESS_DEST}允许的服务列表 
     VLESS_SERVER_NAMES = get_assert_arg(2,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置!')
-    verify_dest_server_names(VLESS_DEST,VLESS_SERVER_NAMES)
+    unhandled_server_names = VLESS_SERVER_NAMES.split(',')
+    handled_server_names = []
+    # 去空格
+    for server_name in unhandled_server_names:
+        handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
+    verify_dest_server_names(VLESS_DEST,handled_server_names)
     # vless通过xray x25519生成的密钥对的私钥 客户端必须与之对应
     VLESS_PRIVATE_KEY = private_key
     # windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
@@ -123,11 +141,6 @@ def create_config():
                     # 添加密钥
                     server_dict['settings']['clients'][0]['id'] = VLESS_UUID
                     server_dict['streamSettings']['realitySettings']['dest'] = VLESS_DEST
-                    unhandled_server_names = VLESS_SERVER_NAMES.split(',')
-                    handled_server_names = []
-                    # 去空格
-                    for server_name in unhandled_server_names:
-                        handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
                     server_dict['streamSettings']['realitySettings']['serverNames'] = handled_server_names
                     server_dict['streamSettings']['realitySettings']['privateKey'] = VLESS_PRIVATE_KEY
                     server_dict['streamSettings']['realitySettings']['shortIds'] = [VLESS_WINDOWS_SHORT_ID,VLESS_IOS_SHORT_ID]
@@ -154,13 +167,13 @@ def update_config():
     VLESS_DEST = get_assert_arg(1,'vars.VLESS_DEST: 目标域名未配置！')
     # 逗号分割的，{VLESS_DEST}允许的服务列表 
     VLESS_SERVER_NAMES = get_assert_arg(2,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置!')
-    # 校验dest与serverNames是否匹配
-    verify_dest_server_names(VLESS_DEST.split(':')[0],VLESS_SERVER_NAMES)
     unhandled_server_names = VLESS_SERVER_NAMES.split(',')
     handled_server_names = []
     # 去空格
     for server_name in unhandled_server_names:
         handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
+    # 校验dest与serverNames是否匹配
+    verify_dest_server_names(VLESS_DEST.split(':')[0],handled_server_names)
     # vless端口
     VLESS_PORT = get_assert_arg(3,'vars.VLESS_PORT: vless端口未配置!')
     # trojan端口
