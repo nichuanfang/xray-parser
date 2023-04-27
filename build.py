@@ -14,6 +14,16 @@ logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # 判断dockerfile/xray下面有没有config.json 文件 有的话直接读取配置 没有就生成
 config_file_list = os.popen('ls ../config').readlines()
+if len(config_file_list) == 0:
+    # 生成配置
+    pass
+else:
+    with open('../config') as exist_config_file:
+        exist_config:dict = json.load(exist_config_file)
+        # 解析配置
+        logging.log('已存在配置：'
+        logging.log(exist_config.__str__())
+
 for config_file in config_file_list:
     logging.info(f'config_file:{config_file}')
 
