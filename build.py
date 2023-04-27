@@ -19,7 +19,7 @@ def create_config():
     # xray生成的uuid
     uuid = uuid_list[0]
     # xray生成的私钥
-    private_key = x25519_list[0][13]
+    private_key = x25519_list[0][13:]
     logging.info(f'uuid: {uuid}')
     logging.info(f'private_key: {private_key}')
 
@@ -113,7 +113,11 @@ def update_config():
 
 # 判断dockerfile/xray下面有没有config.json 文件 有的话直接读取配置 没有就生成
 server_config:dict = {}
-config_file_list = os.popen('ls ../config').readlines()
+try:
+    config_file_list = os.popen('ls ../config').readlines()
+except:
+    logging.info('config文件夹为空')
+    config_file_list:dict = []
 
 if len(config_file_list) == 0:
     logging.info('服务器配置文件不存在,生成基础配置...')
