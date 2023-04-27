@@ -12,6 +12,11 @@ DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 
+# 判断dockerfile/xray下面有没有config.json 文件 有的话直接读取配置 没有就生成
+config_file_list = os.popen('ls ../config').readlines()
+for config_file in config_file_list:
+    logging.info(f'config_file:{config_file}')
+
 uuid_list = os.popen('./xray uuid').readlines()
 tls_ping_list = os.popen('./xray tls ping www.baidu.com').readlines()
 x25519_list = os.popen('./xray x25519').readlines()
