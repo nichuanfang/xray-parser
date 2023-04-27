@@ -68,6 +68,29 @@ jobs:
         run: |
           sudo apt-get install socat -y
           ~/.acme.sh/acme.sh --issue -d www.cinima.asia --server letsencrypt --keylength ec-256 --fullchain-file dist/cert.pem --key-file dist/key.pem --standalone --force
-          cat dist/cert.pem
-          cat dist/cert.pem
 
+      - name: checkout出docker项目
+        uses: actions/checkout@v3.5.2
+        with:
+          repository: nichuanfang/docker
+          path: docker
+          ref: master
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: 复制证书
+        shell: bash
+        run: |
+          cp dist/cert.pem docker/dockerfile_work/xray/cert
+          cp dist/key.pem docker/dockerfile_work/xray/cert
+          chmod +x docker/dockerfile_work/xray/cert/*.pem
+
+      - name: 更新证书文件
+        uses: Smart-Transportation/push@v1.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'master'
+          author_email: 'github-actions[bot]@users.noreply.github.com'
+          author_name: 'github-actions[bot]'
+          message: '🐳 chore: 更新https证书'
+          directory: /home/runner/work/xray-parser/docker
+          repository: nichuanfang/docker
