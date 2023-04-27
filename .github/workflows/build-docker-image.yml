@@ -36,7 +36,7 @@ jobs:
           python build.py  \
             ${{ secrets.VLESS_UUID }} \
             ${{ vars.VLESS_DEST }}  \
-            '${{vars.VLESS_SERVER_NAMES}}' \
+            ${{vars.VLESS_SERVER_NAMES}} \
             ${{secrets.VLESS_PRIVATE_KEY}}  \
             ${{secrets.VLESS_WINDOWS_SHORT_ID}} \
             ${{secrets.VLESS_IOS_SHORT_ID}} \
