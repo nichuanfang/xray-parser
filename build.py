@@ -180,13 +180,13 @@ def update_config():
         # 构建完成后 同步到qx的路由规则里
         rules = []
 
-        with open('routing_header.json') as routing_header:
+        with open('routing/routing_header.json') as routing_header:
             rh = json.load(routing_header)
 
-        with open('routing_body.json') as routing_body:
+        with open('routing/routing_body.json') as routing_body:
             rb = json.load(routing_body)
 
-        with open('routing_footer.json') as routing_footer:
+        with open('routing/routing_footer.json') as routing_footer:
             rf = json.load(routing_footer)
 
 
