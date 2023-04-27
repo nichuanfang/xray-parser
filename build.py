@@ -48,9 +48,9 @@ def create_config():
     x25519_list = os.popen('./xray x25519').readlines()
 
     # xray生成的uuid
-    uuid = uuid_list[0].replace('\\n','')
+    uuid = uuid_list[0][:-2]
     # xray生成的私钥
-    private_key = x25519_list[0][13:].replace('\\n','')
+    private_key = x25519_list[0][13:][:-2]
 
     logging.info('xray服务端配置项: ')
     logging.info('=================================================================')
