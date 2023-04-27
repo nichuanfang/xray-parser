@@ -1,7 +1,7 @@
 {
     "log": {
-        "access": "/var/log/xray/access.log",
-        "error": "/var/log/xray/error.log",
+        "access": "log/access.log",
+        "error": "log/error.log",
         "loglevel": "warning",
         "dnsLog": false
     },
@@ -52,16 +52,13 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "你的ip地址",
-                        "port": 443,
+                        "address": "xray服务器ip",
+                        "port": 0,
                         "users": [
                             {
-                                "id": "密码",
-                                "alterId": 0,
-                                "email": "t@t.tt",
-                                "security": "auto",
-                                "encryption": "none",
-                                "flow": "xtls-rprx-vision"
+                                "id": "xray的uuid",
+                                "flow": "xtls-rprx-vision",
+                                "encryption": "none"
                             }
                         ]
                     }
@@ -69,16 +66,15 @@
             },
             "streamSettings": {
                 "network": "tcp",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": false,
-                    "serverName": "你的域名",
-                    "fingerprint": "ios"
+                "security": "reality",
+                "realitySettings": {
+                    "show": false,
+                    "fingerprint": "chrome",
+                    "serverName": "",
+                    "publicKey": "xray的公钥",
+                    "shortId": "客户端id",
+                    "spiderX": "爬虫路径"
                 }
-            },
-            "mux": {
-                "enabled": false,
-                "concurrency": -1
             }
         },
         {
@@ -97,5 +93,20 @@
                 }
             }
         }
-    ]
+    ],
+    "dns": {
+        "hosts": {
+            "dns.google": "8.8.4.4"
+        },
+        "servers": [
+            "tcp+local://223.6.6.6",
+            "tcp+local://8.8.4.4",
+            "tcp+local://localhost"
+        ],
+        "queryStrategy": "UseIP",
+        "disableCache": false,
+        "disableFallback": false,
+        "disableFallbackIfMatch": false,
+        "tag": "dns_inbound"
+    }
 }

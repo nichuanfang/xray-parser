@@ -13,11 +13,14 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: 配置xray 用于生成公钥
+        run: ls
+
       - name: 生成xray客户端配置
-        run: python build.py ${{ secrets.XRAY_IP }} ${{ secrets.XRAY_DOMAIN }} ${{ secrets.XRAY_WINDOWS_KEY }} ${{ secrets.XRAY_TROJAN_KEY }}
+        run: python build.py
 
       - name: 发布xray客户端http服务
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest 
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         env:
           WELCOME: 'ssh scp ssh pipelines'
           LASTSSH: 'Doing something after copying'

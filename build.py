@@ -1,18 +1,62 @@
 #!/usr/local/bin/python
 # coding=utf-8
 
-# webhook触发更新路由规则
 import json
+import logging
+import os
 import sys
 
-# xray server ip
-XRAY_IP = sys.argv[1]
-# xray server domain
-XRAY_DOMAIN = sys.argv[2]
-# xray uuid for windows
-XRAY_WINDOWS_KEY = sys.argv[3]
-# trojan fallback for qx
-XRAY_TROJAN_KEY = sys.argv[4]
+LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
+logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+
+logging.info('xray客户端配置项: ')
+logging.info('=================================================================')
+logging.info('  密钥(secrets): ')
+logging.info('    HC_HOST: xray服务器的ip')
+logging.info('    HC_HOST: xray服务器的域名')
+logging.info('    VLESS_UUID: xray uuid')
+logging.info('    VLESS_WINDOWS_SHORT_ID: WINDOWS客户端的shortId')
+logging.info('    VLESS_IOS_SHORT_ID: IOS客户端的shortId')
+logging.info('    TROJAN_PASSWORD: trojan的密码')
+
+logging.info('  变量(vars): ')
+logging.info('    VLESS_SERVER_NAMES: xray服务端选用的服务域名列表')
+logging.info('    VLESS_CLIENT_SERVER_NAME: xray客户端选用的服务域名')
+logging.info('    VLESS_WINDOWS_SPIDERX: xray windows客户端选用的爬虫初始路径，必须以/开始')
+logging.info('    VLESS_IOS_SPIDERX: xray ios客户端选用的爬虫初始路径，必须以/开始')
+logging.info('    VLESS_PORT: vless端口 ')
+logging.info('    TROJAN_PORT: trojan端口 ')
+logging.info('=================================================================')
+# 读取参数 
+if len(sys.argv) < 10:
+    raise RuntimeError('请确认xray相关变量与密钥都已配置!')
+
+def get_assert_arg(index:int,msg:str):
+    try:
+        return sys.argv[index]
+    except:
+        raise RuntimeError(msg)
+
+
+# xray uuid
+VLESS_UUID = get_assert_arg(1,'secrets.VLESS_UUID: xray uuid未配置！')
+# xray的目标域名
+VLESS_DEST = get_assert_arg(2,'vars.VLESS_DEST: 目标域名未配置！')
+# 逗号分割的，{VLESS_DEST}允许的服务列表 
+VLESS_SERVER_NAMES = get_assert_arg(3,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置！')
+# vless通过xray x25519生成的密钥对的私钥 客户端必须与之对应
+VLESS_PRIVATE_KEY = get_assert_arg(4,'secrets.VLESS_PRIVATE_KEY: xray私钥未配置！')
+# windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
+VLESS_WINDOWS_SHORT_ID = get_assert_arg(5,'secrets.VLESS_WINDOWS_SHORT_ID: window平台的shortId未配置！')
+# ios平台的shortId  8-16位随机数 数据来源0123456789abcdef
+VLESS_IOS_SHORT_ID = get_assert_arg(6,'secrets.VLESS_IOS_SHORT_ID: ios平台的shortId未配置！')
+# trojan密码  ios最佳实践  使用QX trojan协议 
+TROJAN_PASSWORD = get_assert_arg(7,'secrets.TROJAN_PASSWORD: trojan密码未配置！')
+# vless端口
+VLESS_PORT = get_assert_arg(8,'vars.VLESS_PORT: vless端口未配置！')
+# trojan端口
+TROJAN_PORT = get_assert_arg(9,'vars.TROJAN_PORT: trojan端口未配置！')
 
 # 构建完成后 同步到qx的路由规则里
 rules = []
