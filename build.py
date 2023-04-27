@@ -258,7 +258,7 @@ def update_config():
                     if domain.startswith('full:'):
                         qx_preview.writelines('HOST,'+(domain[5:]+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
                     else:
-                        qx_preview.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
+                        qx_preview.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n') 
 
 
 # 判断服务端配置是否存在 不存在直接中止构建
