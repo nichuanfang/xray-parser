@@ -83,7 +83,7 @@ jobs:
             './docker/dockerfile_work/xray/hook.sh' => /root/
             './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/docker/dockerfile_work/xray/
           last_ssh: |
-            chmod +x /root/hook.sh
+            chmod +x /root/hook.sh 
             bash /root/hook.sh
             chmod +x /root/docker/dockerfile_work/xray/tls-ping.sh
             docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml down
