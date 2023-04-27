@@ -143,7 +143,7 @@ server_config:dict = {}
 try:
     config_file_list = os.popen('ls ../config').readlines()
 except:
-    logging.info('config文件了  夹为空')
+    logging.info('config文件夹为空')
     config_file_list:dict = []
 
 if len(config_file_list) == 0:
