@@ -32,7 +32,7 @@ jobs:
 
       - name: 配置xray环境 用来生成服务端和客户端通用数据
         run: |
-          apt-get install wget unzip -y
+          sudo apt-get install wget unzip -y
           wget https://github.com/XTLS/Xray-core/releases/download/v1.8.1/Xray-linux-64.zip
           unzip Xray-linux-64.zip
           chmod +x ./xray
