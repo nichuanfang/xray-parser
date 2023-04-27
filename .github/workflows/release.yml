@@ -67,6 +67,11 @@ jobs:
           cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/trojan.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
           cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
           cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+      
+          cd $GITHUB_WORKSPACE 
+          pwd
+          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client/client-windows-config.json
+          cat /home/runner/work/xray-parser/docker/dockerfile_work/xray/config/client/client-windows-config.json
 
       - name: 清理无用文件夹
         run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
@@ -101,11 +106,11 @@ jobs:
             mkdir -p /root/assets/config/client/windows
             mkdir -p /root/assets/config/client/ios
           scp: |
-            '/home/runner/work/xray-parser/xray-parser/docker/dockerfile_work/xray/config/client/client-windows-config.json' => /root/assets/config/client/windows
-            '/home/runner/work/xray-parser/xray-parser/docker/dockerfile_work/xray/config/client/client-ios-config.json' => /root/assets/config/client/ios
-            '/home/runner/work/xray-parser/xray-parser/docker/dockerfile_work/xray/config/client/trojan.txt' => /root/assets/config/client/trojan
-            '/home/runner/work/xray-parser/xray-parser/docker/dockerfile_work/xray/config/client/qx-policy.list' => /root/assets/config/client/qx
-            '/home/runner/work/xray-parser/xray-parser/docker/dockerfile_work/xray/config/client/qx-policy.txt' => /root/assets/config/client/qx
+            '/home/runner/work/xray-parser/docker/dockerfile_work/xray/config/client/client-windows-config.json' => /root/assets/config/client/windows
+            '/home/runner/work/xray-parser/docker/dockerfile_work/xray/config/client/client-ios-config.json' => /root/assets/config/client/ios
+            '/home/runner/work/xray-parser/docker/dockerfile_work/xray/config/client/trojan.txt' => /root/assets/config/client/trojan
+            '/home/runner/work/xray-parser/docker/dockerfile_work/xray/config/client/qx-policy.list' => /root/assets/config/client/qx
+            '/home/runner/work/xray-parser/docker/dockerfile_work/xray/config/client/qx-policy.txt' => /root/assets/config/client/qx
           last_ssh: |
             docker start nginx
             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray客户端配置已更新
