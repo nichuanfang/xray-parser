@@ -66,4 +66,5 @@ jobs:
       - name: 申请证书
         shell: bash
         run: |
+          sudo apt-get install socat -y
           ~/.acme.sh/acme.sh --issue -d www.cinima.asia --server letsencrypt --keylength ec-256 --fullchain-file cert.pem --key-file key.pem --standalone --force
