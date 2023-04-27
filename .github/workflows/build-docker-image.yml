@@ -37,11 +37,10 @@ jobs:
           unzip Xray-linux-64.zip
           chmod +x ./xray
           cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-          export $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/xray:$PATH
 
       - name: 查看xray是否正确配置
         run: |
-          xray version
+          $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/xray version
 
       # - name: 生成config.json
       #   run: |
