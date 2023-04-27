@@ -37,10 +37,7 @@ jobs:
           unzip Xray-linux-64.zip
           chmod +x ./xray
           cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-
-      - name: 查看xray是否正确配置
-        run: |
-          $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/xray version
+          ping s0.awsstatic.com -c 10
 
       # - name: 生成config.json
       #   run: |

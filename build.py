@@ -7,6 +7,12 @@ import logging
 import os
 import sys
 
+uuid = os.popen('xray uuid').readlines()
+uuid = os.popen('xray tls ping').readlines()
+uuid = os.popen('xray x25519').readlines()
+uuid = os.popen('xray uuid').readlines()
+
+
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
