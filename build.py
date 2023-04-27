@@ -141,6 +141,9 @@ def update_config():
 
     # 从config.json中读取配置
     with open('../config/config.json','rb') as config_file:
+        res = config_file.readlines()
+        for item in res:
+            print(item)
         server_config:dict = json.load(config_file)
         inbounds:list = server_config['inbounds']
         vless_inbound = {}
