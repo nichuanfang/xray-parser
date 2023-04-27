@@ -148,7 +148,7 @@ def update_config():
     # 逗号分割的，{VLESS_DEST}允许的服务列表 
     VLESS_SERVER_NAMES = get_assert_arg(2,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置!')
     # 校验dest与serverNames是否匹配
-    verify_dest_server_names(VLESS_DEST,VLESS_SERVER_NAMES)
+    verify_dest_server_names(VLESS_DEST[:-4],VLESS_SERVER_NAMES)
     unhandled_server_names = VLESS_SERVER_NAMES.split(',')
     handled_server_names = []
     # 去空格
