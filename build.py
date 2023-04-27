@@ -10,128 +10,269 @@ LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
-logging.info('xray客户端配置项: ')
-logging.info('=================================================================')
-logging.info('  密钥(secrets): ')
-logging.info('    HC_HOST: xray服务器的ip')
-logging.info('    HC_HOST: xray服务器的域名')
-logging.info('    VLESS_UUID: xray uuid')
-logging.info('    VLESS_WINDOWS_SHORT_ID: WINDOWS客户端的shortId')
-logging.info('    VLESS_IOS_SHORT_ID: IOS客户端的shortId')
-logging.info('    TROJAN_PASSWORD: trojan的密码')
+def update_config():
+    logging.info('xray客户端配置项: ')
+    logging.info('=================================================================')
+    logging.info('  密钥(secrets): ')
+    logging.info('    DC_DOMAIN: xray服务端的域名')
+    logging.info('    DC_HOST: xray服务端的ip')
+    logging.info('  变量(vars): ')
+    logging.info('    VLESS_CLIENT_SERVER_NAME: xray客户端选用的服务域名')
+    logging.info('=================================================================')
+    # 读取参数 
+    if len(sys.argv) < 4:
+        raise RuntimeError('请确认xray相关变量与密钥都已配置!')
 
-logging.info('  变量(vars): ')
-logging.info('    VLESS_SERVER_NAMES: xray服务端选用的服务域名列表')
-logging.info('    VLESS_CLIENT_SERVER_NAME: xray客户端选用的服务域名')
-logging.info('    VLESS_WINDOWS_SPIDERX: xray windows客户端选用的爬虫初始路径，必须以/开始')
-logging.info('    VLESS_IOS_SPIDERX: xray ios客户端选用的爬虫初始路径，必须以/开始')
-logging.info('    VLESS_PORT: vless端口 ')
-logging.info('    TROJAN_PORT: trojan端口 ')
-logging.info('=================================================================')
-# 读取参数 
-if len(sys.argv) < 10:
-    raise RuntimeError('请确认xray相关变量与密钥都已配置!')
+    def get_assert_arg(index:int,msg:str):
+        try:
+            return sys.argv[index]
+        except:
+            raise RuntimeError(msg)
+        
+    def get_uuid(server_config:dict,vless_inbound:dict):
+        """获取uuid
 
-def get_assert_arg(index:int,msg:str):
-    try:
-        return sys.argv[index]
-    except:
-        raise RuntimeError(msg)
+        Args:
+            server_config 服务器配置
+            vless_inbound  vless配置
+        """        
+        return vless_inbound['settings']['clients'][0]['id']
+    
+    def generate_public_key(server_config:dict,vless_inbound:dict):
+        """生成公钥
 
+        Args:
+            server_config (dict): 服务器配置
+            vless_inbound (dict): vless配置
 
-# xray uuid
-VLESS_UUID = get_assert_arg(1,'secrets.VLESS_UUID: xray uuid未配置！')
-# xray的目标域名
-VLESS_DEST = get_assert_arg(2,'vars.VLESS_DEST: 目标域名未配置！')
-# 逗号分割的，{VLESS_DEST}允许的服务列表 
-VLESS_SERVER_NAMES = get_assert_arg(3,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置！')
-# vless通过xray x25519生成的密钥对的私钥 客户端必须与之对应
-VLESS_PRIVATE_KEY = get_assert_arg(4,'secrets.VLESS_PRIVATE_KEY: xray私钥未配置！')
-# windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
-VLESS_WINDOWS_SHORT_ID = get_assert_arg(5,'secrets.VLESS_WINDOWS_SHORT_ID: window平台的shortId未配置！')
-# ios平台的shortId  8-16位随机数 数据来源0123456789abcdef
-VLESS_IOS_SHORT_ID = get_assert_arg(6,'secrets.VLESS_IOS_SHORT_ID: ios平台的shortId未配置！')
-# trojan密码  ios最佳实践  使用QX trojan协议 
-TROJAN_PASSWORD = get_assert_arg(7,'secrets.TROJAN_PASSWORD: trojan密码未配置！')
-# vless端口
-VLESS_PORT = get_assert_arg(8,'vars.VLESS_PORT: vless端口未配置！')
-# trojan端口
-TROJAN_PORT = get_assert_arg(9,'vars.TROJAN_PORT: trojan端口未配置！')
+        Raises:
+            RuntimeError: _description_
 
-# 构建完成后 同步到qx的路由规则里
-rules = []
+        Returns:
+            _type_: 公钥
+        """        
+        logging.info('==================通过私钥生成公钥==========================')
+        try:
+            # 获取私钥
+            private_key = vless_inbound['streamSettings']['realitySettings']['privateKey']
+            public_key = os.popen(f'./xray x25519 -i {private_key}').readlines()[1][12:][:-1]
+        except Exception as e:
+            logging.error(f'==================公钥生成失败:{e.__str__()}==============================')
+            raise RuntimeError
+        logging.info('==================公钥已生成！==============================')
+        return public_key
+    
+    def verify_client_server_name(VLESS_CLIENT_SERVER_NAME:str,server_config:dict,vless_inbound:dict):
+        """验证客户端的服务域名是否可用
 
-with open('routing_header.json') as routing_header:
-    rh = json.load(routing_header)
+        Args:
+            VLESS_CLIENT_SERVER_NAME (str): 服务域名
+            server_config (dict): 服务器配置
+            vless_inbound (dict): vless配置
 
-with open('routing_body.json') as routing_body:
-    rb = json.load(routing_body)
-
-with open('routing_footer.json') as routing_footer:
-    rf = json.load(routing_footer)
-
-
-for hrule in rh['rules']:
-    rules.append(hrule)
-
-for brule in rb['rules']:
-    rules.append(brule)
-    strategy = rb['domainStrategy']
-
-for frule in rf['rules']:
-    rules.append(frule)
-
-with open('dns.json') as dns_file:
-    dns = json.load(dns_file)
-
-# 拼到client中 
-with open('client.json') as client_file:
-    client = json.load(client_file)
-
-# 配置路由
-client['routing'] = {'domainStrategy': strategy,'rules': rules}
-# 配置dns
-client['dns'] = dns
-client['outbounds'][0]['settings']['vnext'][0]['address'] = XRAY_IP
-client['outbounds'][0]['settings']['vnext'][0]['users'][0]['id'] = XRAY_WINDOWS_KEY
-client['outbounds'][0]['streamSettings']['tlsSettings']['serverName'] = XRAY_DOMAIN
-
-# 持久化
-json.dump(client,open('dist/config.json','w+'))
-
-# 生成trojan配置文件
-with open('dist/trojan.txt','w+') as trojan:
-    trojan.writelines(f'trojan={XRAY_DOMAIN}:16789, password={XRAY_TROJAN_KEY}, over-tls=true, tls-verification=true, fast-open=false, udp-relay=false, tag=dogyun')
+        Raises:
+            RuntimeError: _description_
+        """        
+        server_names:list = vless_inbound['streamSettings']['realitySettings']['serverNames']
+        if not server_names.__contains__(VLESS_CLIENT_SERVER_NAME):
+            logging.error('客户端服务域名vars.VLESS_CLIENT_SERVER_NAME配置错误!请从配置的vars.VLESS_SERVER_NAMES中选择!')
+            raise RuntimeError
 
 
-outbound_tag_map = {
-    'direct': 'DIRECT',
-    'block': 'REJECT',
-    'proxy': 'PROXY'
-}
+    def get_windows_short_id(server_config:dict,vless_inbound:dict):
+        """获取windows的shortId
 
-# 转化为QX的路由配置文件
-with open('dist/policy.list','w+') as qx:
-    for rule in rb['rules']:
-        # 把规则写到list里
-        outboundTag:str = rule['outboundTag']
-        # HOST-SUFFIX,1688.com,DIRECT
-        domains:list = rule['domain']
-        for domain in domains:
-            if domain.startswith('full:'):
-                qx.writelines('HOST,'+(domain[5:]+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
-            else:
-                qx.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
+        Args:
+            server_config (dict): 服务器配置
+            vless_inbound (dict): vless配置
 
-# 转化为QX的路由配置文件
-with open('dist/policy.txt','w+') as qx_preview:
-    for rule in rb['rules']:
-        # 把规则写到list里
-        outboundTag:str = rule['outboundTag']
-        # HOST-SUFFIX,1688.com,DIRECT
-        domains:list = rule['domain']
-        for domain in domains:
-            if domain.startswith('full:'):
-                qx_preview.writelines('HOST,'+(domain[5:]+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
-            else:
-                qx_preview.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
+        Returns:
+            _type_:shortId
+        """        
+        return vless_inbound['streamSettings']['realitySettings']['shortIds'][0]
+    
+    def get_ios_short_id(server_config:dict,vless_inbound:dict):
+        """获取ios的shortId
+
+        Args:
+            server_config (dict): 服务器配置
+            vless_inbound (dict): vless配置
+
+        Returns:
+            _type_:shortId
+        """        
+        return vless_inbound['streamSettings']['realitySettings']['shortIds'][1]
+    
+    def get_vless_port(server_config:dict,vless_inbound:dict):
+        """获取vless端口
+
+        Args:
+            server_config (dict): 服务器配置
+            vless_inbound (dict): vless配置
+
+        Returns:
+            _type_: 端口号
+        """        
+        return vless_inbound['port']
+    
+    def get_trojan_password(server_config:dict,trojan_inbound:dict):
+        """获取trojan密码
+
+        Args:
+            server_config (dict): 服务器配置
+            trojan_inbound (dict): trojan配置
+
+        Returns:
+            _type_: 密码
+        """        
+        return trojan_inbound['settings']['clients'][0]['password']
+    
+    def get_trojan_port(server_config:dict,trojan_inbound:dict):
+        """获取trojan端口号
+
+        Args:
+            server_config (dict): 服务器配置
+            trojan_inbound (dict): trojan配置
+
+        Returns:
+            _type_: 端口号
+        """        
+        return trojan_inbound['port']
+
+    # 从config.json中读取配置
+    with open('../config/config.json','rb') as config_file:
+        inbounds:list = server_config['inbounds']
+        vless_inbound = {}
+        trojan_inbound = {}
+        for inbound in inbounds:
+            if inbound['protocol'] == 'vless':
+                vless_inbound = inbound
+            elif inbound['protocol'] == 'trojan':
+                trojan_inbound = inbound
+        if vless_inbound == {}:
+            raise RuntimeError('服务器配置错误!未发现vless配置')
+        if trojan_inbound == {}:
+            raise RuntimeError('服务器配置错误!未发现trojan配置')
+        server_config:dict = json.load(config_file)
+        # xray服务器的域名
+        DC_DOMAIN = get_assert_arg(1,'secrets.DC_DOMAIN: xray服务器的域名未配置!')
+        # xray服务器的IP
+        DC_HOST = get_assert_arg(2,'secrets.DC_HOST: xray服务器的IP未配置!')
+        # xray uuid
+        VLESS_UUID = get_uuid(server_config,vless_inbound)
+        # 客户端使用的服务域名
+        VLESS_CLIENT_SERVER_NAME = get_assert_arg(3,'vars.VLESS_CLIENT_SERVER_NAME: 客户端使用的服务域名未配置!')
+        # 校验服务域名是否可用
+        verify_client_server_name(VLESS_CLIENT_SERVER_NAME,server_config,vless_inbound)
+        # vless通过xray x25519生成的密钥对的公钥 服务端必须与之对应
+        VLESS_PUBLIC_KEY = generate_public_key(server_config,vless_inbound)
+        # windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
+        VLESS_WINDOWS_SHORT_ID = get_windows_short_id(server_config,vless_inbound)
+        # ios平台的shortId  8-16位随机数 数据来源0123456789abcdef
+        VLESS_IOS_SHORT_ID = get_ios_short_id(server_config,vless_inbound)
+        # vless端口
+        VLESS_PORT = get_vless_port(server_config,vless_inbound)
+        # trojan密码  ios最佳实践  使用QX trojan协议 
+        TROJAN_PASSWORD = get_trojan_password(server_config,trojan_inbound)
+        # trojan端口
+        TROJAN_PORT = get_trojan_port(server_config,trojan_inbound)
+
+        # 构建完成后 同步到qx的路由规则里
+        rules = []
+
+        with open('routing_header.json') as routing_header:
+            rh = json.load(routing_header)
+
+        with open('routing_body.json') as routing_body:
+            rb = json.load(routing_body)
+
+        with open('routing_footer.json') as routing_footer:
+            rf = json.load(routing_footer)
+
+
+        for hrule in rh['rules']:
+            rules.append(hrule)
+
+        for brule in rb['rules']:
+            rules.append(brule)
+            strategy = rb['domainStrategy']
+
+        for frule in rf['rules']:
+            rules.append(frule)
+
+        # 拼到client中 
+        with open('client.json') as client_file:
+            client = json.load(client_file)
+
+        # 配置路由
+        client['routing'] = {'domainStrategy': strategy,'rules': rules}
+
+        # 生成window平台的config.json
+        client['outbounds'][0]['settings']['vnext'][0]['address'] = DC_HOST
+        client['outbounds'][0]['settings']['vnext'][0]['port'] = VLESS_PORT
+        client['outbounds'][0]['settings']['vnext'][0]['users'][0]['id'] = VLESS_UUID
+        client['outbounds'][0]['streamSettings']['realitySettings']['serverName'] = VLESS_CLIENT_SERVER_NAME
+        client['outbounds'][0]['streamSettings']['realitySettings']['publicKey'] = VLESS_PUBLIC_KEY
+        client['outbounds'][0]['streamSettings']['realitySettings']['shortId'] = VLESS_WINDOWS_SHORT_ID
+        client['outbounds'][0]['streamSettings']['realitySettings']['spiderX'] = '/windows'
+        # 持久化
+        json.dump(client,open('dist/client-windows-config.json','w+'))
+        # 生成ios平台的config.json
+        client['outbounds'][0]['streamSettings']['realitySettings']['shortId'] = VLESS_IOS_SHORT_ID
+        client['outbounds'][0]['streamSettings']['realitySettings']['spiderX'] = '/ios'
+        # 持久化
+        json.dump(client,open('dist/client-ios-config.json','w+'))
+
+        # 生成trojan配置文件
+        with open('dist/trojan.txt','w+') as trojan:
+            trojan.writelines(f'trojan={DC_DOMAIN}:{TROJAN_PORT}, password={TROJAN_PASSWORD}, over-tls=true, tls-verification=true, fast-open=false, udp-relay=false, tag=dogyun')
+
+
+        outbound_tag_map = {
+            'direct': 'DIRECT',
+            'block': 'REJECT',
+            'proxy': 'PROXY'
+        }
+
+        # 转化为QX的路由配置文件
+        with open('dist/qx-policy.list','w+') as qx:
+            for rule in rb['rules']:
+                # 把规则写到list里
+                outboundTag:str = rule['outboundTag']
+                # HOST-SUFFIX,1688.com,DIRECT
+                domains:list = rule['domain']
+                for domain in domains:
+                    if domain.startswith('full:'):
+                        qx.writelines('HOST,'+(domain[5:]+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
+                    else:
+                        qx.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
+
+        # 转化为QX的路由配置文件
+        with open('dist/qx-policy.txt','w+') as qx_preview:
+            for rule in rb['rules']:
+                # 把规则写到list里
+                outboundTag:str = rule['outboundTag']
+                # HOST-SUFFIX,1688.com,DIRECT
+                domains:list = rule['domain']
+                for domain in domains:
+                    if domain.startswith('full:'):
+                        qx_preview.writelines('HOST,'+(domain[5:]+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
+                    else:
+                        qx_preview.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
+
+
+# 判断服务端配置是否存在 不存在直接中止构建
+server_config:dict = {}
+try:
+    config_file_list = os.popen('ls ../config').readlines()
+except:
+    logging.info('config文件夹为空')
+    config_file_list:dict = []
+
+if len(config_file_list) == 0:
+    logging.error('========================服务器配置文件不存在中止构建========================')
+else:
+    logging.info('========================开始更新客户端配置=========================')
+    # 更新配置
+    update_config()
+    logging.info('========================服务器配置配置更新完成!==================================')
