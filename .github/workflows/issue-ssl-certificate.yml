@@ -67,7 +67,7 @@ jobs:
         shell: bash
         run: |
           sudo apt-get install socat -y
-          ~/.acme.sh/acme.sh --issue -d www.cinima.asia --server letsencrypt --keylength ec-256 --fullchain-file dist/cert.pem --key-file dist/key.pem --standalone --force
+          ~/.acme.sh/acme.sh --issue -d www.vencenter.cn --server letsencrypt --keylength ec-256 --fullchain-file dist/cert.pem --key-file dist/key.pem --standalone --force
 
       - name: checkout出docker项目
         uses: actions/checkout@v3.5.2
