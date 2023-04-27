@@ -141,9 +141,6 @@ def update_config():
 
     # 从config.json中读取配置
     with open('../config/config.json','rb') as config_file:
-        res = config_file.readlines()
-        for item in res:
-            print(item)
         server_config:dict = json.load(config_file)
         inbounds:list = server_config['inbounds']
         vless_inbound = {}
@@ -157,7 +154,6 @@ def update_config():
             raise RuntimeError('服务器配置错误!未发现vless配置')
         if trojan_inbound == {}:
             raise RuntimeError('服务器配置错误!未发现trojan配置')
-        server_config:dict = json.load(config_file)
         # xray服务器的域名
         DC_DOMAIN = get_assert_arg(1,'secrets.DC_DOMAIN: xray服务器的域名未配置!')
         # xray服务器的IP
