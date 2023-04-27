@@ -5,11 +5,42 @@ import json
 import logging
 import os
 import sys
+import random 
+import yaml
 
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
+
+def generate_short_id():
+    """生成short_id  8-16位随机数 数据来源0123456789abcdef
+    """  
+    return ''.join(random.sample('0123456789abcdef',16))
+    pass
+
+def generate_trojan_password():
+    """生成trojan密码 8位随机数 数据来源0123456789abcdefghijklmnopqrstuvwxyz
+    """    
+    return ''.join(random.sample('0123456789abcdefghijklmnopqrstuvwxyz',8))
+
+def handle_port(vless_port:str,trojan_port:str):
+    """处理端口非默认值的情况
+
+    Args:
+        vless_port (str): vless端口
+        trojan_port (str): trojan端口
+    """    
+    # ../docker-compose.yml
+    with open('dist/docker-compose.yml','rb') as docker_compose_file:
+        docker_compose:dict = yaml.load(docker_compose_file,yaml.FullLoader)
+        # 替换docker-compose.yml中的端口配置
+        docker_compose['services']['xray-reality']['ports'] =  \
+        [f'{vless_port}:{vless_port}',f'{trojan_port}:{trojan_port}']
+    with open('dist/docker-compose.yml','wb') as docker_compose_file:
+        # 保存 sort_keys=False 默认为True 会改变原文件字典的顺序
+        yaml.dump(docker_compose,docker_compose_file,encoding='utf-8',allow_unicode=True,sort_keys=False)
+    
 
 # 创建配置 如果修改了默认端口（vless:443  trojan: 16789） 需要同步docker项目的docker-compose.yml 同时部署xray的服务器需要开放更新的两个端口！
 def create_config():
@@ -20,90 +51,86 @@ def create_config():
     uuid = uuid_list[0]
     # xray生成的私钥
     private_key = x25519_list[0][13:]
-    logging.info(f'uuid: {uuid}')
-    logging.info(f'private_key: {private_key}')
 
-    # logging.info('    VLESS_UUID: xray uuid')
-    # logging.info('    VLESS_PRIVATE_KEY: vless通过xray x25519生成的私钥')
-    # logging.info('    VLESS_WINDOWS_SHORT_ID: windows平台的shortId，8-16位随机数 数据来源0123456789abcdef')
-    # logging.info('    VLESS_IOS_SHORT_ID: ios平台的shortId，8-16位随机数 数据来源0123456789abcdef')
-    # logging.info('xray服务端配置项: ')
-    # logging.info('=================================================================')
-    # logging.info('  密钥(secrets): ')
-    # logging.info('  变量(vars): ')
-    # logging.info('    VLESS_DEST: xray的目标域名')
-    # logging.info('    VLESS_SERVER_NAMES: 逗号分割的，VLESS_DEST允许的服务列表 ')
-    # logging.info('    VLESS_PORT: vless端口 ')
-    # logging.info('    TROJAN_PORT: trojan端口 ')
-    # logging.info('=================================================================')
-    # # 读取参数 
-    # if len(sys.argv) < 10:
-    #     raise RuntimeError('请确认xray相关变量与密钥都已配置!')
+    logging.info('xray服务端配置项: ')
+    logging.info('=================================================================')
+    logging.info('  密钥(secrets): ')
+    logging.info('  变量(vars): ')
+    logging.info('    VLESS_DEST: xray的目标域名')
+    logging.info('    VLESS_SERVER_NAMES: 逗号分割的，VLESS_DEST允许的服务列表 ')
+    logging.info('    VLESS_PORT: vless端口 ')
+    logging.info('    TROJAN_PORT: trojan端口 ')
+    logging.info('=================================================================')
+    # 读取参数 
+    if len(sys.argv) < 4:
+        raise RuntimeError('请确认xray相关变量与密钥都已配置!')
 
-    # def get_assert_arg(index:int,msg:str):
-    #     try:
-    #         return sys.argv[index]
-    #     except:
-    #         raise RuntimeError(msg)
+    def get_assert_arg(index:int,msg:str):
+        try:
+            return sys.argv[index]
+        except:
+            raise RuntimeError(msg)
 
 
     # # xray uuid
-    # VLESS_UUID = get_assert_arg(1,'secrets.VLESS_UUID: xray uuid未配置！')
+    VLESS_UUID = uuid
     # # xray的目标域名
-    # VLESS_DEST = get_assert_arg(2,'vars.VLESS_DEST: 目标域名未配置！')
+    VLESS_DEST = get_assert_arg(1,'vars.VLESS_DEST: 目标域名未配置！')
     # # 逗号分割的，{VLESS_DEST}允许的服务列表 
-    # VLESS_SERVER_NAMES = get_assert_arg(3,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置！')
+    VLESS_SERVER_NAMES = get_assert_arg(2,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置!')
     # # vless通过xray x25519生成的密钥对的私钥 客户端必须与之对应
-    # VLESS_PRIVATE_KEY = get_assert_arg(4,'secrets.VLESS_PRIVATE_KEY: xray私钥未配置！')
+    VLESS_PRIVATE_KEY = private_key
     # # windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
-    # VLESS_WINDOWS_SHORT_ID = get_assert_arg(5,'secrets.VLESS_WINDOWS_SHORT_ID: window平台的shortId未配置！')
+    VLESS_WINDOWS_SHORT_ID = generate_short_id()
     # # ios平台的shortId  8-16位随机数 数据来源0123456789abcdef
-    # VLESS_IOS_SHORT_ID = get_assert_arg(6,'secrets.VLESS_IOS_SHORT_ID: ios平台的shortId未配置！')
+    VLESS_IOS_SHORT_ID = generate_short_id()
     # # trojan密码  ios最佳实践  使用QX trojan协议 
-    # TROJAN_PASSWORD = get_assert_arg(7,'secrets.TROJAN_PASSWORD: trojan密码未配置！')
+    TROJAN_PASSWORD = generate_trojan_password()
     # # vless端口
-    # VLESS_PORT = get_assert_arg(8,'vars.VLESS_PORT: vless端口未配置！')
+    VLESS_PORT = get_assert_arg(3,'vars.VLESS_PORT: vless端口未配置!')
     # # trojan端口
-    # TROJAN_PORT = get_assert_arg(9,'vars.TROJAN_PORT: trojan端口未配置！')
+    TROJAN_PORT = get_assert_arg(4,'vars.TROJAN_PORT: trojan端口未配置!')
+    # 处理端口非默认值的情况
+    handle_port(VLESS_PORT,TROJAN_PORT)
 
-    # inbounds = []
-    # # 构建inbounds   文件夹路径 文件夹集合 文件集合
-    # for dir_path,dir_list,file_list in os.walk('inbounds'):
-    #     for file in file_list:
-    #         with open(dir_path+'/'+file) as inbound_file:
-    #             server_dict:dict = json.load(inbound_file)
-    #             if file[:-5]=='windows':
-    #                 try:
-    #                     server_dict['port'] = int(VLESS_PORT)
-    #                 except:
-    #                     raise RuntimeError('vars.VLESS_PORT必须为整数！')
-    #                 # 添加密钥
-    #                 server_dict['settings']['clients'][0]['id'] = VLESS_UUID
-    #                 server_dict['streamSettings']['realitySettings']['dest'] = VLESS_DEST
-    #                 unhandled_server_names = VLESS_SERVER_NAMES.split(',')
-    #                 handled_server_names = []
-    #                 # 去空格
-    #                 for server_name in unhandled_server_names:
-    #                     handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
-    #                 server_dict['streamSettings']['realitySettings']['serverNames'] = handled_server_names
-    #                 server_dict['streamSettings']['realitySettings']['privateKey'] = VLESS_PRIVATE_KEY
-    #                 server_dict['streamSettings']['realitySettings']['shortIds'] = [VLESS_WINDOWS_SHORT_ID,VLESS_IOS_SHORT_ID]
-    #             elif file[:-5]=='trojan':
-    #                 try: 
-    #                     server_dict['port'] = int(TROJAN_PORT)
-    #                 except:
-    #                     raise RuntimeError('vars.TROJAN_PORT必须为整数！')
-    #                 # 添加密钥
-    #                 server_dict['settings']['clients'][0]['password'] = TROJAN_PASSWORD
-    #             inbounds.append(server_dict) 
+    inbounds = []
+    # 构建inbounds   文件夹路径 文件夹集合 文件集合
+    for dir_path,dir_list,file_list in os.walk('inbounds'):
+        for file in file_list:
+            with open(dir_path+'/'+file) as inbound_file:
+                server_dict:dict = json.load(inbound_file)
+                if file[:-5]=='windows':
+                    try:
+                        server_dict['port'] = int(VLESS_PORT)
+                    except:
+                        raise RuntimeError('vars.VLESS_PORT必须为整数!')
+                    # 添加密钥
+                    server_dict['settings']['clients'][0]['id'] = VLESS_UUID
+                    server_dict['streamSettings']['realitySettings']['dest'] = VLESS_DEST
+                    unhandled_server_names = VLESS_SERVER_NAMES.split(',')
+                    handled_server_names = []
+                    # 去空格
+                    for server_name in unhandled_server_names:
+                        handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
+                    server_dict['streamSettings']['realitySettings']['serverNames'] = handled_server_names
+                    server_dict['streamSettings']['realitySettings']['privateKey'] = VLESS_PRIVATE_KEY
+                    server_dict['streamSettings']['realitySettings']['shortIds'] = [VLESS_WINDOWS_SHORT_ID,VLESS_IOS_SHORT_ID]
+                elif file[:-5]=='trojan':
+                    try: 
+                        server_dict['port'] = int(TROJAN_PORT)
+                    except:
+                        raise RuntimeError('vars.TROJAN_PORT必须为整数!')
+                    # 添加密钥
+                    server_dict['settings']['clients'][0]['password'] = TROJAN_PASSWORD
+                inbounds.append(server_dict) 
 
-    # # 拼到client中 
-    # with open(f'server.json') as server_file:
-    #     server = json.load(server_file) 
+    # 拼到client中 
+    with open(f'server.json') as server_file:
+        server = json.load(server_file) 
 
-    # server['inbounds'] = inbounds
-    # # 持久化
-    # json.dump(server,open(f'dist/config.json','w+'))
+    server['inbounds'] = inbounds
+    # 持久化
+    json.dump(server,open(f'dist/config.json','w+'))
 
 # 更新配置
 def update_config():
@@ -116,7 +143,7 @@ server_config:dict = {}
 try:
     config_file_list = os.popen('ls ../config').readlines()
 except:
-    logging.info('config文件夹为空')
+    logging.info('config文件了  夹为空')
     config_file_list:dict = []
 
 if len(config_file_list) == 0:
@@ -127,4 +154,3 @@ else:
     # 更新配置
     with open('../config/config.json','rb') as config_file:
         server_config:dict = json.load(config_file)
-

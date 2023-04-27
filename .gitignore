@@ -8,4 +8,6 @@
 dist/*.json
 dist/*.txt
 dist/*.conf
+dist/*.yml
+dist/*.yaml
 xray.exe

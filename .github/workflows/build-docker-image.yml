@@ -41,22 +41,28 @@ jobs:
       - name: 生成config.json
         run: |
           cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-          python build.py
+          python build.py ${{vars.VLESS_DEST}} ${{vars.VLESS_SERVER_NAMES}} ${{vars.VLESS_PORT}} ${{vars.TROJAN_PORT}}
 
-      - name: 提交之前cd
-        run: cd $GITHUB_WORKSPACE/docker
+      - name: 查看生成的config.json
+        run: cat dist/config.json
 
-      - name: 更新docker项目的config.json
-        uses: github-actions-x/commit@v2.9
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          push-branch: 'master'
-          commit-message: 'update xray server config.json'
-          force-add: 'true'
-          files: $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/config.json
-          name: jaychouzzz
-          email: f18326186224@gmail.com
-          rebase: true
+      - name: 查看生成的docker-compose.yml
+        run: cat dist/docker-compose.yml
+
+      # - name: 提交之前cd
+      #   run: cd $GITHUB_WORKSPACE/docker
+
+      # - name: 更新docker项目的config.json
+      #   uses: github-actions-x/commit@v2.9
+      #   with:
+      #     github-token: ${{ secrets.GH_TOKEN }}
+      #     push-branch: 'master'
+      #     commit-message: 'update xray server config.json'
+      #     force-add: 'true'
+      #     files: $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/config.json
+      #     name: jaychouzzz
+      #     email: f18326186224@gmail.com
+      #     rebase: true
 
       # - name: 查看生成的配置文件
       #   run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
