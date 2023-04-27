@@ -62,7 +62,6 @@ def verify_dest_server_names(VLESS_DEST:str,handled_server_names:list):
             continue
         else:
             # Allowed domains:  [s0.awsstatic.com]
-            logging.info(f'tls_ping: {match_res.string}')
             res = match_res.string.split('[')[1].split(']')[0]
             if res != '':
                 server_names = res.split(' ')
@@ -191,7 +190,8 @@ def update_config():
     handle_port(VLESS_PORT,TROJAN_PORT)
     with open('../config/config.json','rb') as config_file:
         server_config:dict = json.load(config_file) 
-        inbounds = server_config['inbounds'][0]
+        logging.info(f'=============更新前的配置信息：{json.dumps(server_config)}===============')
+        inbounds:list = server_config['inbounds']
         for inbound in inbounds:
             if inbound['protocol'] == 'vless':
                 inbound['port'] = VLESS_PORT
@@ -200,7 +200,7 @@ def update_config():
             else:
                 inbound['port'] = TROJAN_PORT
     logging.info(f'=============更新后的配置信息：{json.dumps(server_config)}===============')
-    
+
     raise RuntimeError
     with open('../config/config.json','wb') as config_file:
 
