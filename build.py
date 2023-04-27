@@ -190,7 +190,6 @@ def update_config():
     handle_port(VLESS_PORT,TROJAN_PORT)
     with open('../config/config.json','rb') as config_file:
         server_config:dict = json.load(config_file) 
-        logging.info(f'=============更新前的配置信息：{json.dumps(server_config)}===============')
         inbounds:list = server_config['inbounds']
         for inbound in inbounds:
             if inbound['protocol'] == 'vless':
@@ -199,13 +198,7 @@ def update_config():
                 inbound['streamSettings']['realitySettings']['serverNames'] = handled_server_names
             else:
                 inbound['port'] = TROJAN_PORT
-    logging.info(f'=============更新后的配置信息：{json.dumps(server_config)}===============')
-
-    raise RuntimeError
-    with open('../config/config.json','wb') as config_file:
-
-        pass
-    
+    json.dump(server_config,open(f'dist/config.json','w+'))
 
 
 # 判断dockerfile/xray下面有没有config.json 文件 有的话直接读取配置 没有就生成
