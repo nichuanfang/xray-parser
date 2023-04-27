@@ -43,7 +43,6 @@ def handle_port(vless_port:str,trojan_port:str):
         yaml.dump(docker_compose,docker_compose_file,encoding='utf-8',allow_unicode=True,sort_keys=False)
 
 def verify_dest_server_names(VLESS_DEST:str,VLESS_SERVER_NAMES:str):
-    d = re.compile()
     logging.info('======================校验dest与serverNames========================================')
     tls_ping_list = os.popen(f'./xray tls ping {VLESS_DEST}').readlines()
     for tls_ping in tls_ping_list:
