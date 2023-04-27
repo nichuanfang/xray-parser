@@ -32,12 +32,12 @@ def handle_port(vless_port:str,trojan_port:str):
         trojan_port (str): trojan端口
     """    
     # ../docker-compose.yml
-    with open('dist/docker-compose.yml','rb') as docker_compose_file:
+    with open('../docker-compose.yml','rb') as docker_compose_file:
         docker_compose:dict = yaml.load(docker_compose_file,yaml.FullLoader)
         # 替换docker-compose.yml中的端口配置
         docker_compose['services']['xray-reality']['ports'] =  \
         [f'{vless_port}:{vless_port}',f'{trojan_port}:{trojan_port}']
-    with open('dist/docker-compose.yml','wb') as docker_compose_file:
+    with open('../docker-compose.yml','wb') as docker_compose_file:
         # 保存 sort_keys=False 默认为True 会改变原文件字典的顺序
         yaml.dump(docker_compose,docker_compose_file,encoding='utf-8',allow_unicode=True,sort_keys=False)
     
@@ -130,7 +130,7 @@ def create_config():
 
     server['inbounds'] = inbounds
     # 持久化
-    json.dump(server,open(f'dist/config.json','w+'))
+    json.dump(server,open(f'../config/config.json','w+'))
 
 # 更新配置
 def update_config():
