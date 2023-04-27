@@ -53,6 +53,8 @@ jobs:
         run: |
           mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
           cp -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
+          cd $GITHUB_WORKSPACE/docker
+          pwd
 
       # - name: 更新docker项目的config.json和docker-compose.yml
       #   uses: github-actions-x/commit@v2.9
