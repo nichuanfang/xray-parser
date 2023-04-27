@@ -18,7 +18,7 @@ if len(config_file_list) == 0:
     # 生成配置
     pass
 else:
-    with open('../config') as exist_config_file:
+    with open('../config/config.json') as exist_config_file:
         exist_config:dict = json.load(exist_config_file)
         # 解析配置
         logging.log(exist_config.__str__())
