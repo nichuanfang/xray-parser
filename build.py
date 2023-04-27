@@ -41,16 +41,16 @@ for x25519 in x25519_list:
 
 
 
-logging.info('xray服务端配置项：')
+logging.info('xray服务端配置项: ')
 logging.info('=================================================================')
-logging.info('  密钥(secrets)：')
+logging.info('  密钥(secrets): ')
 logging.info('    VLESS_UUID: xray uuid')
 logging.info('    VLESS_DEST: xray的目标域名')
 logging.info('    VLESS_PRIVATE_KEY: vless通过xray x25519生成的私钥')
 logging.info('    VLESS_WINDOWS_SHORT_ID: windows平台的shortId，8-16位随机数 数据来源0123456789abcdef')
 logging.info('    VLESS_IOS_SHORT_ID: ios平台的shortId，8-16位随机数 数据来源0123456789abcdef')
 logging.info('    TROJAN_PASSWORD: trojan密码')
-logging.info('  变量(vars)：')
+logging.info('  变量(vars): ')
 logging.info('    VLESS_SERVER_NAMES: 逗号分割的，VLESS_DEST允许的服务列表 ')
 logging.info('    VLESS_PORT: vless端口 ')
 logging.info('    TROJAN_PORT: trojan端口 ')
