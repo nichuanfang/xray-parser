@@ -11,7 +11,7 @@ LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
-logging.info('xray配置项：')
+logging.info('xray服务端配置项：')
 logging.info('=================================================================')
 logging.info('  密钥(secrets)：')
 logging.info('    VLESS_UUID: xray uuid')
