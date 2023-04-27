@@ -209,7 +209,7 @@ def update_config():
 
         # 生成window平台的config.json
         client['outbounds'][0]['settings']['vnext'][0]['address'] = DC_HOST
-        client['outbounds'][0]['settings']['vnext'][0]['port'] = VLESS_PORT
+        client['outbounds'][0]['settings']['vnext'][0]['port'] = int(VLESS_PORT)
         client['outbounds'][0]['settings']['vnext'][0]['users'][0]['id'] = VLESS_UUID
         client['outbounds'][0]['streamSettings']['realitySettings']['serverName'] = VLESS_CLIENT_SERVER_NAME
         client['outbounds'][0]['streamSettings']['realitySettings']['publicKey'] = VLESS_PUBLIC_KEY
