@@ -50,7 +50,7 @@ def verify_dest_server_names(VLESS_DEST:str,VLESS_SERVER_NAMES:str):
         if match_res is None:
             continue
         else:
-            logging.info(f'tls_ping: {match_res}')
+            logging.info(f'tls_ping: {match_res.string}')
             break
 
     logging.info('======================校验dest与serverNames匹配!===================================')
