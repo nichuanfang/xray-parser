@@ -12,9 +12,9 @@ DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 
-uuid_list = os.popen('xray uuid').readlines()
-tls_ping_list = os.popen('xray tls ping www.baidu.com').readlines()
-x25519_list = os.popen('xray x25519').readlines()
+uuid_list = os.popen('./xray uuid').readlines()
+tls_ping_list = os.popen('./xray tls ping www.baidu.com').readlines()
+x25519_list = os.popen('./xray x25519').readlines()
 
 for uuid in uuid_list:
     logging.info(f'uuid:{uuid}')
