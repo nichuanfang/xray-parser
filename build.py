@@ -62,7 +62,8 @@ for dir_path,dir_list,file_list in os.walk('inbounds'):
         with open(dir_path+'/'+file) as inbound_file:
             server_dict:dict = json.load(inbound_file)
             if file[:-5]=='windows':
-                try: 
+                try:
+                    logging.info(f'trojan port: {VLESS_PORT}') 
                     server_dict['port'] = int(VLESS_PORT)
                 except:
                     raise RuntimeError('vars.VLESS_PORT必须为整数！')
