@@ -42,6 +42,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
           python build.py ${{vars.VLESS_DEST}} ${{vars.VLESS_SERVER_NAMES}} ${{vars.VLESS_PORT}} ${{vars.TROJAN_PORT}}
+          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
 
       - name: 提交之前的准备工作
         run: |
