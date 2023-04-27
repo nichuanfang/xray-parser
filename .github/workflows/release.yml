@@ -42,23 +42,6 @@ jobs:
           cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
           python build.py ${{secrets.DC_DOMAIN}} ${{secrets.DC_HOST}} ${{vars.VLESS_CLIENT_SERVER_NAME}}
 
-      - name: 查看生成的配置文件
-        run: |
-          echo '====================xray windows配置===================='
-          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-windows-config.json
-
-          echo '====================xray ios配置===================='
-          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-ios-config.json
-
-          echo '====================trojan配置===================='
-          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/trojan.txt
-
-          echo '====================qx-policy.list配置===================='
-          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list
-
-          echo '====================qx-policy.txt配置===================='
-          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt
-
       - name: 将生成的配置文件保存到docker项目中
         run: |
           mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
