@@ -38,33 +38,40 @@ jobs:
           chmod +x ./xray
           cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
 
-      - name: 生成config.json
+      - name: 更新config.json和docker-compose.yml
         run: |
           cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
           python build.py ${{vars.VLESS_DEST}} ${{vars.VLESS_SERVER_NAMES}} ${{vars.VLESS_PORT}} ${{vars.TROJAN_PORT}}
-
-      - name: 查看生成的config.json
-        run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
-
-      - name: 查看生成的docker-compose.yml
-        run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/docker-compose.yml
 
       - name: 提交之前的准备工作
         run: |
           mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
           cp -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
 
-      # - name: 更新docker项目的config.json和docker-compose.yml
-      #   uses: github-actions-x/commit@v2.9
-      #   with:
-      #     github-token: ${{ secrets.GH_TOKEN }}
-      #     push-branch: 'master'
-      #     commit-message: 'update xray server config.json'
-      #     force-add: 'true'
-      #     files: $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/config.json
-      #     name: jaychouzzz
-      #     email: f18326186224@gmail.com
-      #     rebase: true
+      - name: 发布xray服务端http服务
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: 'ssh scp ssh pipelines'
+          LASTSSH: 'Doing something after copying'
+        with:
+          # HC代表发布xray配置的服务器
+          host: ${{ secrets.HC_HOST }}
+          user: ${{ secrets.HC_USER }}
+          pass: ${{ secrets.HC_PASS }}
+          port: ${{ secrets.HC_PORT }}
+          connect_timeout: 20s
+          first_ssh: |
+            docker stop nginx
+            mkdir -p /root/assets/config/server
+          scp: |
+            './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/assets/config/server
+          last_ssh: |
+            docker start nginx
+            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务端配置已更新
+
+      # 删除docker项目的xray-parser目录
+      - name: 删除docker项目的xray-parser目录
+        run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
 
       - name: 更新docker项目的config.json和docker-compose.yml
         uses: Smart-Transportation/push@v1.3
@@ -73,33 +80,9 @@ jobs:
           branch: 'master'
           author_email: 'github-actions[bot]@users.noreply.github.com'
           author_name: 'github-actions[bot]'
-          message: 'chore: autopublish ${date}'
+          message: '🐳 chore: 更新xray服务端配置文件'
           directory: /home/runner/work/xray-parser/xray-parser/docker
           repository: nichuanfang/docker
-
-      # - name: 查看生成的配置文件
-      #   run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
-
-      # - name: 发布xray服务端http服务
-      #   uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-      #   env:
-      #     WELCOME: 'ssh scp ssh pipelines'
-      #     LASTSSH: 'Doing something after copying'
-      #   with:
-      #     # HC代表发布xray配置的服务器
-      #     host: ${{ secrets.HC_HOST }}
-      #     user: ${{ secrets.HC_USER }}
-      #     pass: ${{ secrets.HC_PASS }}
-      #     port: ${{ secrets.HC_PORT }}
-      #     connect_timeout: 20s
-      #     first_ssh: |
-      #       docker stop nginx
-      #       mkdir -p /root/assets/config/server
-      #     scp: |
-      #       './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/assets/config/server
-      #     last_ssh: |
-      #       docker start nginx
-      #       curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务端配置已更新
 
       # - name: 部署启动xray
       #   uses: cross-the-world/ssh-scp-ssh-pipelines@latest
