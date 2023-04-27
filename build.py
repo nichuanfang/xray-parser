@@ -7,6 +7,7 @@ import os
 import sys
 import random 
 import yaml
+import re
 
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
@@ -42,10 +43,17 @@ def handle_port(vless_port:str,trojan_port:str):
         yaml.dump(docker_compose,docker_compose_file,encoding='utf-8',allow_unicode=True,sort_keys=False)
 
 def verify_dest_server_names(VLESS_DEST:str,VLESS_SERVER_NAMES:str):
+    d = re.compile()
     logging.info('======================校验dest与serverNames========================================')
     tls_ping_list = os.popen(f'./xray tls ping {VLESS_DEST}').readlines()
     for tls_ping in tls_ping_list:
-        logging.info(f'tls_ping: {tls_ping}')
+        match_res = re.match('^Allowed domains: .+$',tls_ping)
+        if match_res is None:
+            continue
+        else:
+            logging.info(f'tls_ping: {match_res}')
+            break
+
     logging.info('======================校验dest与serverNames匹配!===================================')
     raise RuntimeError('==测试中断!===')
 
