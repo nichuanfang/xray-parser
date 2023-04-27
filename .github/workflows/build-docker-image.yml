@@ -44,10 +44,10 @@ jobs:
           python build.py ${{vars.VLESS_DEST}} ${{vars.VLESS_SERVER_NAMES}} ${{vars.VLESS_PORT}} ${{vars.TROJAN_PORT}}
 
       - name: 查看生成的config.json
-        run: cat dist/config.json
+        run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
 
       - name: 查看生成的docker-compose.yml
-        run: cat dist/docker-compose.yml
+        run: cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/docker-compose.yml
 
       # - name: 提交之前cd
       #   run: cd $GITHUB_WORKSPACE/docker
