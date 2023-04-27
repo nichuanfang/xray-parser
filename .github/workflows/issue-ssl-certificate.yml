@@ -44,22 +44,32 @@ jobs:
     name: Issue SSL certificate
     runs-on: ubuntu-20.04
     steps:
-      - uses: Menci/acme@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          # 指定 acme.sh 的版本
-          version: 3.0.2
+          ref: client
 
-          # 上方保存的以 Base64 编码存储的凭据
-          account-tar: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
+      - name: Checkout output branch
+        uses: actions/checkout@v2
+        with:
+          ref: certs
+          path: ${{ env.CERTS_OUTPUT_BASE }}
 
-          # 域名列表，以空格分隔
-          domains: cinima.asia
-          # 是否申请通配符
-          append-wildcard: true
+      # 安装 acme.sh
+      - name: Install acme.sh
+        shell: bash
+        run: curl -s https://get.acme.sh | sh
 
-          # 传递给 acme.sh 的额外参数
-          arguments: --dns dns_cf --challenge-alias cinima.asia
+      # 解压 acme.sh 配置信息
+      - name: Extract account files for acme.sh
+        shell: bash
+        run: |
+          echo "$ACME_SH_ACCOUNT_TAR" | base64 -d | tar -C ~/.acme.sh -xz
+        env:
+          # Base64 编码的 acme.sh 配置信息
+          ACME_SH_ACCOUNT_TAR: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
 
-          # 导出的证书路径
-          output-fullchain: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}
-          output-key: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}
+      - name: 申请证书
+        shell: bash
+        run: |
+          ~/.acme.sh/acme.sh --issue -d www.cinima.asia --server letsencrypt --keylength ec-256 --fullchain-file cert.pem --key-file key.pem --standalone --force
