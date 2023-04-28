@@ -84,13 +84,6 @@
       "domain": [
         "cloudflare.com"
       ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "block",
-      "domain": [
-        "google.com"
-      ]
     }
   ]
 }
