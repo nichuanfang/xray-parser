@@ -2,6 +2,7 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
+            "id": "wpl8aq56rh6rxgrb",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -10,6 +11,7 @@
             ]
         },
         {
+            "id": "hjgm4yqvu7rhozad",
             "type": "field",
             "outboundTag": "proxy",
             "ip": [
@@ -17,6 +19,7 @@
             ]
         },
         {
+            "id": "q319erhpy0xu49ll",
             "type": "field",
             "outboundTag": "direct",
             "network": "tcp,udp"

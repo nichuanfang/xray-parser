@@ -2,6 +2,7 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
+            "id": "jhnqx1fn946mqyso",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -9,6 +10,7 @@
             ]
         },
         {
+            "id": "ulpl6t1db5qjtqcl",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -16,6 +18,7 @@
             ]
         },
         {
+            "id": "qydex4gd0c63h2jo",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -23,6 +26,7 @@
             ]
         },
         {
+            "id": "0qyva7ehzxjeh85m",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -30,6 +34,7 @@
             ]
         },
         {
+            "id": "7w2zheg56t9kuac7",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -37,6 +42,7 @@
             ]
         },
         {
+            "id": "p6yto24f0xelz5io",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -44,6 +50,7 @@
             ]
         },
         {
+            "id": "nx10iaq56qkrctyz",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -51,6 +58,7 @@
             ]
         },
         {
+            "id": "n3zr2g52tg19s69e",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -58,6 +66,7 @@
             ]
         },
         {
+            "id": "zwxrazbaommv98e8",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -65,6 +74,7 @@
             ]
         },
         {
+            "id": "5ku8p0fy9of8fpjb",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -72,6 +82,7 @@
             ]
         },
         {
+            "id": "zglvs8k457gjuyjr",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -79,6 +90,7 @@
             ]
         },
         {
+            "id" : "gwlek7tpvs59cuis",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -86,6 +98,7 @@
             ]
         },
         {
+            "id": "82rvapu8y6jdj8nk",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
@@ -93,6 +106,7 @@
             ]
         },
         {
+            "id": "h1fzi10csfb7f7o4",
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
