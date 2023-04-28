@@ -66,30 +66,14 @@ jobs:
       - name: 申请证书
         shell: bash
         run: |
-          ~/.acme.sh/acme.sh --issue        \
-            -d "vencenter.cn"   --dns dns_cf \
-            -d "*.vencenter.cn" --dns dns_cf \
-            --server letsencrypt
-
-      # 导出证书
-      - name: 导出证书
-        shell: bash
-        run: |
-          ACME_SH_TEMP_DIR="$(mktemp -d)"
-          ACME_SH_TEMP_FILE_FULLCHAIN="$ACME_SH_TEMP_DIR/fullchain.pem"
-          ACME_SH_TEMP_FILE_KEY="$ACME_SH_TEMP_DIR/key.pem"
-
-          ~/.acme.sh/acme.sh --install-cert -d "$ACME_SH_FIRST_DOMAIN" --fullchain-file "$ACME_SH_TEMP_FILE_FULLCHAIN" --key-file "$ACME_SH_TEMP_FILE_KEY"
-
-          [[ -z "$ACME_SH_OUTPUT_FULLCHAIN" ]] || (mkdir -p "$(dirname "$ACME_SH_OUTPUT_FULLCHAIN")" && cp "$ACME_SH_TEMP_FILE_FULLCHAIN" "$ACME_SH_OUTPUT_FULLCHAIN")
-          [[ -z "$ACME_SH_OUTPUT_KEY" ]] || (mkdir -p "$(dirname "$ACME_SH_OUTPUT_KEY")" && cp "$ACME_SH_TEMP_FILE_KEY" "$ACME_SH_OUTPUT_KEY")
-
-          rm -rf "$ACME_SH_TEMP_DIR"
-        env:
-          # 修改此处的 example.com 为申请时填写的第一个域名
-          ACME_SH_FIRST_DOMAIN: vencenter.cn
-          ACME_SH_OUTPUT_FULLCHAIN: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}
-          ACME_SH_OUTPUT_KEY: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}
+          ~/.acme.sh/acme.sh --issue  \
+          -d www.vencenter.cn  \
+          --server letsencrypt \
+          --keylength ec-256 \
+          --fullchain-file ./dist/cert.pem \
+          --key-file ./dist/key.pem \
+          --standalone \
+          --force
 
       - name: checkout出docker项目
         uses: actions/checkout@v3.5.2
@@ -102,9 +86,9 @@ jobs:
       - name: 复制证书
         shell: bash
         run: |
-          cp dist/cert.pem docker/dockerfile_work/xray/cert
-          cp dist/key.pem docker/dockerfile_work/xray/cert
-          chmod +x docker/dockerfile_work/xray/cert/*.pem
+          cp ./dist/cert.pem docker/dockerfile_work/xray/cert
+          cp ./dist/key.pem docker/dockerfile_work/xray/cert
+          chmod +x ./docker/dockerfile_work/xray/cert/*.pem
 
       - name: 更新证书文件
         uses: Smart-Transportation/push@v1.3
