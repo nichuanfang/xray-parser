@@ -68,7 +68,6 @@ jobs:
         run: |
           sudo apt-get install socat -y
           ~/.acme.sh/acme.sh --issue  \
-          -d oiasdjaaad.asia  \
           -d www.oiasdjaaad.asia  \
           --server letsencrypt \
           --keylength ec-256 \
