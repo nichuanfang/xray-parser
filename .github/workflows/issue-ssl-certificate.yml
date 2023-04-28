@@ -1,17 +1,6 @@
 # 注: 定时任务的yml只有放在主分支上面才生效!
 name: issue-ssl-certificate
 
-# 全局环境变量
-env:
-  # Checkout 到的目录
-  CERTS_OUTPUT_BASE: certs
-  # 证书输出目录
-  CERTS_OUTPUT_DIRECTORY: cinima.asia
-  # 证书文件名
-  FILE_FULLCHAIN: fullchain.pem
-  # 私钥文件名
-  FILE_KEY: privatekey.key
-
 on:
   # 手动触发 相关文档 https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#workflow_dispatch
   workflow_dispatch:
@@ -38,66 +27,25 @@ on:
           - server
 
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 1 * *'
 jobs:
   issue-ssl-certificate:
     name: Issue SSL certificate
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: 更新证书
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          DC_DOMAIN: ${{ secrets.DC_DOMAIN }}
+        continue-on-error: true
         with:
-          ref: client
-
-      # 安装 acme.sh
-      - name: Install acme.sh
-        shell: bash
-        run: curl -s https://get.acme.sh | sh
-
-      # # 解压 acme.sh 配置信息
-      # - name: Extract account files for acme.sh
-      #   shell: bash
-      #   run: |
-      #     echo "$ACME_SH_ACCOUNT_TAR" | base64 -d | tar -C ~/.acme.sh -xz
-      #   env:
-      #     # Base64 编码的 acme.sh 配置信息
-      #     ACME_SH_ACCOUNT_TAR: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
-
-      - name: 申请证书
-        shell: bash
-        run: |
-          sudo apt-get install socat -y
-          ~/.acme.sh/acme.sh --issue  \
-          -d www.vencenter.cn  \
-          --server letsencrypt \
-          --keylength ec-256 \
-          --fullchain-file ./dist/cert.pem \
-          --key-file ./dist/key.pem \
-          --standalone \
-          --force
-
-      - name: checkout出docker项目
-        uses: actions/checkout@v3.5.2
-        with:
-          repository: nichuanfang/docker
-          path: docker
-          ref: master
-          token: ${{ secrets.GH_TOKEN }}
-
-      - name: 复制证书
-        shell: bash
-        run: |
-          cp ./dist/cert.pem docker/dockerfile_work/xray/cert
-          cp ./dist/key.pem docker/dockerfile_work/xray/cert
-          chmod +x ./docker/dockerfile_work/xray/cert/*.pem
-
-      - name: 更新证书文件
-        uses: Smart-Transportation/push@v1.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'master'
-          author_email: 'github-actions[bot]@users.noreply.github.com'
-          author_name: 'github-actions[bot]'
-          message: '🐳 chore: 更新https证书'
-          directory: /home/runner/work/xray-parser/docker
-          repository: nichuanfang/docker
+          host: ${{ secrets.DC_HOST }}
+          user: ${{ secrets.DC_USER }}
+          pass: ${{ secrets.DC_PASS }}
+          port: ${{ secrets.DC_PORT }}
+          connect_timeout: 20s
+          first_ssh: |
+            curl -s https://get.acme.sh | sh
+            apt-get install socat
+            /bin/bash -c "$(curl -L https://github.com/nichuanfang/config-server/raw/master/xray/xray_cert_renew.sh)" $DC_DOMAIN 'github-actions[bot]' 'github-actions[bot]@users.noreply.github.com'
+            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务端配置已更新

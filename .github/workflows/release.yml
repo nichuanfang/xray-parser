@@ -1,0 +1,94 @@
+name: Release Xray Client
+
+on:
+  push:
+    branches:
+      - 'client'
+
+jobs:
+  job1:
+    name: 构建xray客户端配置
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout出xray-parser项目
+        uses: actions/checkout@v3.5.2
+        with:
+          repository: nichuanfang/xray-parser
+          path: xray-parser
+          ref: client
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: checkout出docker项目
+        uses: actions/checkout@v3.5.2
+        with:
+          repository: nichuanfang/docker
+          path: docker
+          ref: master
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: xray-parser=>docker
+        run: cp -r $GITHUB_WORKSPACE/xray-parser $GITHUB_WORKSPACE/docker/dockerfile_work/xray
+
+      - name: 配置xray环境 用来生成服务端和客户端通用数据
+        run: |
+          sudo apt-get install wget unzip -y
+          wget https://github.com/XTLS/Xray-core/releases/download/v1.8.1/Xray-linux-64.zip
+          unzip Xray-linux-64.zip
+          chmod +x ./xray
+          cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+
+      - name: 更新客户端config.json
+        run: |
+          cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+          python build.py ${{secrets.DC_DOMAIN}} ${{secrets.DC_HOST}} ${{vars.VLESS_CLIENT_SERVER_NAME}}
+
+      - name: 将生成的配置文件保存到docker项目中
+        run: |
+          mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-windows-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-ios-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/trojan.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+
+      - name: 清理无用文件夹
+        run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+
+      - name: 更新docker项目
+        uses: Smart-Transportation/push@v1.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'master'
+          author_email: 'github-actions[bot]@users.noreply.github.com'
+          author_name: 'github-actions[bot]'
+          message: '🐳 chore: 更新xray客户端配置文件'
+          directory: /home/runner/work/xray-parser/xray-parser/docker
+          repository: nichuanfang/docker
+
+      - name: 发布xray客户端http服务
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: 'ssh scp ssh pipelines'
+          LASTSSH: 'Doing something after copying'
+        with:
+          # HC代表发布xray配置的服务器
+          host: ${{ secrets.HC_HOST }}
+          user: ${{ secrets.HC_USER }}
+          pass: ${{ secrets.HC_PASS }}
+          port: ${{ secrets.HC_PORT }}
+          connect_timeout: 20s
+          first_ssh: |
+            docker stop nginx
+            mkdir -p /root/assets/config/client/qx
+            mkdir -p /root/assets/config/client/trojan
+            mkdir -p /root/assets/config/client/windows
+            mkdir -p /root/assets/config/client/ios
+          scp: |
+            './docker/dockerfile_work/xray/config/client/client-windows-config.json' => /root/assets/config/client/windows
+            './docker/dockerfile_work/xray/config/client/client-ios-config.json' => /root/assets/config/client/ios
+            './docker/dockerfile_work/xray/config/client/trojan.txt' => /root/assets/config/client/trojan
+            './docker/dockerfile_work/xray/config/client/qx-policy.list' => /root/assets/config/client/qx
+            './docker/dockerfile_work/xray/config/client/qx-policy.txt' => /root/assets/config/client/qx
+          last_ssh: |
+            docker start nginx
+            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray客户端配置已更新
