@@ -68,7 +68,7 @@ jobs:
         run: |
           sudo apt-get install socat -y
           ~/.acme.sh/acme.sh --issue  \
-          -d www.oiasdjaaad.asia  \
+          -d www.vencenter.cn  \
           --server letsencrypt \
           --keylength ec-256 \
           --fullchain-file ./dist/cert.pem \
