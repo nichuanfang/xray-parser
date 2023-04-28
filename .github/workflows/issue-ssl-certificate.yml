@@ -54,14 +54,14 @@ jobs:
         shell: bash
         run: curl -s https://get.acme.sh | sh
 
-      # 解压 acme.sh 配置信息
-      - name: Extract account files for acme.sh
-        shell: bash
-        run: |
-          echo "$ACME_SH_ACCOUNT_TAR" | base64 -d | tar -C ~/.acme.sh -xz
-        env:
-          # Base64 编码的 acme.sh 配置信息
-          ACME_SH_ACCOUNT_TAR: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
+      # # 解压 acme.sh 配置信息
+      # - name: Extract account files for acme.sh
+      #   shell: bash
+      #   run: |
+      #     echo "$ACME_SH_ACCOUNT_TAR" | base64 -d | tar -C ~/.acme.sh -xz
+      #   env:
+      #     # Base64 编码的 acme.sh 配置信息
+      #     ACME_SH_ACCOUNT_TAR: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
 
       - name: 申请证书
         shell: bash
