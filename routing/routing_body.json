@@ -91,6 +91,13 @@
       "domain": [
         "racknerd.com"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
+        "tawk.to"
+      ]
     }
   ]
 }
