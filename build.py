@@ -190,6 +190,10 @@ def update_config():
     handle_port(VLESS_PORT,TROJAN_PORT)
     with open('../config/config.json','rb') as config_file:
         server_config:dict = json.load(config_file) 
+        # 更新路由
+        with open('server.json','rb') as server_file:
+            base_server = json.load(server_file)
+            server_config['routing'] = base_server['routing']
         inbounds:list = server_config['inbounds']
         for inbound in inbounds:
             if inbound['protocol'] == 'vless':
