@@ -26,6 +26,14 @@
             ]
         },
         {
+            "id": "hjgm4yqvu7rhozad",
+            "type": "field",
+            "outboundTag": "proxy",
+            "domain": [
+                "geosite:telegram"
+            ]
+        },
+        {
             "id": "aqw8qzbqynjo6ldg",
             "type": "field",
             "outboundTag": "proxy",
