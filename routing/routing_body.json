@@ -112,6 +112,14 @@
             "domain": [
                 "tawk.to"
             ]
+        },
+        {
+            "id": "cm01zfixgh3aea8j",
+            "type": "field",
+            "outboundTag": "proxy",
+            "domain": [
+                "missav.com"
+            ]
         }
     ]
 }
