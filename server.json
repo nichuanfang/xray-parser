@@ -27,16 +27,16 @@
         "rules": [
             {
                 "type": "field",
-                "outboundTag": "common",
-                "network": "udp,tcp"
-            },
-            {
-                "type": "field",
                 "outboundTag": "blocked",
                 "ip": [
                     "geoip:cn",
                     "geoip:private"
                 ]
+            },
+            {
+                "type": "field",
+                "outboundTag": "common",
+                "network": "udp,tcp"
             }
         ]
     },
