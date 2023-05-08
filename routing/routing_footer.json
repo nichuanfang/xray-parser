@@ -6,8 +6,7 @@
             "type": "field",
             "outboundTag": "proxy",
             "domain": [
-                "geosite:gfw",
-                "geosite:greatfire"
+                "geosite:geolocation-!cn"
             ]
         },
         {
@@ -19,9 +18,17 @@
             ]
         },
         {
-            "id": "q319erhpy0xu49ll",
+            "id": "tvkb9oavos4p735b",
             "type": "field",
             "outboundTag": "direct",
+            "domain": [
+                "geosite:cn"
+            ]
+        },
+        {
+            "id": "q319erhpy0xu49ll",
+            "type": "field",
+            "outboundTag": "proxy",
             "network": "tcp,udp"
         }
     ]
