@@ -32,11 +32,6 @@
                     "geoip:cn",
                     "geoip:private"
                 ]
-            },
-            {
-                "type": "field",
-                "outboundTag": "common",
-                "network": "udp,tcp"
             }
         ]
     },
