@@ -25,12 +25,6 @@
               "geoip:cn",
               "geoip:private"
             ]
-        },
-        {
-            "id": "q319erhpy0xu49ll",
-            "type": "field",
-            "outboundTag": "proxy",
-            "network": "tcp,udp"
         }
     ]
 }
