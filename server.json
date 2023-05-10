@@ -24,7 +24,6 @@
         }
     ],
     "routing": {
-        "domainStrategy": "IPOnDemand",
         "rules": []
     },
     "policy": {
