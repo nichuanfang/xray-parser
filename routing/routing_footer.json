@@ -1,5 +1,5 @@
 {
-    "domainStrategy": "AsIs",
+    "domainStrategy": "IPIfNonMatch",
     "rules": [
         {
             "id": "wpl8aq56rh6rxgrb",
@@ -15,6 +15,15 @@
             "outboundTag": "direct",
             "domain": [
                 "geosite:cn"
+            ]
+        },
+        {
+            "id": "i9080ykzfwd7usuy",
+            "type": "field",
+            "outboundTag": "direct",
+            "ip": [
+              "geoip:cn",
+              "geoip:private"
             ]
         },
         {
