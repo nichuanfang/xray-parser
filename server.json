@@ -25,16 +25,7 @@
     ],
     "routing": {
         "domainStrategy": "IPOnDemand",
-        "rules": [
-            {
-                "type": "field",
-                "outboundTag": "blocked",
-                "ip": [
-                    "geoip:cn",
-                    "geoip:private"
-                ]
-            }
-        ]
+        "rules": []
     },
     "policy": {
         "statsInboundUplink": true,
