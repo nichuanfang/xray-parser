@@ -50,6 +50,7 @@ jobs:
 
       - name: 发布xray服务端http服务
         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        continue-on-error: true
         env:
           WELCOME: 'ssh scp ssh pipelines'
           LASTSSH: 'Doing something after copying'
