@@ -65,31 +65,31 @@ jobs:
           directory: /home/runner/work/xray-parser/xray-parser/docker
           repository: nichuanfang/docker
 
-      - name: 发布xray客户端http服务
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-        env:
-          WELCOME: 'ssh scp ssh pipelines'
-          LASTSSH: 'Doing something after copying'
-        continue-on-error: true
-        with:
-          # HC代表发布xray配置的服务器
-          host: ${{ secrets.HC_HOST }}
-          user: ${{ secrets.HC_USER }}
-          pass: ${{ secrets.HC_PASS }}
-          port: ${{ secrets.HC_PORT }}
-          connect_timeout: 20s
-          first_ssh: |
-            docker stop nginx
-            mkdir -p /root/assets/config/client/qx
-            mkdir -p /root/assets/config/client/trojan
-            mkdir -p /root/assets/config/client/windows
-            mkdir -p /root/assets/config/client/ios
-          scp: |
-            './docker/dockerfile_work/xray/config/client/client-windows-config.json' => /root/assets/config/client/windows
-            './docker/dockerfile_work/xray/config/client/client-ios-config.json' => /root/assets/config/client/ios
-            './docker/dockerfile_work/xray/config/client/trojan.txt' => /root/assets/config/client/trojan
-            './docker/dockerfile_work/xray/config/client/qx-policy.list' => /root/assets/config/client/qx
-            './docker/dockerfile_work/xray/config/client/qx-policy.txt' => /root/assets/config/client/qx
-          last_ssh: |
-            docker start nginx
-            curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray客户端配置已更新
+#       - name: 发布xray客户端http服务
+#         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+#         env:
+#           WELCOME: 'ssh scp ssh pipelines'
+#           LASTSSH: 'Doing something after copying'
+#         continue-on-error: true
+#         with:
+#           # HC代表发布xray配置的服务器
+#           host: ${{ secrets.HC_HOST }}
+#           user: ${{ secrets.HC_USER }}
+#           pass: ${{ secrets.HC_PASS }}
+#           port: ${{ secrets.HC_PORT }}
+#           connect_timeout: 20s
+#           first_ssh: |
+#             docker stop nginx
+#             mkdir -p /root/assets/config/client/qx
+#             mkdir -p /root/assets/config/client/trojan
+#             mkdir -p /root/assets/config/client/windows
+#             mkdir -p /root/assets/config/client/ios
+#           scp: |
+#             './docker/dockerfile_work/xray/config/client/client-windows-config.json' => /root/assets/config/client/windows
+#             './docker/dockerfile_work/xray/config/client/client-ios-config.json' => /root/assets/config/client/ios
+#             './docker/dockerfile_work/xray/config/client/trojan.txt' => /root/assets/config/client/trojan
+#             './docker/dockerfile_work/xray/config/client/qx-policy.list' => /root/assets/config/client/qx
+#             './docker/dockerfile_work/xray/config/client/qx-policy.txt' => /root/assets/config/client/qx
+#           last_ssh: |
+#             docker start nginx
+#             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray客户端配置已更新
