@@ -48,28 +48,6 @@ jobs:
           mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
           cp -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
 
-      # - name: 发布xray服务端http服务
-      #   uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-      #   continue-on-error: true
-      #   env:
-      #     WELCOME: 'ssh scp ssh pipelines'
-      #     LASTSSH: 'Doing something after copying'
-      #   with:
-      #     # HC代表发布xray配置的服务器
-      #     host: ${{ secrets.HC_HOST }}
-      #     user: ${{ secrets.HC_USER }}
-      #     pass: ${{ secrets.HC_PASS }}
-      #     port: ${{ secrets.HC_PORT }}
-      #     connect_timeout: 20s
-      #     first_ssh: |
-      #       docker stop nginx
-      #       mkdir -p /root/assets/config/server
-      #     scp: |
-      #       './docker/dockerfile_work/xray/xray-parser/dist/config.json' => /root/assets/config/server
-      #     last_ssh: |
-      #       docker start nginx
-      #       curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务端配置已更新
-
       # 删除docker项目的xray-parser目录
       - name: 删除docker项目的xray-parser目录
         run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
@@ -84,36 +62,3 @@ jobs:
           message: '🐳 chore: 更新xray服务端配置文件'
           directory: /home/runner/work/xray-parser/xray-parser/docker
           repository: nichuanfang/docker
-#       - name: 部署启动xray
-#         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-#         continue-on-error: true
-#         env:
-#           WELCOME: 'ssh scp ssh pipelines'
-#           LASTSSH: 'Doing something after copying'
-#         with:
-#           # DC代表部署xray的服务器
-#           host: ${{ secrets.DC_HOST }}
-#           user: ${{ secrets.DC_USER }}
-#           pass: ${{ secrets.DC_PASS }}
-#           port: ${{ secrets.DC_PORT }}
-#           connect_timeout: 20s
-#           first_ssh: |
-#             apt-get update
-#             apt-get install git -y
-#             apt-get install docker.io -y
-#             curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-#             chmod +x /usr/local/bin/docker-compose
-#             ln -fs /usr/local/bin/docker-compose /usr/bin/docker-compose
-#           scp: |
-#             './docker/dockerfile_work/xray/.git-credentials' => /root/
-#             './docker/dockerfile_work/xray/.gitconfig' => /root/
-#             './docker/dockerfile_work/xray/hook.sh' => /root/
-#           last_ssh: |
-#             chmod +x /root/hook.sh
-#             bash /root/hook.sh
-#             chmod +x /root/docker/dockerfile_work/xray/tls-ping.sh
-#             docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml down
-#             docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml pull
-#             docker-compose -f /root/docker/dockerfile_work/xray/docker-compose.yml up -d
-#             docker image prune -f -a
-#             curl -L https://api.day.app/${{ secrets.BARK_TOKEN }}/xray服务已启动
