@@ -2,6 +2,14 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
         {
+            "id": "jhnqx1fn746m1yso",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "dogyun.com"
+            ]
+        },
+        {
             "id": "jhnqx1fn946mqyso",
             "type": "field",
             "outboundTag": "proxy",
