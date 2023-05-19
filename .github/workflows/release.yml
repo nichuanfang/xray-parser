@@ -74,8 +74,9 @@ jobs:
           directory: /home/runner/work/xray-parser/xray-parser/docker
           repository: nichuanfang/docker
 
-      - name: 发布xray客户端配置(http://${{ secrets.VPS_DOMAIN }})
+      - name: 发布xray客户端配置(http://你的vps域名)
         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        continue-on-error: true
         with:
           host: ${{ secrets.VPS_HOST }}
           user: ${{ secrets.VPS_USER }}
