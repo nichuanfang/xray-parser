@@ -1,4 +1,4 @@
-name: Update Xray Config
+name: Update Xray Server
 on:
   push:
     branches:
