@@ -225,7 +225,7 @@ def update_config():
 
         # 生成trojan配置文件
         with open('dist/trojan.txt','w+') as trojan:
-            trojan.writelines(f'trojan={DC_DOMAIN}:{TROJAN_PORT}, password={TROJAN_PASSWORD}, over-tls=true, tls-verification=true, fast-open=false, udp-relay=false, tag=hk')
+            trojan.writelines(f'trojan={DC_HOST}:{TROJAN_PORT}, password={TROJAN_PASSWORD}, over-tls=true, tls-verification=true, fast-open=false, udp-relay=false, tag=hk')
 
 
         outbound_tag_map = {
