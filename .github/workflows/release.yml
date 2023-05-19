@@ -16,7 +16,7 @@ on:
 
 jobs:
   job1:
-    name: 构建xray客户端配置
+    name: 构建/更新xray客户端配置
     runs-on: ubuntu-20.04
     steps:
       - name: checkout出xray-parser项目
@@ -73,3 +73,17 @@ jobs:
           message: '🐳 chore: 更新xray客户端配置文件'
           directory: /home/runner/work/xray-parser/xray-parser/docker
           repository: nichuanfang/docker
+
+      - name: 发布xray客户端配置(http://${{ secrets.VPS_DOMAIN }})
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          pass: ${{ secrets.VPS_PASS }}
+          port: ${{ secrets.VPS_PORT }}
+          connect_timeout: 10s
+          first_ssh: |
+            cd /root/code/docker
+            git checkout .
+            git pull --allow-unrelated-histories
+            systemctl restart nginx
