@@ -55,20 +55,11 @@ jobs:
           value: ${{ secrets.VPS_PASS }}
           pa_token: ${{ secrets.GH_TOKEN }}
 
-      # workflowId可以通过https://api.github.com/repos/用户名/仓库名称/actions/workflows 查看
-      # - name: 初始化xray服务器
-      #   uses: rshop/trigger-workflow-action@v1
-      #   with:
-      #     token: ${{ secrets.GH_TOKEN }}
-      #     repository: 'nichuanfang/config-server'
-      #     workflowId: 57552525
-      #     branch: master
-
-      # workflowId可以通过https://api.github.com/repos/用户名/仓库名称/actions/workflows 查看
-      - name: test
+#       workflowId可以通过https://api.github.com/repos/用户名/仓库名称/actions/workflows 查看
+      - name: 初始化xray服务器
         uses: rshop/trigger-workflow-action@v1
         with:
           token: ${{ secrets.GH_TOKEN }}
           repository: 'nichuanfang/config-server'
-          workflowId: 57684096
+          workflowId: 57552525
           branch: master
