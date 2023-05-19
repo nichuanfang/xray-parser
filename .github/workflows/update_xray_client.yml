@@ -1,4 +1,4 @@
-name: Release Xray Client
+name: Update Xray Client
 
 on:
   # 手动触发
@@ -16,7 +16,7 @@ on:
 
 jobs:
   job1:
-    name: 构建/更新xray客户端配置
+    name: Update Xray Client
     runs-on: ubuntu-20.04
     steps:
       - name: checkout出xray-parser项目
