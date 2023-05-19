@@ -1,11 +1,11 @@
-name: Release Xray Server
+name: Update Xray Config
 on:
   push:
     branches:
       - 'server'
 jobs:
   job:
-    name: 构建镜像
+    name: Update Xray Config
     runs-on: ubuntu-20.04
     steps:
       - name: checkout出xray-parser项目
