@@ -4,7 +4,7 @@
         {
             "id": "jhnqx1fn746m1yso",
             "type": "field",
-            "outboundTag": "proxy",
+            "outboundTag": "direct",
             "domain": [
                 "dogyun.com"
             ]
