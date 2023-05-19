@@ -65,6 +65,7 @@ jobs:
 
       - name: 更新xray服务端
         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        continue-on-error: true
         with:
           host: ${{ secrets.VPS_HOST }}
           user: ${{ secrets.VPS_USER }}
