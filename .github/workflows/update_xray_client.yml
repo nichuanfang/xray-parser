@@ -57,8 +57,8 @@ jobs:
           cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-windows-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
           cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-ios-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
           cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/trojan.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
-          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
-          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/qx
+          cp $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/qx
 
       - name: 清理无用文件夹
         run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
