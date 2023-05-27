@@ -76,4 +76,5 @@ jobs:
             cd /root/code/docker
             git checkout .
             git pull --allow-unrelated-histories
+            systemctl restart nginx
             docker restart xray
