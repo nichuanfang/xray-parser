@@ -46,8 +46,9 @@ jobs:
       - name: 提交之前的准备工作
         run: |
           mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
-          cp -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
+          cp -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
           ls $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
+          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json
           cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/config.json
 
       # 删除docker项目的xray-parser目录
