@@ -3,7 +3,7 @@
         "access": "log/access.log",
         "error": "log/error.log",
         "loglevel": "warning",
-        "dnsLog": false
+        "dnsLog": true
     },
     "inbounds": [
         {

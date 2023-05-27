@@ -54,11 +54,11 @@ jobs:
       - name: 将生成的配置文件保存到docker项目中
         run: |
           mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
-          cp -f $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-windows-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
-          cp -f $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-ios-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
-          cp -f $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/trojan.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
-          cp -f $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/qx
-          cp -f $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/qx
+          cp -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-windows-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/client-ios-config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/trojan.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/client
+          cp -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.list $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/qx
+          cp -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/qx-policy.txt $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/qx
 
       - name: 清理无用文件夹
         run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
@@ -66,7 +66,7 @@ jobs:
       - name: 更新docker项目
         uses: Smart-Transportation/push@v1.3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_TOKEN }}
           branch: 'master'
           author_email: 'github-actions[bot]@users.noreply.github.com'
           author_name: 'github-actions[bot]'
