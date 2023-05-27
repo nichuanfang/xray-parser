@@ -109,15 +109,6 @@
                 "address": "223.5.5.5",
                 "domains": [
                     "geosite:cn"
-                ],
-                "expectIPs": [
-                    "geoip:cn"
-                ]
-            },
-            {
-                "address": "119.29.29.29",
-                "domains": [
-                    "geosite:cn"
                 ]
             },
             "localhost"
