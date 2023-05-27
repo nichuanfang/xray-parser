@@ -99,7 +99,10 @@
             "dns.google": "8.8.4.4"
         },
         "servers": [
-            "https://dns.alidns.com/dns-query"
+            "tcp+local://223.5.5.5",
+            "tcp+local://119.29.29.29",
+            "tcp+local://114.114.114.114",
+            "tcp+local://localhost"
         ],
         "queryStrategy": "UseIP",
         "disableCache": false,
