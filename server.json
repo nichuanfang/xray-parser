@@ -36,7 +36,6 @@
         "servers": [ 
             "https+local://1.1.1.1/dns-query",
             "localhost"
-            
         ]
     },
     "transport": null,
