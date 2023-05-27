@@ -128,6 +128,15 @@
             "domain": [
                 "missav.com"
             ]
+        },
+        {
+            "id": "cm05z8ixgh3aea8j",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "ihezu.cn",
+                "ihezu.com.cn"
+            ]
         }
     ]
 }
