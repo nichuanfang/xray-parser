@@ -33,7 +33,7 @@
         "statsOutboundDownlink": true
     },
     "dns": {
-        "servers": [
+        "servers": [ 
             "https+local://1.1.1.1/dns-query",
             "localhost"
         ]
