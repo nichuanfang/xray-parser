@@ -7,8 +7,7 @@
     "api": {
         "services": [
             "HandlerService",
-            "LoggerService",
-            "StatsService"
+            "LoggerService"
         ],
         "tag": "api"
     },
