@@ -3,7 +3,7 @@
         "access": "log/access.log",
         "error": "log/error.log",
         "loglevel": "warning",
-        "dnsLog": false
+        "dnsLog": true
     },
     "inbounds": [
         {
@@ -99,9 +99,7 @@
             "dns.google": "8.8.4.4"
         },
         "servers": [
-            "tcp+local://223.6.6.6",
-            "tcp+local://8.8.4.4",
-            "tcp+local://localhost"
+            "https://dns.alidns.com/dns-query"
         ],
         "queryStrategy": "UseIP",
         "disableCache": false,
