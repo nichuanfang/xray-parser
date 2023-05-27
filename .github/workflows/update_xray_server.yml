@@ -47,15 +47,17 @@ jobs:
         run: |
           mkdir -p $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
           cp -r $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser/dist/config.json $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
+          ls $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config
+          cat $GITHUB_WORKSPACE/docker/dockerfile_work/xray/config/config.json
 
       # 删除docker项目的xray-parser目录
       - name: 删除docker项目的xray-parser目录
         run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-
+      
       - name: 更新docker项目的config.json和docker-compose.yml
         uses: Smart-Transportation/push@v1.3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_TOKEN }}
           branch: 'master'
           author_email: 'github-actions[bot]@users.noreply.github.com'
           author_name: 'github-actions[bot]'
