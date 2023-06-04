@@ -73,7 +73,7 @@ jobs:
           message: '🐳 chore: 更新xray客户端配置文件'
           directory: /home/runner/work/xray-parser/xray-parser/docker
           repository: nichuanfang/docker
-          
+
       - name: Push notification
         uses: shink/bark-action@v2
         continue-on-error: true
