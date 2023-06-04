@@ -73,3 +73,17 @@ jobs:
           message: '🐳 chore: 更新xray客户端配置文件'
           directory: /home/runner/work/xray-parser/xray-parser/docker
           repository: nichuanfang/docker
+          
+      - name: Push notification
+        uses: shink/bark-action@v2
+        continue-on-error: true
+        with:
+          key: ${{ secrets.BARK_KEY }} # Your secret key, it is required
+          host: ${{ vars.BARK_HOST }} # Your Bark host, the default is 'https://api.day.app'
+          title: Success
+          body: Xray client config has updated!
+          sound: calypso
+          isArchive: 1
+          # url: https://yuanhaoji.com
+          # automaticallyCopy: 1
+          # copy: Content copied to clipboard
