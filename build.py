@@ -163,7 +163,7 @@ def update_config():
         # 客户端使用的服务域名
         VLESS_CLIENT_SERVER_NAME = get_assert_arg(3,'vars.VLESS_CLIENT_SERVER_NAME: 客户端使用的服务域名未配置!')
         # 校验服务域名是否可用
-        verify_client_server_name(VLESS_CLIENT_SERVER_NAME,server_config,vless_inbound)
+        #verify_client_server_name(VLESS_CLIENT_SERVER_NAME,server_config,vless_inbound)
         # vless通过xray x25519生成的密钥对的公钥 服务端必须与之对应
         VLESS_PUBLIC_KEY = generate_public_key(server_config,vless_inbound)
         # windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
