@@ -119,7 +119,7 @@ def create_config():
     # 去空格
     for server_name in unhandled_server_names:
         handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
-    verify_dest_server_names(VLESS_DEST,handled_server_names)
+    #verify_dest_server_names(VLESS_DEST,handled_server_names)
     # vless通过xray x25519生成的密钥对的私钥 客户端必须与之对应
     VLESS_PRIVATE_KEY = private_key
     # windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
