@@ -181,7 +181,7 @@ def update_config():
     for server_name in unhandled_server_names:
         handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
     # 校验dest与serverNames是否匹配
-    verify_dest_server_names(VLESS_DEST.split(':')[0],handled_server_names)
+    #verify_dest_server_names(VLESS_DEST.split(':')[0],handled_server_names)
     # vless端口
     VLESS_PORT = get_assert_arg(3,'vars.VLESS_PORT: vless端口未配置!')
     # trojan端口
