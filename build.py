@@ -167,7 +167,7 @@ def create_config():
 
     server['inbounds'] = inbounds
     # 持久化
-    json.dump(server,open(f'dist/config.json','w+'))
+    json.dump(server,open(f'dist/config.json','w+')) 
 
 # 更新配置
 def update_config():
