@@ -14,23 +14,31 @@
     },
     "outbounds": [
         {
-            "tag": "common",
+            "tag": "direct",
             "protocol": "freedom"
         },
         {
             "protocol": "blackhole",
-            "settings": {},
-            "tag": "blocked"
+            "tag": "block"
         }
     ],
     "routing": {
-        "rules": []
+        "rules": [
+            {
+                "type": "field",
+                "port": "443",
+                "network": "udp",
+                "outboundTag": "block"
+            }
+        ]
     },
     "policy": {
-        "statsInboundUplink": true,
-        "statsInboundDownlink": true,
-        "statsOutboundUplink": true,
-        "statsOutboundDownlink": true
+        "levels": {
+            "0": {
+                "handshake": 2,
+                "connIdle": 120
+            }
+        }
     },
     "dns": {
         "servers": [ 
