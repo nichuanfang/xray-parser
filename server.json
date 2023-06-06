@@ -23,14 +23,7 @@
         }
     ],
     "routing": {
-        "rules": [
-            {
-                "type": "field",
-                "port": "443",
-                "network": "udp",
-                "outboundTag": "block"
-            }
-        ]
+        "rules": []
     },
     "policy": {
         "levels": {
