@@ -196,6 +196,7 @@ def update_config():
             server_config['routing'] = base_server['routing']
             server_config['dns'] = base_server['dns']
             server_config['policy'] = base_server['policy']
+            server_config['outbounds'] = base_server['outbounds']
         inbounds:list = server_config['inbounds']
         for inbound in inbounds:
             if inbound['protocol'] == 'vless':
