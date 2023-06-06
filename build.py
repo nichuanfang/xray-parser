@@ -201,7 +201,7 @@ def update_config():
         for inbound in inbounds:
             if inbound['protocol'] == 'vless':
                 inbound['port'] = VLESS_PORT
-                inbound['streamSettings']['realitySettings']['dest'] = 's0.awsstatic.com:443'
+                inbound['streamSettings']['realitySettings']['dest'] = VLESS_DEST
                 inbound['streamSettings']['realitySettings']['serverNames'] = handled_server_names
             else:
                 inbound['port'] = TROJAN_PORT
