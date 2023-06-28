@@ -2,14 +2,6 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
         {
-            "id": "0kddgfgdtnl69tkd",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "deliver.ptgncdn.com"
-            ]
-        },
-        {
             "id": "utl9pwx1ol5glnoy",
             "type": "field",
             "outboundTag": "block",
@@ -36,7 +28,7 @@
         {
             "id": "aqw8qzbqynjo6ldg",
             "type": "field",
-            "outboundTag": "proxy",
+            "outboundTag": "direct",
             "domain": [
                 "geosite:microsoft"
             ]
