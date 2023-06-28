@@ -18,6 +18,16 @@
             ]
         },
         {
+            "id": "aqw8qzbqynjo1l9g",
+            "type": "field",
+            "outboundTag": "proxy",
+            "domain": [
+                "github.com",
+                "github.io",
+                "githubusercontent.com"
+            ]
+        },
+        {
             "id": "hjgm4yqvu7rhozad",
             "type": "field",
             "outboundTag": "proxy",
