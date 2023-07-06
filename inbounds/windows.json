@@ -5,14 +5,15 @@
     "settings": {
         "clients": [
             {
-                "id": "",
+                "id": "drEwvgYhS15C",
                 "flow": "xtls-rprx-vision"
             }
         ],
         "decryption": "none"
     },
     "streamSettings": {
-        "network": "tcp",
+        "show": false,
+        "network": "grpc",
         "security": "reality",
         "realitySettings": {
             "show": false,
@@ -21,13 +22,13 @@
             "serverNames": [],
             "privateKey": "",
             "shortIds": []
+        },
+        "grpcSettings": {
+            "serviceName": "cinima"
         }
     },
     "sniffing": {
         "enabled": true,
-        "destOverride": [
-            "http",
-            "tls"
-        ]
+        "destOverride": ["http", "tls", "quic"]
     }
 }
