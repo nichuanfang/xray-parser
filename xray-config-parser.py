@@ -6,7 +6,7 @@ from urllib import request
 from entity.QxPolicy import QxPolicy
 from entity.XrayPolicy import XrayPolicy
 import logging
-
+ 
 logging.getLogger().setLevel(logging.INFO)
 logging.info("==========开始更新xray配置文件==============")
 # 自定义分流规则
