@@ -211,9 +211,9 @@ def update_config():
 # 判断dockerfile/xray下面有没有config.json 文件 有的话直接读取配置 没有就生成
 server_config:dict = {}
 try:
-    config_file_list = os.popen('ls ../config').readlines()
+    config_file_list = os.popen('cat ../config.json').readlines()
 except:
-    logging.info('config文件夹为空')
+    logging.info('config服务端配置不存在!!!')
     config_file_list:dict = []
 
 if len(config_file_list) == 0:
