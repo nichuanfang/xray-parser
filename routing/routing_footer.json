@@ -2,19 +2,28 @@
     "domainStrategy": "IPIfNonMatch",
     "rules": [
         {
-            "id": "wpl8aq56rh6rxgrb",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "geosite:geolocation-!cn"
-            ]
-        },
-        {
             "id": "tvkb9oavos4p735b",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
                 "geosite:cn"
+            ]
+        },
+        {
+            "id": "iops97s8dh4p7389",
+            "type": "field",
+            "outboundTag": "direct",
+            "ip": [
+                "geoip:cn",
+                "geoip:private"
+            ]
+        },
+        {
+            "id": "wpl8aq56rh6rxgrb",
+            "type": "field",
+            "outboundTag": "proxy",
+            "domain": [
+                "geosite:geolocation-!cn"
             ]
         }
     ]
