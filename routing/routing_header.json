@@ -10,6 +10,12 @@
             ]
         },
         {
+            "id": "561k22jzku2iopsc",
+            "type": "field",
+            "outboundTag": "direct",
+            "protocol": ["bittorrent"]
+        },
+        {
             "id": "042k02jzku2qrucb",
             "type": "field",
             "outboundTag": "proxy",
