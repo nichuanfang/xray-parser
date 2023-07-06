@@ -264,9 +264,9 @@ def update_config():
 # 判断服务端配置是否存在 不存在直接中止构建
 server_config:dict = {}
 try:
-    config_file_list = os.popen('ls ../config').readlines()
+    config_file_list = os.popen('cat ../config.json').readlines()
 except:
-    logging.info('config文件夹为空')
+    logging.info('config服务端配置为空!!!')
     config_file_list:dict = []
 
 if len(config_file_list) == 0:
