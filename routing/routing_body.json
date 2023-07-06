@@ -10,6 +10,14 @@
             ]
         },
         {
+            "id": "mhnqx1fn321m8yii",
+            "type": "field",
+            "outboundTag": "proxy",
+            "domain": [
+                "segmentfault.com"
+            ]
+        },
+        {
             "id": "jhnqx1fn946mqyso",
             "type": "field",
             "outboundTag": "proxy",
