@@ -58,6 +58,9 @@
                             {
                                 "id": "xray的uuid",
                                 "flow": "xtls-rprx-vision",
+                                "alterId": 0,
+                                "email": "t@t.tt",
+                                "security": "auto",
                                 "encryption": "none"
                             }
                         ]
@@ -65,7 +68,7 @@
                 ]
             },
             "streamSettings": {
-                "network": "tcp",
+                "network": "grpc",
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
@@ -74,6 +77,14 @@
                     "publicKey": "xray的公钥",
                     "shortId": "客户端id",
                     "spiderX": "爬虫路径"
+                },
+                "grpcSettings": {
+                    "serviceName": "cinima",
+                    "multiMode": false,
+                    "idle_timeout": 60,
+                    "health_check_timeout": 20,
+                    "permit_without_stream": false,
+                    "initial_windows_size": 0
                 }
             }
         },
