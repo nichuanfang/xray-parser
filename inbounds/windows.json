@@ -6,7 +6,7 @@
         "clients": [
             {
                 "id": "",
-                "flow": "xtls-rprx-vision"
+                "flow": ""
             }
         ],
         "decryption": "none"
