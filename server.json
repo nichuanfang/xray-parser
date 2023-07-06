@@ -23,7 +23,20 @@
         }
     ],
     "routing": {
-        "rules": []
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "type": "field",
+                "port": "80",
+                "network": "udp",
+                "outboundTag": "block"
+            },
+            {
+                "type": "field",
+                "ip": ["geoip:private"],
+                "outboundTag": "block"
+            }
+        ]
     },
     "policy": {
         "levels": {
