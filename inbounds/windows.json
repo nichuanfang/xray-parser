@@ -24,7 +24,7 @@
             "shortIds": []
         },
         "grpcSettings": {
-            "serviceName": "cinima"
+            "serviceName": ""
         }
     },
     "sniffing": {
