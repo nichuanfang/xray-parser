@@ -12,7 +12,7 @@
         {
             "id": "mhnqx1fn321m8yii",
             "type": "field",
-            "outboundTag": "proxy",
+            "outboundTag": "direct",
             "domain": [
                 "segmentfault.com"
             ]
