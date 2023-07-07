@@ -30,6 +30,13 @@
                 "port": "80",
                 "network": "udp",
                 "outboundTag": "block"
+            },
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:cn"
+                ],
+                "outboundTag": "block"
             }
         ]
     },
