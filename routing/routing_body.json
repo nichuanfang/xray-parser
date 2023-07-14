@@ -153,6 +153,14 @@
             "domain": [
                 "tool.lu"
             ]
+        },
+        {
+            "id": "sd78z8ix913a90sd",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "git.io"
+            ]
         }
     ]
 }
