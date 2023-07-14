@@ -157,7 +157,7 @@
         {
             "id": "sd78z8ix913a90sd",
             "type": "field",
-            "outboundTag": "direct",
+            "outboundTag": "proxy",
             "domain": [
                 "git.io"
             ]
