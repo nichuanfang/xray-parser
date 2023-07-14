@@ -145,6 +145,14 @@
                 "ihezu.cn",
                 "ihezu.com.cn"
             ]
+        },
+        {
+            "id": "981dz8ixgh3a90sd",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "tool.lu"
+            ]
         }
     ]
 }
