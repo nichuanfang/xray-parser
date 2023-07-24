@@ -20,18 +20,6 @@
         {
             "protocol": "blackhole",
             "tag": "block"
-        },
-        {
-            "tag":"cloudflare-warp",
-            "protocol": "socks",
-            "settings": {
-                "servers": [
-                   {
-                       "address": "127.0.0.1",
-                       "port": 40000
-                    }
-                ]
-            }
         }
     ],
     "routing": {
