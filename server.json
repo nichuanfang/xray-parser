@@ -27,7 +27,7 @@
             "settings": {
                 "servers": [
                    {
-                       "address": "154.202.60.190",
+                       "address": "127.0.0.1",
                        "port": 40000
                     }
                 ]
