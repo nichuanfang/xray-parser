@@ -20,11 +20,31 @@
         {
             "protocol": "blackhole",
             "tag": "block"
+        },
+        {
+            "tag":"cloudflare-warp",
+            "protocol": "socks",
+            "settings": {
+                "servers": [
+                   {
+                       "address": "127.0.0.1",
+                       "port": 40000
+                    }
+                ]
+            }
         }
     ],
     "routing": {
         "domainStrategy": "IPIfNonMatch",
         "rules": [
+            {
+                "type": "field",
+                "domain": [
+                    "openai.com",
+                    "ai.com"
+                ],
+                "outboundTag": "cloudflare-warp"
+            },
             {
                 "type": "field",
                 "port": "80",
