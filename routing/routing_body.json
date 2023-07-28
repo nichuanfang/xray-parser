@@ -15,6 +15,7 @@
                 "outboundTag": "direct",
                 "domain": [
                     "ihezu.cn",
+                    "ihezu.com",
                     "ihezu.com.cn"
                 ]
             },
