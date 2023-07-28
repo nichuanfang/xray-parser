@@ -17,15 +17,6 @@
                 "geosite:cn",
                 "geosite:private"
             ]
-        },
-        {
-            "id": "iops97s8dh4p7389",
-            "type": "field",
-            "outboundTag": "direct",
-            "ip": [
-                "geoip:cn",
-                "geoip:private"
-            ]
         }
     ]
 }
