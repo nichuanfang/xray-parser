@@ -1,5 +1,5 @@
 {
-    "domainStrategy": "IPIfNonMatch",
+    "domainStrategy": "AsIs",
     "rules": [
         {
             "id": "utl9pwx1ol5glnoy",
