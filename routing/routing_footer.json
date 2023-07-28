@@ -2,14 +2,6 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
-            "id": "wpl8aq56rh6rxgrb",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "geosite:geolocation-!cn"
-            ]
-        },
-        {
             "id": "tvkb9oavos4p735b",
             "type": "field",
             "outboundTag": "direct",
