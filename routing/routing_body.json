@@ -1,167 +1,39 @@
 {
     "domainStrategy": "AsIs",
     "rules": [
-        {
-            "id": "jhnqx1fn746m1yso",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "dogyun.com"
-            ]
-        },
-        {
-            "id": "mhnqx1fn321m8yii",
-            "type": "field",
-            "outboundTag": "direct",
-            "domain": [
-                "segmentfault.com"
-            ]
-        },
-        {
-            "id": "jhnqx1fn946mqyso",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "full:duangks.com"
-            ]
-        },
-        {
-            "id": "ulpl6t1db5qjtqcl",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "amazon.com"
-            ]
-        },
-        {
-            "id": "qydex4gd0c63h2jo",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "telghub.com"
-            ]
-        },
-        {
-            "id": "0qyva7ehzxjeh85m",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "docker.com"
-            ]
-        },
-        {
-            "id": "7w2zheg56t9kuac7",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "metrics.lecoq.io"
-            ]
-        },
-        {
-            "id": "p6yto24f0xelz5io",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "github-readme-stats.vercel.app"
-            ]
-        },
-        {
-            "id": "nx10iaq56qkrctyz",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "cloudfront.net"
-            ]
-        },
-        {
-            "id": "n3zr2g52tg19s69e",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "wallhaven.cc"
-            ]
-        },
-        {
-            "id": "zwxrazbaommv98e8",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "paddle.net"
-            ]
-        },
-        {
-            "id": "5ku8p0fy9of8fpjb",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "lecoq.io"
-            ]
-        },
-        {
-            "id": "zglvs8k457gjuyjr",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "vercel.app"
-            ]
-        },
-        {
-            "id" : "gwlek7tpvs59cuis",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "cloudflare.com"
-            ]
-        },
-        {
-            "id": "82rvapu8y6jdj8nk",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "racknerd.com"
-            ]
-        },
-        {
-            "id": "h1fzi10csfb7f7o4",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "tawk.to"
-            ]
-        },
-        {
-            "id": "cm01zfixgh3aea8j",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "missav.com"
-            ]
-        },
-        {
-            "id": "cm05z8ixgh3aea8j",
-            "type": "field",
-            "outboundTag": "direct",
-            "domain": [
-                "ihezu.cn",
-                "ihezu.com.cn"
-            ]
-        },
-        {
-            "id": "981dz8ixgh3a90sd",
-            "type": "field",
-            "outboundTag": "direct",
-            "domain": [
-                "tool.lu"
-            ]
-        },
-        {
-            "id": "rV0sQ6qU2lH7iQ2d",
-            "type": "field",
-            "outboundTag": "direct",
-            "domain": [
-                "aliyuncs.com",
-                "account-cn.alibabacloud.com"
-            ]
-        }
+           {
+                "id": "mhnqx1fn321m8yii",
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "segmentfault.com"
+                ]
+            },
+            {
+                "id": "cm05z8ixgh3aea8j",
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "ihezu.cn",
+                    "ihezu.com.cn"
+                ]
+            },
+            {
+                "id": "981dz8ixgh3a90sd",
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "tool.lu"
+                ]
+            },
+            {
+                "id": "rV0sQ6qU2lH7iQ2d",
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "aliyuncs.com",
+                    "account-cn.alibabacloud.com"
+                ]
+            }
     ]
 }
