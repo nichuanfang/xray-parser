@@ -153,6 +153,14 @@
             "domain": [
                 "tool.lu"
             ]
+        },
+        {
+            "id": "tD6iO2pP9vR8cT7r",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "account-cn.alibabacloud.com"
+            ]
         }
     ]
 }
