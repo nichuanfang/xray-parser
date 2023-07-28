@@ -155,10 +155,11 @@
             ]
         },
         {
-            "id": "tD6iO2pP9vR8cT7r",
+            "id": "rV0sQ6qU2lH7iQ2d",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
+                "aliyuncs.com",
                 "account-cn.alibabacloud.com"
             ]
         }
