@@ -51,6 +51,14 @@
                 "domain": [
                     "codemart.com"
                 ]
+            },
+            {
+                "id": "fB1vS6jT9qK2cM9u",
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "jq22.com"
+                ]
             }
     ]
 }
