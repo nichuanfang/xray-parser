@@ -43,6 +43,14 @@
                 "domain": [
                     "www.puercn.com"
                 ]
+            },
+            {
+                "id": "qO1yH8rK5nG6qQ0f",
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "codemart.com"
+                ]
             }
     ]
 }
