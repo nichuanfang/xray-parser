@@ -34,6 +34,14 @@
                     "aliyuncs.com",
                     "account-cn.alibabacloud.com"
                 ]
+            },
+            {
+                "id": "nM6hX7uM4dV8cU1l",
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "www.puercn.com"
+                ]
             }
     ]
 }
