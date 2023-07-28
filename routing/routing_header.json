@@ -24,45 +24,24 @@
             ]
         },
         {
-            "id": "aqw8qzbqynjo1l9g",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "github.com",
-                "github.io",
-                "githubusercontent.com"
-            ]
-        },
-        {
-            "id": "hjgm4yqvu7rhozad",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "geosite:telegram"
-            ]
-        },
+                "id": "gB2wP1oI8eP7fE5x",
+                "type": "field",
+                "outboundTag": "proxy",
+                "domain": [
+                    "github.com",
+                    "github.global.ssl.fastly.net",
+                    "assets-cdn.github.com",
+                    "raw.githubusercontent.com",
+                    "gist.github.com",
+                    "github.io"
+                ]
+            },
         {
             "id": "aqw8qzbqynjo6ldg",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
                 "geosite:microsoft"
-            ]
-        },
-        {
-            "id": "ewj8vbeexitq0g7t",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "geosite:facebook"
-            ]
-        },
-        {
-            "id": "8pcmefhyzumokkfx",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "geosite:twitter"
             ]
         }
     ]
