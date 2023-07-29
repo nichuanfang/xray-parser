@@ -57,7 +57,23 @@
                 "type": "field",
                 "outboundTag": "direct",
                 "domain": [
-                    "jq22.com"
+                    "jq22.com",
+                    "weixinbridge.com",
+                    "iplaysoft.com",
+                    "5u5u5u5u.com",
+                    "nat123.com",
+                    "tulingtech.xyz",
+                    "gitee.ltd",
+                    "pig4cloud.com",
+                    "gametaptap.com",
+                    "lc-cn-n1-shared.com",
+                    "decloud.foundation",
+                    "crustipfs.info",
+                    "crustipfs.tech",
+                    "oldking.club",
+                    "myhuaweicloud.com",
+                    "snssdk.com",
+                    "zdic.net"
                 ]
             }
     ]
