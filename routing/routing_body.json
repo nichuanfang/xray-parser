@@ -1,80 +1,453 @@
 {
     "domainStrategy": "AsIs",
     "rules": [
-           {
-                "id": "mhnqx1fn321m8yii",
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "segmentfault.com"
-                ]
-            },
-            {
-                "id": "cm05z8ixgh3aea8j",
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "ihezu.cn",
-                    "ihezu.com",
-                    "ihezu.com.cn"
-                ]
-            },
-            {
-                "id": "981dz8ixgh3a90sd",
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "tool.lu"
-                ]
-            },
-            {
-                "id": "rV0sQ6qU2lH7iQ2d",
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "aliyuncs.com",
-                    "account-cn.alibabacloud.com"
-                ]
-            },
-            {
-                "id": "nM6hX7uM4dV8cU1l",
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "www.puercn.com"
-                ]
-            },
-            {
-                "id": "qO1yH8rK5nG6qQ0f",
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "codemart.com"
-                ]
-            },
-            {
-                "id": "fB1vS6jT9qK2cM9u",
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-                    "jq22.com",
-                    "weixinbridge.com",
-                    "iplaysoft.com",
-                    "5u5u5u5u.com",
-                    "nat123.com",
-                    "tulingtech.xyz",
-                    "gitee.ltd",
-                    "pig4cloud.com",
-                    "gametaptap.com",
-                    "lc-cn-n1-shared.com",
-                    "decloud.foundation",
-                    "crustipfs.info",
-                    "crustipfs.tech",
-                    "oldking.club",
-                    "myhuaweicloud.com",
-                    "snssdk.com",
-                    "zdic.net"
-                ]
-            }
+        {
+            "id": "C2nVZJrcO0HS7ylM",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "segmentfault.com"
+            ]
+        },
+        {
+            "id": "DRiXVJ6PhWEwUMIp",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "dataflow.biliapi.com"
+            ]
+        },
+        {
+            "id": "VcylRCfKOGFe4Sqs",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "dx-baiducdncmn2.inter.iqiyi.com"
+            ]
+        },
+        {
+            "id": "CSMrhzlkZqniJ30H",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "upload-images.jianshu.io"
+            ]
+        },
+        {
+            "id": "JwoxZIOgXKu8eLtj",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "lf3-armor.byted-ug.com"
+            ]
+        },
+        {
+            "id": "mnu52x9d4fCSlNVh",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "tool.lu"
+            ]
+        },
+        {
+            "id": "kFT7OxGJu4WRPSX0",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "open.snssdk.com"
+            ]
+        },
+        {
+            "id": "NuXe3imfVRHsP5nb",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "lf-headquarters-speed.yhgfb-cn-static.com"
+            ]
+        },
+        {
+            "id": "RsbMJhQAuKCqmzVO",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "mcs.snssdk.com"
+            ]
+        },
+        {
+            "id": "XKcrx4kd1WFEzDQ3",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "data.bilibili.com"
+            ]
+        },
+        {
+            "id": "nmTLaOE9FthgVk2D",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "mon.snssdk.com"
+            ]
+        },
+        {
+            "id": "SeByEvaMrtjPfd2H",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "feedback.log-global.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "dDSTu1xOYUsEJm43",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "656e-env-iknzbddq-1254055692.tcb.qcloud.la"
+            ]
+        },
+        {
+            "id": "9Zi1yFER30Iu6cOw",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "stacdn.proginn.com"
+            ]
+        },
+        {
+            "id": "iLWKpqPJCjf0oMUn",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "collect-v6.51.la"
+            ]
+        },
+        {
+            "id": "9AzHcLtNvmC0x8Z4",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "open.tjstats.com"
+            ]
+        },
+        {
+            "id": "m8bfIR4tj9kK7JEN",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "lf3-data.volccdn.com"
+            ]
+        },
+        {
+            "id": "RoMLCBqZhUEfipn8",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "lf3-cdn-tos.bytecdntp.com"
+            ]
+        },
+        {
+            "id": "eqALcCBw9fZKbD8X",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.idcbest.hk"
+            ]
+        },
+        {
+            "id": "TPzESiZYp3rX9wHo",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "account-cn.alibabacloud.com"
+            ]
+        },
+        {
+            "id": "Y0ol8zUFWLDVfyBq",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "js.users.51.la"
+            ]
+        },
+        {
+            "id": "5QDkKiTnVZgMmGhv",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "guangzan.gitee.io"
+            ]
+        },
+        {
+            "id": "Dx71ScJd5nfbO9hs",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "aliyun-web-tracker.cn-zhangjiakou.log.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "8BkOGvDX01nh3JFI",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "aliyun-page.cn-hangzhou.log.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "VMINgKf7PW5HAUeR",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "arms-retcode.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "3RjnyM82ioVZ5CJ6",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "badjs.weixinbridge.com"
+            ]
+        },
+        {
+            "id": "kl7r3NvuQUCsG2aj",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "stats.segmentfault.net"
+            ]
+        },
+        {
+            "id": "uOwhc9q8vEKiQfnI",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "api.i-meto.com"
+            ]
+        },
+        {
+            "id": "hpcBCsyWaiVq67I4",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.strdkj.com"
+            ]
+        },
+        {
+            "id": "kQSCAvZu0Y5ptU7E",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.tuliu.com"
+            ]
+        },
+        {
+            "id": "DiJSkW8pzbe4ANvH",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.puercn.com"
+            ]
+        },
+        {
+            "id": "u1IWcw3JQsz2oaE8",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "account.geekbang.org"
+            ]
+        },
+        {
+            "id": "OCbj9SMfzJ4dP5Y7",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "geekbang.org"
+            ]
+        },
+        {
+            "id": "ziEnxMljKYOWZ2vq",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "m.mingyannet.com"
+            ]
+        },
+        {
+            "id": "ICY31gu5GOA2Rtl0",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "ihz-api.ihezu.com"
+            ]
+        },
+        {
+            "id": "OB2Xz15YRg3GxfEs",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "nfxp-api.ihezu.com"
+            ]
+        },
+        {
+            "id": "C0uZ39pTNJaLgxsf",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "ihezu.com"
+            ]
+        },
+        {
+            "id": "FWwCq7NPhbnpf9Ag",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.zdic.net"
+            ]
+        },
+        {
+            "id": "Mf0PTi4DbIKJvQW8",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.iplaysoft.com"
+            ]
+        },
+        {
+            "id": "vHyD5zG0seNdCk7b",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "furiondata.myhuaweicloud.com"
+            ]
+        },
+        {
+            "id": "IHp8loRhwYEtyvqs",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "cn.oldking.club"
+            ]
+        },
+        {
+            "id": "15nyP2uNWlpjiqkL",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "crustipfs.tech"
+            ]
+        },
+        {
+            "id": "XZmLjtePUGwTJQ54",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "crustipfs.info"
+            ]
+        },
+        {
+            "id": "OoCs9M8Ay5mU2z7N",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "ipfs-gw.decloud.foundation"
+            ]
+        },
+        {
+            "id": "Ks93egPi5UVIoRld",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "gw.crustfiles.net"
+            ]
+        },
+        {
+            "id": "D6QcIWxeO59gjGKA",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "codemart.com"
+            ]
+        },
+        {
+            "id": "r2Q8fNmHyLCDcOiS",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "cube.weixinbridge.com"
+            ]
+        },
+        {
+            "id": "xLMmro7BgRUOGX0u",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "sentry.gametaptap.com"
+            ]
+        },
+        {
+            "id": "w0L5ZuBaKR3Cr96U",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "ommmegjc.lc-cn-n1-shared.com"
+            ]
+        },
+        {
+            "id": "PwQ52nReApDqfFlI",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "git.pig4cloud.com"
+            ]
+        },
+        {
+            "id": "zEJKSA8lIkC3csT7",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "pig4cloud.com"
+            ]
+        },
+        {
+            "id": "4MyYmKWLADNZ1TEH",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "gitee.ltd"
+            ]
+        },
+        {
+            "id": "tmDVpZMWC4TH51fu",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.jq22.com"
+            ]
+        },
+        {
+            "id": "YQx2kK9ym6d7werF",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.tulingtech.xyz"
+            ]
+        },
+        {
+            "id": "Xso7PSeNMA5Cz3WH",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.nat123.com"
+            ]
+        },
+        {
+            "id": "e24sRnk5PB6v8yVi",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "hz.5u5u5u5u.com"
+            ]
+        }
     ]
 }
