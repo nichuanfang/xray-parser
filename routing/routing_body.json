@@ -2,7 +2,7 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
-            "id": "GyBN7m8nJcrIVtxg",
+            "id": "1yVZv4Rqjrza6Ih3",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "id": "ru2eMdRYwN8kBhmE",
+            "id": "HZt1z9IvuMg7SGQ5",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -18,7 +18,7 @@
             ]
         },
         {
-            "id": "aBAmS42zvJjoFXkK",
+            "id": "v0Ub5RrOetnPQLiS",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -26,7 +26,7 @@
             ]
         },
         {
-            "id": "XFKgZNJ0vLweGYoH",
+            "id": "8zp1xXSakOY7LoGy",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -34,7 +34,7 @@
             ]
         },
         {
-            "id": "jX40a3heUL2KtsAq",
+            "id": "wU34Q5Zy6Yu9bB7K",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -42,7 +42,7 @@
             ]
         },
         {
-            "id": "AZ5mWhNc0StFnkEx",
+            "id": "1G2LlubWEI4zANOJ",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -50,7 +50,7 @@
             ]
         },
         {
-            "id": "hmtZB0Re6HWPkxpM",
+            "id": "S8ba53sf2DNugZxy",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -58,7 +58,7 @@
             ]
         },
         {
-            "id": "uswiUjOdy9RoVmkG",
+            "id": "xOlsC7UEPN1fFgGe",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -66,7 +66,7 @@
             ]
         },
         {
-            "id": "9g6iOcB3zJQoVAXD",
+            "id": "lu1mA7eVWOdifYDo",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -74,7 +74,7 @@
             ]
         },
         {
-            "id": "9TvDIEmFHpu2sGUj",
+            "id": "jA7w9fVtx3a2Rbdl",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -82,7 +82,7 @@
             ]
         },
         {
-            "id": "ATZpdQeKJ5nE9Ia0",
+            "id": "yOWbKwJkHFZUj8Du",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -90,7 +90,7 @@
             ]
         },
         {
-            "id": "s2jZ1o0Iwbi5Bdgc",
+            "id": "FcvmUijuk6snyzRO",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -98,11 +98,43 @@
             ]
         },
         {
-            "id": "6vU3GfZLX2M9YSTd",
+            "id": "o90ntvkgAy1lSjQc",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
                 "passport.bilicomic.com"
+            ]
+        },
+        {
+            "id": "5w1a0UrGcJMnOZp3",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "aliyun-web-tracker.cn-zhangjiakou.log.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "kjS9RDeo5An8fNXH",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "aliyun-page.cn-hangzhou.log.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "icj8ot2KuLhCEWZv",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "one-second-campaign.cn-hangzhou.log.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "tZXbcHo8UBCYOk2n",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "monitor.pig4cloud.com"
             ]
         }
     ]
