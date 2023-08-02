@@ -2,11 +2,107 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
-            "id": "y4VuJQo8eibpFTRn",
+            "id": "GyBN7m8nJcrIVtxg",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
                 "w.irs03.com"
+            ]
+        },
+        {
+            "id": "ru2eMdRYwN8kBhmE",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "badjs.weixinbridge.com"
+            ]
+        },
+        {
+            "id": "aBAmS42zvJjoFXkK",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "stats.segmentfault.net"
+            ]
+        },
+        {
+            "id": "XFKgZNJ0vLweGYoH",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "open.snssdk.com"
+            ]
+        },
+        {
+            "id": "jX40a3heUL2KtsAq",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "ggkkmuup9wuugp6ep8d.exp.bcevod.com"
+            ]
+        },
+        {
+            "id": "AZ5mWhNc0StFnkEx",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "cn-beijing-data.aliyundrive.net"
+            ]
+        },
+        {
+            "id": "hmtZB0Re6HWPkxpM",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "px.effirst.com"
+            ]
+        },
+        {
+            "id": "uswiUjOdy9RoVmkG",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "arms-retcode.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "9g6iOcB3zJQoVAXD",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "tracedata-frontend.cn-beijing.log.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "9TvDIEmFHpu2sGUj",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "lanhu-logger.cn-beijing.log.aliyuncs.com"
+            ]
+        },
+        {
+            "id": "ATZpdQeKJ5nE9Ia0",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "lanhu.soboten.com"
+            ]
+        },
+        {
+            "id": "s2jZ1o0Iwbi5Bdgc",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "sentry.lingkou.xyz"
+            ]
+        },
+        {
+            "id": "6vU3GfZLX2M9YSTd",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "passport.bilicomic.com"
             ]
         }
     ]
