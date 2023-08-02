@@ -1,4 +1,13 @@
 {
     "domainStrategy": "AsIs",
-    "rules": []
+    "rules": [
+        {
+            "id": "y4VuJQo8eibpFTRn",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "w.irs03.com"
+            ]
+        }
+    ]
 }
