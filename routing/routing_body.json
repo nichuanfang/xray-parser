@@ -2,7 +2,7 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
-            "id": "1yVZv4Rqjrza6Ih3",
+            "id": "P3gDqSyGt8ZUHf9c",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "id": "HZt1z9IvuMg7SGQ5",
+            "id": "k0SVfc2xE68GXmPW",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -18,7 +18,7 @@
             ]
         },
         {
-            "id": "v0Ub5RrOetnPQLiS",
+            "id": "LcmIojsE5QFfrxJy",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -26,7 +26,7 @@
             ]
         },
         {
-            "id": "8zp1xXSakOY7LoGy",
+            "id": "ulhp1FJLXsx49Y2K",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -34,7 +34,7 @@
             ]
         },
         {
-            "id": "wU34Q5Zy6Yu9bB7K",
+            "id": "bvPuICzM4QTxYpZA",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -42,7 +42,7 @@
             ]
         },
         {
-            "id": "1G2LlubWEI4zANOJ",
+            "id": "voj5maDX8srA7KQe",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -50,7 +50,7 @@
             ]
         },
         {
-            "id": "S8ba53sf2DNugZxy",
+            "id": "NC3iUA429sgar57o",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -58,7 +58,7 @@
             ]
         },
         {
-            "id": "xOlsC7UEPN1fFgGe",
+            "id": "vwcyIKhTFa6YCPuO",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -66,7 +66,7 @@
             ]
         },
         {
-            "id": "lu1mA7eVWOdifYDo",
+            "id": "WO6s8CVE0FkJ2ldm",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -74,7 +74,7 @@
             ]
         },
         {
-            "id": "jA7w9fVtx3a2Rbdl",
+            "id": "a2IulkRix4VJ19T6",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -82,7 +82,7 @@
             ]
         },
         {
-            "id": "yOWbKwJkHFZUj8Du",
+            "id": "kjyTBJ2EA017dRb6",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -90,7 +90,7 @@
             ]
         },
         {
-            "id": "FcvmUijuk6snyzRO",
+            "id": "MlSa5zYykho8u1eO",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -98,7 +98,7 @@
             ]
         },
         {
-            "id": "o90ntvkgAy1lSjQc",
+            "id": "NgTlPnRHLKtGc5FQ",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "id": "5w1a0UrGcJMnOZp3",
+            "id": "scjoQe1rJPiIbzKU",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -114,7 +114,7 @@
             ]
         },
         {
-            "id": "kjS9RDeo5An8fNXH",
+            "id": "LCvmRgXyx3oIrUOi",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -122,7 +122,7 @@
             ]
         },
         {
-            "id": "icj8ot2KuLhCEWZv",
+            "id": "znv3a7lAFyh4poxs",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -130,11 +130,171 @@
             ]
         },
         {
-            "id": "tZXbcHo8UBCYOk2n",
+            "id": "fktuWFdK1shSEzHr",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
                 "monitor.pig4cloud.com"
+            ]
+        },
+        {
+            "id": "1sUOb28PLmr7tch6",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.yoojia.com"
+            ]
+        },
+        {
+            "id": "mjOiDtBG6n1FZAMJ",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "baike.baidu.hk"
+            ]
+        },
+        {
+            "id": "WLJ1csQhZkGIgaDv",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "pig4cloud.com"
+            ]
+        },
+        {
+            "id": "yXGfUaWMgiV1u6T5",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "ds-ws.16163.com"
+            ]
+        },
+        {
+            "id": "gyWf6OxQNpq9jDRL",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "bggt.tmuyun.com"
+            ]
+        },
+        {
+            "id": "TkpLw8lD431tQxHo",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "tj.rss.ink"
+            ]
+        },
+        {
+            "id": "EHUNQLwGV6mMohFW",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "cdn.xiaoz.top"
+            ]
+        },
+        {
+            "id": "k07xgw4mjbTrYDlh",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "gravatar.xiaoz.top"
+            ]
+        },
+        {
+            "id": "bgQ20wRzXfvTiPsy",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "cube.weixinbridge.com"
+            ]
+        },
+        {
+            "id": "h2mRtYloBd71pwkS",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "padn-access.pa18.com"
+            ]
+        },
+        {
+            "id": "qHKXVesEFo94MZ8D",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.bytelang.com"
+            ]
+        },
+        {
+            "id": "gbPFI8C4kOxci9np",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.htjsq.com"
+            ]
+        },
+        {
+            "id": "PwIDXLrHNOtz4ugR",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.jfbym.com"
+            ]
+        },
+        {
+            "id": "9QO3caCZt5DkKP7f",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "visitapi.aihecong.com"
+            ]
+        },
+        {
+            "id": "GURPvp4hoiZ87YF0",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "webapi.aihecong.com"
+            ]
+        },
+        {
+            "id": "52dPmjkuqRLocS3M",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.mysubmail.com"
+            ]
+        },
+        {
+            "id": "4Vkd3fcl9HomJsPu",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.ngrok.cc"
+            ]
+        },
+        {
+            "id": "w3oZvK9dzGTxSClX",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.proginn.com"
+            ]
+        },
+        {
+            "id": "MgO2qk1auIFycsN0",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "www.speechb.com"
+            ]
+        },
+        {
+            "id": "AgXDSlm75C8dUBGa",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "webpic.dangbei.net"
             ]
         }
     ]
