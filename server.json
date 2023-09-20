@@ -48,13 +48,7 @@
             }
         }
     },
-    "dns": {
-        "servers": [ 
-            "tcp+local://8.8.8.8:53",
-            "tcp+local://8.8.4.4:53",
-            "localhost"
-        ]
-    },
+    "dns": {},
     "transport": null,
     "stats": null,
     "reverse": null,
