@@ -2,7 +2,7 @@
     "domainStrategy": "AsIs",
     "rules": [
         {
-            "id": "KJuHDVW7k3cwYs1t",
+            "id": "MOBUeT29vncfzmdY",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "id": "XguTCP3GDRvE09fY",
+            "id": "XqKbEAv6Yf3cxdJz",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -18,7 +18,7 @@
             ]
         },
         {
-            "id": "fZVF7i0XUHISETMv",
+            "id": "fiqtvMw6aANk3Xsy",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -26,7 +26,7 @@
             ]
         },
         {
-            "id": "vYaS41Jl8Z6TypGe",
+            "id": "eHqU4hvDfMZNCP6b",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -34,7 +34,7 @@
             ]
         },
         {
-            "id": "O85A0uWsc2UfFmab",
+            "id": "NSVTsR3FL0MiwgJ7",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -42,7 +42,7 @@
             ]
         },
         {
-            "id": "0G47IfBXcQH5nht8",
+            "id": "QWoYmM3kLKOyXhxd",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -50,7 +50,7 @@
             ]
         },
         {
-            "id": "9bE5F3qcSNHz1X0O",
+            "id": "lVyuwJHSjQxgYfET",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -58,7 +58,7 @@
             ]
         },
         {
-            "id": "IfX60ktnTD7OzcWa",
+            "id": "DR68uevNmc9dSKiI",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -66,7 +66,7 @@
             ]
         },
         {
-            "id": "i3xlshRpMaUjQ2b9",
+            "id": "g5oPELYkcqejid8Q",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -74,7 +74,7 @@
             ]
         },
         {
-            "id": "l4vgzxabMDte1KjZ",
+            "id": "HjkDGpLu9TY0fNrn",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -82,7 +82,7 @@
             ]
         },
         {
-            "id": "VZ68zQOp5RAMDc3W",
+            "id": "W7ObgKLzQ4kMquTn",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -90,7 +90,7 @@
             ]
         },
         {
-            "id": "Y79wCoApSEHcGmIs",
+            "id": "nXWGBmqzROQfpcMb",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -98,7 +98,7 @@
             ]
         },
         {
-            "id": "jGP1ciqVfAJydlFx",
+            "id": "bAnM6Ny7iGIvuOkR",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "id": "vs9hEb3018Y4frQT",
+            "id": "YFByJVn0oqwpEUxW",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -114,7 +114,7 @@
             ]
         },
         {
-            "id": "bEBzhUP6ZLpSKMGY",
+            "id": "0WuzbJxmoQX9D6fi",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -122,7 +122,7 @@
             ]
         },
         {
-            "id": "IR7gHUo2FQCsWJ61",
+            "id": "nhVDof5v81zyOLBg",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -130,7 +130,7 @@
             ]
         },
         {
-            "id": "ds3uAEwkm6vKD4qx",
+            "id": "7dlh0uWAx43oQy1I",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -138,7 +138,7 @@
             ]
         },
         {
-            "id": "ksLcG5VRwy6rqJ7o",
+            "id": "unmJfo0lZOaI7hcb",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -146,7 +146,7 @@
             ]
         },
         {
-            "id": "vyJ2wrMjZmDFlnLH",
+            "id": "Z4XJQdxR0Cnkq7Iy",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -154,7 +154,7 @@
             ]
         },
         {
-            "id": "KkOJZgVB0WyLd92e",
+            "id": "mLkFEBlyDCwPjuS6",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -162,7 +162,7 @@
             ]
         },
         {
-            "id": "FyKQjW1JusoZAE72",
+            "id": "bP5QAudclUJRT8G1",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
@@ -170,11 +170,59 @@
             ]
         },
         {
-            "id": "BUTK78MpyjhilQVR",
+            "id": "sVxoHqd1v6Se2U5b",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
                 "ngrok.cc"
+            ]
+        },
+        {
+            "id": "vu49tTFamMDBUcJd",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "tvzhe.com"
+            ]
+        },
+        {
+            "id": "o96mbiZvP0CWqKGT",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "kkeji.com"
+            ]
+        },
+        {
+            "id": "fCrI2WdyM7KzLUTs",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "50bangzh.com"
+            ]
+        },
+        {
+            "id": "o6UGfAQedMnarluB",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "pule.com"
+            ]
+        },
+        {
+            "id": "iUeJpdrRPDvNfQ42",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "quanzhan.co"
+            ]
+        },
+        {
+            "id": "qoh4YOANJiCLTjpV",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "xinnet.com"
             ]
         }
     ]
