@@ -36,13 +36,21 @@
                     "github.io",
                     "githubassets.com"
                 ]
-            },
+        },
         {
             "id": "aqw8qzbqynjo6ldg",
             "type": "field",
             "outboundTag": "direct",
             "domain": [
                 "geosite:microsoft"
+            ]
+        },
+        {
+            "id": "aqw89zbzycja6ldg",
+            "type": "field",
+            "outboundTag": "direct",
+            "domain": [
+                "dogyun.com"
             ]
         }
     ]
