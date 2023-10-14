@@ -7,7 +7,8 @@
             "outboundTag": "direct",
             "domain": [
                 "geosite:cn",
-                "geosite:private"
+                "geosite:private",
+                "cinima.asia"
             ]
         }
     ]
