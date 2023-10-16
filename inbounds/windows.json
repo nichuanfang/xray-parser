@@ -13,7 +13,7 @@
     },
     "streamSettings": {
         "show": false,
-        "network": "grpc",
+        "network": "h2",
         "security": "reality",
         "realitySettings": {
             "show": false,
@@ -22,9 +22,6 @@
             "serverNames": [],
             "privateKey": "",
             "shortIds": []
-        },
-        "grpcSettings": {
-            "serviceName": ""
         }
     },
     "sniffing": {
