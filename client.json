@@ -68,7 +68,7 @@
                 ]
             },
             "streamSettings": {
-                "network": "grpc",
+                "network": "h2",
                 "security": "reality",
                 "realitySettings": {
                     "show": false,
@@ -78,13 +78,9 @@
                     "shortId": "客户端id",
                     "spiderX": "爬虫路径"
                 },
-                "grpcSettings": {
-                    "serviceName": "",
-                    "multiMode": false,
-                    "idle_timeout": 60,
-                    "health_check_timeout": 20,
-                    "permit_without_stream": false,
-                    "initial_windows_size": 0
+                "httpSettings": {
+                    "read_idle_timeout": 60,
+                    "health_check_timeout": 20
                 }
             }
         },
