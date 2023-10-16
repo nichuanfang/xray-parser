@@ -171,7 +171,7 @@ def update_config():
         # ios平台的shortId  8-16位随机数 数据来源0123456789abcdef
         VLESS_IOS_SHORT_ID = get_ios_short_id(server_config,vless_inbound)
         # vless端口
-        VLESS_PORT = 443
+        VLESS_PORT = get_vless_port(server_config,vless_inbound)
         # trojan密码  ios最佳实践  使用QX trojan协议 
         TROJAN_PASSWORD = get_trojan_password(server_config,trojan_inbound)
         # trojan端口
