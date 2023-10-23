@@ -1,30 +1,22 @@
 @echo off
 :start
 cls
-set /p var=ÇëÑ¡ÔñÄ£Ê½(1»ìºÏ 2°×Ãûµ¥ 3ºÚÃûµ¥)£º
+set /p var=è¯·é€‰æ‹©æ¨¡å¼(1ç™½åå• 2é»‘åå•)ï¼š
 echo.
 if /i "%var%"=="" goto start
 if /i %var%==1 goto a
-if /i %var%==2 goto b
-if /i %var%==3 (goto c) else (echo Ã»ÓĞÕâ¸öÑ¡Ïî£¬ÇëÖØÊÔ£¡~&pause)
+if /i %var%==2 goto b else (echo æ²¡æœ‰è¿™ä¸ªé€‰é¡¹ï¼Œè¯·é‡è¯•ï¼~&pause)
 goto start
 :a
-copy /y D:\soft\xray\config\mixed.json D:\soft\xray\config.json    
+copy /y D:\soft\xray\config\white.json D:\soft\xray\config.json    
 call restart.bat
-echo »ìºÏÄ£Ê½ÒÑ¿ªÆô!
+echo ç™½åå•å·²å¼€å¯!
 timeout /t 1
 exit
 goto start
 :b
-copy /y D:\soft\xray\config\white.json D:\soft\xray\config.json    
+copy /y D:\soft\xray\config\black.json D:\soft\xray\config.json
 call restart.bat
-echo °×Ãûµ¥ÒÑ¿ªÆô!
-timeout /t 1
-exit
-goto start
-:c
-copy /y D:\soft\xray\config\black.json D:\soft\xray\config.json    
-call restart.bat
-echo ºÚÃûµ¥ÒÑ¿ªÆô!
+echo é»‘åå•å·²å¼€å¯!
 timeout /t 1
 exitgoto start
