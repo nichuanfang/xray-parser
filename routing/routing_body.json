@@ -8,6 +8,13 @@
         "geosite:google",
         "geosite:github"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "ip": [
+        "geoip:telegram"
+      ]
     }
   ]
 }
