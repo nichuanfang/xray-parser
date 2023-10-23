@@ -1,19 +1,19 @@
 {
-  "domainStrategy": "IPIfNonMatch",
+  "domainStrategy": "AsIs",
   "rules": [
     {
       "type": "field",
-      "outboundTag": "proxy",
+      "outboundTag": "direct",
       "domain": [
-        "geosite:google",
-        "geosite:github"
+        "geosite:private",
+        "geosite:google-cn"
       ]
     },
     {
       "type": "field",
       "outboundTag": "proxy",
-      "ip": [
-        "geoip:telegram"
+      "domain": [
+        "geosite:geolocation-!cn"
       ]
     }
   ]
