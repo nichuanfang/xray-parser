@@ -1,78 +1,12 @@
 {
     "domainStrategy": "AsIs",
     "rules": [
-        {
-            "id": "utl9pwx1ol5glnoy",
-            "type": "field",
-            "outboundTag": "block",
-            "domain": [
-                "geosite:category-ads-all"
-            ]
-        },
-        {
-            "id": "561k22jzku2iopsc",
-            "type": "field",
-            "outboundTag": "direct",
-            "protocol": ["bittorrent"]
-        },
-        {
-            "id": "042k02jzku2qrucb",
-            "type": "field",
-            "outboundTag": "proxy",
-            "domain": [
-                "geosite:google"
-            ]
-        },
-        {
-                "id": "gB2wP1oI8eP7fE5x",
+       {
                 "type": "field",
-                "outboundTag": "proxy",
+                "outboundTag": "block",
                 "domain": [
-                    "github.com",
-                    "assets-cdn.github.com",
-                    "githubusercontent.com",
-                    "gist.github.com",
-                    "github.io",
-                    "githubassets.com",
-                    "github.blog",
-                    "github.community",
-                    "githubstatus.com",
-                    "dependabot.com",
-                    "atom.io",
-                    "ghcr.io",
-                    "git.io",
-                    "github.io",
-                    "github.dev",
-                    "githubapp.com",
-                    "githubpreview.dev",
-                    "github-atom-io-herokuapp-com.freetls.fastly.net",
-                    "github.global.ssl.fastly.net",
-                    "github-avatars.oss-cn-hongkong.aliyuncs.com",
-                    "github-cloud.s3.amazonaws.com",
-                    "thegithubshop.com",
-                    "githubuniverse.com",
-                    "githubnext.com",
-                    "githubhackathon.com",
-                    "myoctocat.com",
-                    "opensource.guide",
-                    "repo.new"
+                    "geosite:category-ads-all"
                 ]
-        },
-        {
-            "id": "aqw8qzbqynjo6ldg",
-            "type": "field",
-            "outboundTag": "direct",
-            "domain": [
-                "geosite:microsoft"
-            ]
-        },
-        {
-            "id": "aqw89zbzycja6ldg",
-            "type": "field",
-            "outboundTag": "direct",
-            "domain": [
-                "dogyun.com"
-            ]
         }
     ]
 }
