@@ -5,7 +5,8 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "geosite:geolocation-!cn"
+        "geosite:google",
+        "geosite:github"
       ]
     }
   ]
