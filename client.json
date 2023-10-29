@@ -100,17 +100,5 @@
         }
       }
     }
-  ],
-  "dns": {
-    "servers": [
-      "tcp+local://223.5.5.5:53",
-      "tcp+local://114.114.114.114:53",
-      "1.1.1.1",
-      "localhost"
-    ],
-    "queryStrategy": "UseIPv4",
-    "disableCache": false,
-    "disableFallback": true,
-    "disableFallbackIfMatch": true
-  }
+  ]
 }
