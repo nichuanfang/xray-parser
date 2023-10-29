@@ -1,104 +1,116 @@
 {
-    "log": {
-        "access": "log/access.log",
-        "error": "log/error.log",
-        "loglevel": "warning",
-        "dnsLog": false
+  "log": {
+    "access": "log/access.log",
+    "error": "log/error.log",
+    "loglevel": "warning",
+    "dnsLog": false
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "0.0.0.0",
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
     },
-    "inbounds": [
-        {
-            "tag": "socks",
-            "port": 10808,
-            "listen": "0.0.0.0",
-            "protocol": "socks",
-            "sniffing": {
-                "enabled": true,
-                "destOverride": [
-                    "http",
-                    "tls"
-                ],
-                "routeOnly": false
-            },
-            "settings": {
-                "auth": "noauth",
-                "udp": true,
-                "allowTransparent": false
-            }
+    {
+      "tag": "http",
+      "port": 10809,
+      "listen": "0.0.0.0",
+      "protocol": "http",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "xray服务器ip",
+            "port": 0,
+            "users": [
+              {
+                "id": "xray的uuid",
+                "flow": "",
+                "alterId": 0,
+                "email": "t@t.tt",
+                "security": "auto",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "h2",
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "fingerprint": "chrome",
+          "serverName": "",
+          "publicKey": "xray的公钥",
+          "shortId": "客户端id",
+          "spiderX": "爬虫路径"
         },
-        {
-            "tag": "http",
-            "port": 10809,
-            "listen": "0.0.0.0",
-            "protocol": "http",
-            "sniffing": {
-                "enabled": true,
-                "destOverride": [
-                    "http",
-                    "tls"
-                ],
-                "routeOnly": false
-            },
-            "settings": {
-                "auth": "noauth",
-                "udp": true,
-                "allowTransparent": false
-            }
+        "httpSettings": {
+          "read_idle_timeout": 60,
+          "health_check_timeout": 20
         }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIPv4"
+      }
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
+    }
+  ],
+  "dns": {
+    "servers": [
+      "tcp+local://223.5.5.5:53",
+      "tcp+local://114.114.114.114:53",
+      "1.1.1.1",
+      "localhost"
     ],
-    "outbounds": [
-        {
-            "tag": "proxy",
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "xray服务器ip",
-                        "port": 0,
-                        "users": [
-                            {
-                                "id": "xray的uuid",
-                                "flow": "",
-                                "alterId": 0,
-                                "email": "t@t.tt",
-                                "security": "auto",
-                                "encryption": "none"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "h2",
-                "security": "reality",
-                "realitySettings": {
-                    "show": false,
-                    "fingerprint": "chrome",
-                    "serverName": "",
-                    "publicKey": "xray的公钥",
-                    "shortId": "客户端id",
-                    "spiderX": "爬虫路径"
-                },
-                "httpSettings": {
-                    "read_idle_timeout": 60,
-                    "health_check_timeout": 20
-                }
-            }
-        },
-        {
-            "tag": "direct",
-            "protocol": "freedom",
-            "settings": {
-                "domainStrategy": "UseIPv4"
-            }
-        },
-        {
-            "tag": "block",
-            "protocol": "blackhole",
-            "settings": {
-                "response": {
-                    "type": "http"
-                }
-            }
-        }
-    ]
+    "queryStrategy": "UseIPv4",
+    "disableCache": false,
+    "disableFallback": true,
+    "disableFallbackIfMatch": true
+  }
 }
