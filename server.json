@@ -3,7 +3,7 @@
     "loglevel": "warning",
     "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
-    "dnsLog": false
+    "dnsLog": true
   },
   "api": {
     "services": [
@@ -44,12 +44,6 @@
         "connIdle": 120
       }
     }
-  },
-  "dns": {
-    "servers": [
-      "1.1.1.1",
-      "8.8.8.8"
-    ]
   },
   "transport": null,
   "stats": null,
