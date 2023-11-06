@@ -85,7 +85,7 @@ def get_assert_arg(index:int,msg:str):
 
 
 
-# 创建配置 如果修改了默认端口（vless:443  trojan: 16789） 需要同步docker项目的docker-compose.yml 同时部署xray的服务器需要开放更新的两个端口！
+# 创建配置 如果修改了默认端口（vless:8443  trojan: 16789） 需要同步docker项目的docker-compose.yml 同时部署xray的服务器需要开放更新的两个端口！
 def create_config():
     uuid_list = os.popen('./xray uuid').readlines()
     x25519_list = os.popen('./xray x25519').readlines()
@@ -169,60 +169,8 @@ def create_config():
     # 持久化
     json.dump(server,open(f'dist/config.json','w+')) 
 
-# 更新配置
-def update_config():
-    # xray的目标域名
-    VLESS_DEST = get_assert_arg(1,'vars.VLESS_DEST: 目标域名未配置！')
-    # 逗号分割的，{VLESS_DEST}允许的服务列表 
-    VLESS_SERVER_NAMES = get_assert_arg(2,'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置!')
-    unhandled_server_names = VLESS_SERVER_NAMES.split(',')
-    handled_server_names = [] 
-    # 去空格
-    for server_name in unhandled_server_names:
-        handled_server_names.append(server_name.replace('\'','').replace('\"','').strip())
-    # 校验dest与serverNames是否匹配
-    #verify_dest_server_names(VLESS_DEST.split(':')[0],handled_server_names)
-    # vless端口
-    VLESS_PORT = get_assert_arg(3,'vars.VLESS_PORT: vless端口未配置!')
-    # trojan端口
-    TROJAN_PORT = get_assert_arg(4,'vars.TROJAN_PORT: trojan端口未配置!')
-    # 处理端口
-    handle_port(VLESS_PORT,TROJAN_PORT)
-    with open('../config/config.json','rb') as config_file:
-        server_config:dict = json.load(config_file) 
-        # 更新路由和dns
-        with open('server.json','rb') as server_file:
-            base_server = json.load(server_file)
-            server_config['routing'] = base_server['routing']
-            server_config['dns'] = base_server['dns']
-            server_config['policy'] = base_server['policy']
-            server_config['outbounds'] = base_server['outbounds']
-        inbounds:list = server_config['inbounds']
-        for inbound in inbounds:
-            if inbound['protocol'] == 'vless':
-                inbound['port'] = VLESS_PORT
-                inbound['streamSettings']['realitySettings']['dest'] = VLESS_DEST
-                inbound['streamSettings']['realitySettings']['serverNames'] = handled_server_names
-            else:
-                inbound['port'] = TROJAN_PORT
-    json.dump(server_config,open(f'dist/config.json','w+'))
 
-
-# 判断dockerfile/xray下面有没有config.json 文件 有的话直接读取配置 没有就生成
-server_config:dict = {}
-try:
-    config_file_list = os.popen('cat ../config/config.json').readlines()
-except:
-    logging.info('config服务端配置不存在!!!')
-    config_file_list:dict = []
-
-if len(config_file_list) == 0:
-    logging.info('========================服务器配置文件不存在,生成基础配置========================')
-    # 生成基础配置
-    create_config()
-    logging.info('========================服务器配置配置构建完成!==================================')
-else:
-    logging.info('========================服务器配置文件已存在,开始更新配置=========================')
-    # 更新配置
-    update_config()
-    logging.info('========================服务器配置配置更新完成!==================================')
+logging.info('========================生成基础配置========================')
+# 生成基础配置
+create_config()
+logging.info('========================服务器配置配置构建完成!==================================')
