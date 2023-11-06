@@ -61,22 +61,6 @@ def update_config():
             raise RuntimeError
         logging.info('==================公钥已生成！==============================')
         return public_key
-    
-    def verify_client_server_name(VLESS_CLIENT_SERVER_NAME:str,server_config:dict,vless_inbound:dict):
-        """验证客户端的服务域名是否可用
-
-        Args:
-            VLESS_CLIENT_SERVER_NAME (str): 服务域名
-            server_config (dict): 服务器配置
-            vless_inbound (dict): vless配置
-
-        Raises:
-            RuntimeError: _description_
-        """        
-        server_names:list = vless_inbound['streamSettings']['realitySettings']['serverNames']
-        if not server_names.__contains__(VLESS_CLIENT_SERVER_NAME):
-            logging.error('客户端服务域名vars.VLESS_CLIENT_SERVER_NAME配置错误!请从配置的vars.VLESS_SERVER_NAMES中选择!')
-            raise RuntimeError
 
 
     def get_windows_short_id(server_config:dict,vless_inbound:dict):
@@ -226,39 +210,6 @@ def update_config():
         # 生成trojan配置文件
         with open('dist/trojan.txt','w+') as trojan:
             trojan.writelines(f'trojan={DC_HOST}:{TROJAN_PORT}, password={TROJAN_PASSWORD}, over-tls=true, tls-verification=true, fast-open=false, udp-relay=false, tag=mysub')
-
-
-        outbound_tag_map = {
-            'direct': 'DIRECT',
-            'block': 'REJECT',
-            'proxy': 'PROXY'
-        }
-
-        # 转化为QX的路由配置文件
-        with open('dist/qx-policy.list','w+') as qx:
-            for rule in rb['rules']:
-                # 把规则写到list里
-                outboundTag:str = rule['outboundTag']
-                # HOST-SUFFIX,1688.com,DIRECT
-                domains:list = rule['domain']
-                for domain in domains:
-                    if domain.startswith('full:'):
-                        qx.writelines('HOST,'+(domain[5:]+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
-                    else:
-                        qx.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
-
-        # 转化为QX的路由配置文件
-        with open('dist/qx-policy.txt','w+') as qx_preview:
-            for rule in rb['rules']:
-                # 把规则写到list里
-                outboundTag:str = rule['outboundTag']
-                # HOST-SUFFIX,1688.com,DIRECT
-                domains:list = rule['domain']
-                for domain in domains:
-                    if domain.startswith('full:'):
-                        qx_preview.writelines('HOST,'+(domain[5:]+',')+(outbound_tag_map[outboundTag.lower()])+'\n')
-                    else:
-                        qx_preview.writelines('HOST-SUFFIX,'+(domain+',')+(outbound_tag_map[outboundTag.lower()])+'\n') 
 
 
 # 判断服务端配置是否存在 不存在直接中止构建

@@ -63,17 +63,17 @@ jobs:
       - name: 清理无用文件夹
         run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
 
-      - name: 更新docker项目
-        uses: Smart-Transportation/push@v1.3
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          branch: 'master'
-          author_email: 'github-actions[bot]@users.noreply.github.com'
-          author_name: 'github-actions[bot]'
-          message: '🐳 chore: 更新xray客户端配置文件'
-          directory: /home/runner/work/xray-parser/xray-parser/docker
-          repository: nichuanfang/docker
-          
+      # - name: 更新docker项目
+      #   uses: Smart-Transportation/push@v1.3
+      #   with:
+      #     github_token: ${{ secrets.GH_TOKEN }}
+      #     branch: 'master'
+      #     author_email: 'github-actions[bot]@users.noreply.github.com'
+      #     author_name: 'github-actions[bot]'
+      #     message: '🐳 chore: 更新xray客户端配置文件'
+      #     directory: /home/runner/work/xray-parser/xray-parser/docker
+      #     repository: nichuanfang/docker
+
       - name: Push notification
         env:
           key: ${{ secrets.BARK_KEY }}
