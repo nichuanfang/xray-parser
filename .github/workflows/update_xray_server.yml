@@ -69,6 +69,6 @@ jobs:
         uses: rshop/trigger-workflow-action@v1
         with:
           token: ${{ secrets.GH_TOKEN }}
-          repository: 'nichuanfang/config-server'
+          repository: 'nichuanfang/xray-parser'
           workflowId: 57684788
           branch: client
