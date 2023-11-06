@@ -4,7 +4,8 @@
     {
       "type": "field",
       "domain": [
-        "geosite:cn"
+        "geosite:cn",
+        "geosite:private"
       ],
       "outboundTag": "direct"
     },

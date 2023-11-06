@@ -3,6 +3,13 @@
   "rules": [
     {
       "type": "field",
+      "outboundTag": "direct",
+      "protocol": [
+        "bittorrent"
+      ]
+    },
+    {
+      "type": "field",
       "outboundTag": "proxy",
       "domain": [
         "geosite:geolocation-!cn"
