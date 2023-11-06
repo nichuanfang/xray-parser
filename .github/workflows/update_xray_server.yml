@@ -54,22 +54,21 @@ jobs:
         run: rm -rf $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
 
       # 触发工作流
+      - name: 更新docker项目的config.json和docker-compose.yml
+        uses: Smart-Transportation/push@v1.3
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: 'master'
+          author_email: 'github-actions[bot]@users.noreply.github.com'
+          author_name: 'github-actions[bot]'
+          message: '🐳 chore: 更新xray服务端配置文件'
+          directory: /home/runner/work/xray-parser/xray-parser/docker
+          repository: nichuanfang/docker
 
-      # - name: 更新docker项目的config.json和docker-compose.yml
-      #   uses: Smart-Transportation/push@v1.3
-      #   with:
-      #     github_token: ${{ secrets.GH_TOKEN }}
-      #     branch: 'master'
-      #     author_email: 'github-actions[bot]@users.noreply.github.com'
-      #     author_name: 'github-actions[bot]'
-      #     message: '🐳 chore: 更新xray服务端配置文件'
-      #     directory: /home/runner/work/xray-parser/xray-parser/docker
-      #     repository: nichuanfang/docker
-
-      # - name: 初始化xray客户端
-      #   uses: rshop/trigger-workflow-action@v1
-      #   with:
-      #     token: ${{ secrets.GH_TOKEN }}
-      #     repository: 'nichuanfang/config-server'
-      #     workflowId: 57684788
-      #     branch: master
+      - name: 初始化xray客户端
+        uses: rshop/trigger-workflow-action@v1
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          repository: 'nichuanfang/config-server'
+          workflowId: 57684788
+          branch: client
