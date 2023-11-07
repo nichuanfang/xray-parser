@@ -5,7 +5,8 @@
       "type": "field",
       "domain": [
         "geosite:cn",
-        "geosite:private"
+        "geosite:private",
+        "jaychou.site"
       ],
       "outboundTag": "direct"
     },
