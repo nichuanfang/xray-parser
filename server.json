@@ -45,6 +45,12 @@
       }
     }
   },
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "8.8.8.8"
+    ]
+  },
   "transport": null,
   "stats": null,
   "reverse": null,
