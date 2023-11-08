@@ -14,6 +14,13 @@
       "domain": [
         "geosite:geolocation-!cn"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "ip": [
+        "geoip:telegram"
+      ]
     }
   ]
 }
