@@ -57,7 +57,7 @@
             "users": [
               {
                 "id": "xray的uuid",
-                "flow": "",
+                "flow": "xtls-rprx-vision",
                 "alterId": 0,
                 "email": "t@t.tt",
                 "security": "auto",
@@ -68,7 +68,7 @@
         ]
       },
       "streamSettings": {
-        "network": "h2",
+        "network": "tcp",
         "security": "reality",
         "realitySettings": {
           "show": false,
