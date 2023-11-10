@@ -7,22 +7,6 @@
       "domain": [
         "geosite:category-ads-all"
       ]
-    },
-    {
-      "type": "field",
-      "ip": [
-        "223.5.5.5",
-        "114.114.114.114"
-      ],
-      "outboundTag": "direct"
-    },
-    {
-      "type": "field",
-      "ip": [
-        "8.8.8.8",
-        "1.1.1.1"
-      ],
-      "outboundTag": "proxy"
     }
   ]
 }
