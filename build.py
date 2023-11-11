@@ -148,7 +148,7 @@ def create_config():
                         raise RuntimeError('vars.VLESS_PORT必须为整数!')
                     # 添加密钥
                     server_dict['settings']['clients'][0]['id'] = VLESS_UUID
-                    server_dict['streamSettings']['realitySettings']['dest'] = VLESS_DEST
+                    server_dict['streamSettings']['realitySettings']['dest'] = 443
                     server_dict['streamSettings']['realitySettings']['serverNames'] = handled_server_names
                     server_dict['streamSettings']['realitySettings']['privateKey'] = VLESS_PRIVATE_KEY
                     server_dict['streamSettings']['realitySettings']['shortIds'] = [VLESS_WINDOWS_SHORT_ID,VLESS_IOS_SHORT_ID]
