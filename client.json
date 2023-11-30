@@ -68,8 +68,8 @@
         ]
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "h2",
+        "network": "h2",
+        "security": "reality",
         "realitySettings": {
           "show": false,
           "fingerprint": "ios",
