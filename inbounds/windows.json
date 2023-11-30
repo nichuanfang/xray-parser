@@ -6,14 +6,14 @@
         "clients": [
             {
                 "id": "",
-                "flow": ""
+                "flow": "xtls-rprx-vision"
             }
         ],
         "decryption": "none"
     },
     "streamSettings": {
         "show": false,
-        "network": "h2",
+        "network": "tcp",
         "security": "reality",
         "realitySettings": {
             "show": false,
