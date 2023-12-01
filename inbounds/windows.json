@@ -17,8 +17,8 @@
         "security": "reality",
         "realitySettings": {
             "show": false,
-            "dest": "",
-            "xver": 0,
+            "dest": 0,
+            "xver": 1,
             "serverNames": [],
             "privateKey": "",
             "maxTimeDiff": 0,
