@@ -1,39 +1,72 @@
 {
-    "listen": "0.0.0.0",
-    "port": 0,
-    "protocol": "trojan",
-    "settings": {
-        "clients": [
-            {
-                "password": "",
-                "email": "love@example.com"
-            }
-        ],
-        "fallbacks": [
-            {
-                "dest": "/dev/shm/default.sock",
-                "xver": 1
-            },
-            {
-                "alpn": "h2",
-                "dest": "/dev/shm/h2c.sock",
-                "xver": 1
-            }
-        ]
-    },
-    "streamSettings": {
-        "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-            "alpn": [
-                "http/1.1"
-            ],
-            "certificates": [
-                {
-                    "certificateFile": "/usr/local/bin/xray/cert/cert.pem",
-                    "keyFile": "/usr/local/bin/xray/cert/key.pem"
-                }
-            ]
+  "listen": "0.0.0.0",
+  "port": 0,
+  "protocol": "trojan",
+  "settings": {
+    "clients": [
+      {
+        "password": "",
+        "email": "love@example.com"
+      }
+    ],
+    "fallbacks": [
+      {
+        "dest": 5001,
+        "xver": 1
+      },
+      {
+        "alpn": "h2",
+        "dest": 5002,
+        "xver": 1
+      },
+      {
+        "dest": 5003,
+        "name": "www.jaychou.site",
+        "xver": 1
+      },
+      {
+        "alpn": "h2",
+        "name": "www.jaychou.site",
+        "dest": 5004,
+        "xver": 1
+      },
+      {
+        "dest": 5005,
+        "name": "password.jaychou.site",
+        "xver": 1
+      },
+      {
+        "alpn": "h2",
+        "name": "password.jaychou.site",
+        "dest": 5006,
+        "xver": 1
+      },
+      {
+        "dest": 5007,
+        "name": "bark.jaychou.site",
+        "xver": 1
+      },
+      {
+        "alpn": "h2",
+        "name": "bark.jaychou.site",
+        "dest": 5008,
+        "xver": 1
+      }
+    ]
+  },
+  "streamSettings": {
+    "network": "tcp",
+    "security": "tls",
+    "tlsSettings": {
+      "alpn": [
+        "http/1.1"
+      ],
+      "certificates": [
+        {
+          "certificateFile": "/usr/local/bin/xray/cert/cert.pem",
+          "keyFile": "/usr/local/bin/xray/cert/key.pem"
         }
+      ]
     }
+  }
 }
