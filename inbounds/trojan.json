@@ -51,6 +51,17 @@
         "name": "bark.jaychou.site",
         "dest": 5008,
         "xver": 1
+      },
+      {
+        "dest": 5009,
+        "name": "tool.jaychou.site",
+        "xver": 1
+      },
+      {
+        "alpn": "h2",
+        "name": "tool.jaychou.site",
+        "dest": 5010,
+        "xver": 1
       }
     ]
   },
