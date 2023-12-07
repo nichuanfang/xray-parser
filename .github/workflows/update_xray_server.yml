@@ -1,5 +1,6 @@
 name: Update Xray Server
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'server'
