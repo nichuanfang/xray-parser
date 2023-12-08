@@ -72,7 +72,7 @@
         "security": "reality",
         "realitySettings": {
           "show": false,
-          "fingerprint": "ios",
+          "fingerprint": "chrome",
           "serverName": "",
           "publicKey": "xray的公钥",
           "shortId": "客户端id",
