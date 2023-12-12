@@ -6,7 +6,6 @@
       "domain": [
         "geosite:cn",
         "geosite:private",
-        "jaychou.site"
       ],
       "outboundTag": "direct"
     },
