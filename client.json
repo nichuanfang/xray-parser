@@ -77,10 +77,6 @@
           "publicKey": "xray的公钥",
           "shortId": "客户端id",
           "spiderX": "爬虫路径"
-        },
-        "httpSettings": {
-          "read_idle_timeout": 60,
-          "health_check_timeout": 20
         }
       }
     },
