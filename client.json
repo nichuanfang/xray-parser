@@ -1,100 +1,113 @@
 {
-  "log": {
-    "access": "log/access.log",
-    "error": "log/error.log",
-    "loglevel": "warning",
-    "dnsLog": false
-  },
-  "inbounds": [
-    {
-      "tag": "socks",
-      "port": 10808,
-      "listen": "0.0.0.0",
-      "protocol": "socks",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "routeOnly": false
-      },
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "allowTransparent": false
-      }
-    },
-    {
-      "tag": "http",
-      "port": 10809,
-      "listen": "0.0.0.0",
-      "protocol": "http",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "routeOnly": false
-      },
-      "settings": {
-        "auth": "noauth",
-        "udp": true,
-        "allowTransparent": false
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "tag": "proxy",
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "xray服务器ip",
-            "port": 0,
-            "users": [
-              {
-                "id": "xray的uuid",
-                "flow": "xtls-rprx-vision",
-                "alterId": 0,
-                "email": "t@t.tt",
-                "security": "auto",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-          "show": false,
-          "fingerprint": "chrome",
-          "serverName": "",
-          "publicKey": "xray的公钥",
-          "shortId": "客户端id",
-          "spiderX": "爬虫路径"
-        }
-      }
-    },
-    {
-      "tag": "direct",
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIP"
-      }
-    },
-    {
-      "tag": "block",
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
-        }
-      }
-    }
-  ]
+	"log": {
+		"access": "log/access.log",
+		"error": "log/error.log",
+		"loglevel": "warning",
+		"dnsLog": false
+	},
+	"inbounds": [{
+			"tag": "socks",
+			"port": 10808,
+			"listen": "0.0.0.0",
+			"protocol": "socks",
+			"sniffing": {
+				"enabled": true,
+				"destOverride": [
+					"http",
+					"tls"
+				],
+				"routeOnly": false
+			},
+			"settings": {
+				"auth": "noauth",
+				"udp": true,
+				"allowTransparent": false
+			}
+		},
+		{
+			"tag": "http",
+			"port": 10809,
+			"listen": "0.0.0.0",
+			"protocol": "http",
+			"sniffing": {
+				"enabled": true,
+				"destOverride": [
+					"http",
+					"tls"
+				],
+				"routeOnly": false
+			},
+			"settings": {
+				"auth": "noauth",
+				"udp": true,
+				"allowTransparent": false
+			}
+		}
+	],
+	"outbounds": [{
+			"tag": "proxy",
+			"protocol": "vless",
+			"settings": {
+				"vnext": [{
+					"address": "xray服务器ip",
+					"port": 0,
+					"users": [{
+						"id": "xray的uuid",
+						"flow": "xtls-rprx-vision",
+						"alterId": 0,
+						"email": "t@t.tt",
+						"security": "auto",
+						"encryption": "none"
+					}]
+				}]
+			},
+			"streamSettings": {
+				"network": "tcp",
+				"security": "reality",
+				"realitySettings": {
+					"show": false,
+					"fingerprint": "chrome",
+					"serverName": "",
+					"publicKey": "xray的公钥",
+					"shortId": "客户端id",
+					"spiderX": "爬虫路径"
+				}
+			}
+		},
+		{
+			"tag": "direct",
+			"protocol": "freedom",
+			"settings": {
+				"domainStrategy": "UseIP"
+			}
+		},
+		{
+			"tag": "block",
+			"protocol": "blackhole",
+			"settings": {
+				"response": {
+					"type": "http"
+				}
+			}
+		}
+	],
+	"policy": {
+		"levels": {
+			"0": {
+				"handshake": 4,
+				"connIdle": 5,
+				"uplinkOnly": 0,
+				"downlinkOnly": 0,
+				"statsUserUplink": false,
+				"statsUserDownlink": false,
+				"bufferSize": 512
+			}
+		},
+		"system": {
+			"statsInboundUplink": false,
+			"statsInboundDownlink": false,
+			"statsOutboundUplink": false,
+			"statsOutboundDownlink": false
+		}
+	}
 }
