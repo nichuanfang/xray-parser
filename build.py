@@ -80,7 +80,7 @@ def update_config():
         if trojan_inbound == {}:
             raise RuntimeError('服务器配置错误!未发现trojan配置')
         # xray服务器的域名
-        DC_DOMAIN = get_env('VPS_DOMAIN')
+        DC_DOMAIN = f'xtls.{get_env("VPS_DOMAIN")}'
         # xray服务器的IP
         DC_HOST = get_env('VPS_HOST')
         # xray uuid
@@ -126,6 +126,8 @@ def update_config():
         client['outbounds'][0]['settings']['vnext'][0]['port'] = int(
             VLESS_PORT)
         client['outbounds'][0]['settings']['vnext'][0]['users'][0]['id'] = VLESS_UUID
+        # 换成你的域名
+        client['outbounds'][0]['streamSettings']['tlsSettings']['serverName'] = DC_DOMAIN
         # 持久化
         json.dump(client, open('dist/client-windows-config.json', 'w+'))
         # 生成ios平台的config.json

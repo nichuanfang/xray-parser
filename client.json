@@ -40,7 +40,7 @@
 				"network": "tcp",
 				"security": "tls",
 				"tlsSettings": {
-					"serverName": "",
+					"serverName": "换成你的域名",
 					"fingerprint": "chrome"
 				}
 			}
