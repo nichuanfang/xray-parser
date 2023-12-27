@@ -46,10 +46,19 @@ jobs:
           chmod +x ./xray
           cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
 
-      - name: 更新客户端config.json
+      - name: 更新客户端config.json(tls)
+        working-directory: docker/dockerfile_work/xray/xray-parser
+        env:
+          VPS_DOMAIN: ${{secrets.VPS_DOMAIN}}
+          VPS_HOST: ${{secrets.VPS_HOST}}
         run: |
-          cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-          python build.py ${{secrets.VPS_DOMAIN}} ${{secrets.VPS_HOST}} ${{vars.VLESS_CLIENT_SERVER_NAME}}
+          python build.py
+
+      # - name: 更新客户端config.json(reality)
+      #   working-directory: docker/dockerfile_work/xray/xray-parser
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+      #     python build.py ${{secrets.VPS_DOMAIN}} ${{secrets.VPS_HOST}} ${{vars.VLESS_CLIENT_SERVER_NAME}}
 
       - name: 将生成的配置文件保存到docker项目中
         run: |

@@ -5,40 +5,65 @@
 		"loglevel": "warning",
 		"dnsLog": false
 	},
-	"inbounds": [
-		{
-			"listen": "127.0.0.1",
+	"inbounds": [{
+			"tag": "socks",
 			"port": 10808,
-			"protocol": "socks"
+			"listen": "0.0.0.0",
+			"protocol": "socks",
+			"sniffing": {
+				"enabled": false,
+				"destOverride": [
+					"http",
+					"tls"
+				],
+				"routeOnly": true
+			},
+			"settings": {
+				"auth": "noauth",
+				"udp": true,
+				"allowTransparent": false
+			}
 		},
 		{
-			"listen": "127.0.0.1",
+			"tag": "http",
 			"port": 10809,
-			"protocol": "http"
+			"listen": "0.0.0.0",
+			"protocol": "http",
+			"sniffing": {
+				"enabled": false,
+				"destOverride": [
+					"http",
+					"tls"
+				],
+				"routeOnly": true
+			},
+			"settings": {
+				"auth": "noauth",
+				"udp": true,
+				"allowTransparent": false
+			}
 		}
 	],
-	"outbounds": [
-		{
+	"outbounds": [{
 			"tag": "proxy",
 			"protocol": "vless",
 			"settings": {
-				"vnext": [
-					{
-						"address": "xray服务器ip",
-						"port": 0,
-						"users": [
-							{
-								"id": "xray的uuid",
-								"encryption": "none",
-								"flow": "xtls-rprx-vision"
-							}
-						]
-					}
-				]
+				"vnext": [{
+					"address": "xray服务器ip",
+					"port": 0,
+					"users": [{
+						"id": "xray的uuid",
+						"flow": "xtls-rprx-vision",
+						"alterId": 0,
+						"email": "t@t.tt",
+						"security": "auto",
+						"encryption": "none"
+					}]
+				}]
 			},
 			"streamSettings": {
 				"network": "tcp",
-				"security": "tls",
+				"security": "reality",
 				"realitySettings": {
 					"show": false,
 					"fingerprint": "chrome",
