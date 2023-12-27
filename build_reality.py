@@ -1,11 +1,11 @@
-
-
 #!/usr/local/bin/python
 # coding=utf-8；
 # 构建reality
+
 import json
 import logging
 import os
+import sys
 import random
 import yaml
 import re
@@ -13,6 +13,13 @@ import re
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+
+
+def generate_short_id():
+    """生成short_id  8-16位随机数 数据来源0123456789abcdef
+    """
+    return ''.join(random.sample('0123456789abcdef', 16))
+    pass
 
 
 def generate_trojan_password():
@@ -80,38 +87,64 @@ def verify_dest_server_names(VLESS_DEST: str, handled_server_names: list):
         raise RuntimeError
 
 
-def getEnv(env: str):
-    v = os.environ.get(env)
-    if v is None:
-        raise RuntimeError(f'环境变量{env}未配置!')
-    return v
+def get_assert_arg(index: int, msg: str):
+    try:
+        return sys.argv[index]
+    except:
+        raise RuntimeError(msg)
+
 
 # 创建配置 如果修改了默认端口（vless:8443  trojan: 16789） 需要同步docker项目的docker-compose.yml 同时部署xray的服务器需要开放更新的两个端口！
-
-
 def create_config():
     uuid_list = os.popen('./xray uuid').readlines()
+    x25519_list = os.popen('./xray x25519').readlines()
 
     # xray生成的uuid
     uuid = uuid_list[0][:-1]
+    # xray生成的私钥
+    private_key = x25519_list[0][13:][:-1]
 
     logging.info('xray服务端配置项: ')
     logging.info(
         '=================================================================')
     logging.info('  密钥(secrets): ')
     logging.info('  变量(vars): ')
+    logging.info('    VLESS_DEST: xray的目标域名')
+    logging.info('    VLESS_SERVER_NAMES: 逗号分割的，VLESS_DEST允许的服务列表 ')
     logging.info('    VLESS_PORT: vless端口 ')
     logging.info('    TROJAN_PORT: trojan端口 ')
     logging.info(
         '=================================================================')
+    # 读取参数
+    if len(sys.argv) < 4:
+        raise RuntimeError('请确认xray相关变量与密钥都已配置!')
+
     # xray uuid
     VLESS_UUID = uuid
+    # xray的目标域名
+    VLESS_DEST = get_assert_arg(1, 'vars.VLESS_DEST: 目标域名未配置！')
+    # 逗号分割的，{VLESS_DEST}允许的服务列表
+    VLESS_SERVER_NAMES = get_assert_arg(
+        2, 'vars.VLESS_SERVER_NAMES: dest对应的服务列表未配置!')
+    unhandled_server_names = VLESS_SERVER_NAMES.split(',')
+    handled_server_names = []
+    # 去空格
+    for server_name in unhandled_server_names:
+        handled_server_names.append(server_name.replace(
+            '\'', '').replace('\"', '').strip())
+    # verify_dest_server_names(VLESS_DEST,handled_server_names)
+    # vless通过xray x25519生成的密钥对的私钥 客户端必须与之对应
+    VLESS_PRIVATE_KEY = private_key
+    # windows平台的shortId 8-16位随机数 数据来源0123456789abcdef
+    VLESS_WINDOWS_SHORT_ID = generate_short_id()
+    # ios平台的shortId  8-16位随机数 数据来源0123456789abcdef
+    VLESS_IOS_SHORT_ID = generate_short_id()
     # trojan密码  ios最佳实践  使用QX trojan协议
     TROJAN_PASSWORD = generate_trojan_password()
     # vless端口
-    VLESS_PORT = getEnv('VLESS_PORT')
+    VLESS_PORT = get_assert_arg(3, 'vars.VLESS_PORT: vless端口未配置!')
     # trojan端口
-    TROJAN_PORT = getEnv('TROJAN_PORT')
+    TROJAN_PORT = get_assert_arg(4, 'vars.TROJAN_PORT: trojan端口未配置!')
     # 处理端口非默认值的情况
     handle_port(VLESS_PORT, TROJAN_PORT)
 
@@ -128,6 +161,12 @@ def create_config():
                         raise RuntimeError('vars.VLESS_PORT必须为整数!')
                     # 添加密钥
                     server_dict['settings']['clients'][0]['id'] = VLESS_UUID
+                    server_dict['streamSettings']['realitySettings']['dest'] = int(
+                        VLESS_DEST)
+                    server_dict['streamSettings']['realitySettings']['serverNames'] = handled_server_names
+                    server_dict['streamSettings']['realitySettings']['privateKey'] = VLESS_PRIVATE_KEY
+                    server_dict['streamSettings']['realitySettings']['shortIds'] = [
+                        VLESS_WINDOWS_SHORT_ID, VLESS_IOS_SHORT_ID]
                 elif file[:-5] == 'trojan':
                     try:
                         server_dict['port'] = int(TROJAN_PORT)

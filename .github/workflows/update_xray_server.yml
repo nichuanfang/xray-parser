@@ -39,10 +39,18 @@ jobs:
           chmod +x ./xray
           cp ./xray $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
 
-      - name: 更新config.json和docker-compose.yml
+      - name: 更新config.json和docker-compose.yml(tls)
+        working-directory: docker/dockerfile_work/xray/xray-parser
+        env:
+          VLESS_PORT: ${{vars.VLESS_PORT}}
+          TROJAN_PORT: ${{vars.TROJAN_PORT}}
         run: |
-          cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
-          python build.py ${{vars.VLESS_DEST}} ${{vars.VLESS_SERVER_NAMES}} ${{vars.VLESS_PORT}} ${{vars.TROJAN_PORT}}
+          python build.py
+
+      # - name: 更新config.json和docker-compose.yml(reality)
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/docker/dockerfile_work/xray/xray-parser
+      #     python build_reality.py ${{vars.VLESS_DEST}} ${{vars.VLESS_SERVER_NAMES}} ${{vars.VLESS_PORT}} ${{vars.TROJAN_PORT}}
 
       - name: 提交之前的准备工作
         run: |

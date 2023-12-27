@@ -9,29 +9,41 @@
                 "flow": "xtls-rprx-vision"
             }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        "fallbacks": [
+            {
+                "dest": "5001",
+                "xver": 1
+            },
+            {
+                "alpn": "h2",
+                "dest": "5002",
+                "xver": 1
+            }
+        ]
     },
     "streamSettings": {
         "show": false,
         "network": "tcp",
-        "security": "reality",
-        "realitySettings": {
-            "show": false,
-            "dest": 0,
-            "xver": 1,
-            "serverNames": [],
-            "privateKey": "",
-            "maxTimeDiff": 0,
-            "shortIds": []
+        "security": "tls",
+        "tlsSettings": {
+            "rejectUnknownSni": true,
+            "minVersion": "1.2",
+            "certificates": [
+                {
+                    "ocspStapling": 3600,
+                    "certificateFile": "/usr/local/bin/xray/cert/cert.pem",
+                    "keyFile": "/usr/local/bin/xray/cert/key.pem"
+                }
+            ]
         }
     },
     "sniffing": {
-        "enabled": false,
+        "enabled": true,
         "destOverride": [
             "http",
             "tls",
             "quic"
-        ],
-        "routeOnly": true
+        ]
     }
 }
