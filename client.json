@@ -39,13 +39,9 @@
 			"streamSettings": {
 				"network": "tcp",
 				"security": "tls",
-				"realitySettings": {
-					"show": false,
-					"fingerprint": "chrome",
+				"tlsSettings": {
 					"serverName": "",
-					"publicKey": "xray的公钥",
-					"shortId": "客户端id",
-					"spiderX": "爬虫路径"
+					"fingerprint": "chrome"
 				}
 			}
 		},
