@@ -12,7 +12,9 @@
       "type": "field",
       "outboundTag": "direct",
       "domain": [
-        "to-do.live.com"
+        "to-do.live.com",
+        "data.microsoft.com",
+        "storage.live.com"
       ]
     }
   ]
