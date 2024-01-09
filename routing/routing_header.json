@@ -7,6 +7,13 @@
       "protocol": [
         "bittorrent"
       ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "direct",
+      "domain": [
+        "to-do.live.com"
+      ]
     }
   ]
 }
