@@ -1,4 +1,19 @@
 {
   "domainStrategy": "IPIfNonMatch",
-  "rules": []
+  "rules": [
+    {
+      "type": "field",
+      "outboundTag": "direct",
+      "protocol": [
+        "bittorrent"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "direct",
+      "domain": [
+        "to-do.live.com"
+      ]
+    }
+  ]
 }
