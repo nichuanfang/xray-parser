@@ -41,6 +41,7 @@
 				"security": "tls",
 				"tlsSettings": {
 					"serverName": "换成你的域名",
+					"allowInsecure": false,
 					"fingerprint": "chrome"
 				}
 			}
