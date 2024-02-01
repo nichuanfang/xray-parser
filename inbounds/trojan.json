@@ -67,7 +67,7 @@
       "certificates": [
         {
           "certificateFile": "/usr/local/bin/xray/cert/cert.pem",
-          "keyFile": "/usr/local/bin/xray/cert/key.pem",
+          "keyFile": "/usr/local/bin/xray/cert/key.pem"
         }
       ]
     }

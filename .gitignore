@@ -1,9 +1,4 @@
-.idea/.gitignore
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/xray-parser.iml
-.idea/inspectionProfiles/profiles_settings.xml
+.idea
 *.pyc
 dist/*.json
 dist/*.txt
