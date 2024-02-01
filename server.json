@@ -37,14 +37,7 @@
       }
     ]
   },
-  "policy": {
-        "levels": {
-            "0": {
-                "handshake": 3, 
-                "connIdle": 120 
-            }
-        }
-  },
+  "policy": null,
   "transport": null,
   "stats": null,
   "reverse": null,
