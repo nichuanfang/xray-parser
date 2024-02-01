@@ -13,10 +13,12 @@
         "fallbacks": [
             {
                 "dest": "5001",
+                "name": "xtls.jaychou.site",
                 "xver": 1
             },
             {
                 "alpn": "h2",
+                "name": "xtls.jaychou.site",
                 "dest": "5002",
                 "xver": 1
             }
