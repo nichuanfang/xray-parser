@@ -20,39 +20,6 @@
         "name": "xtls.jaychou.site",
         "dest": 5002,
         "xver": 1
-      },
-      {
-        "dest": 5003,
-        "name": "www.jaychou.site",
-        "xver": 1
-      },
-      {
-        "alpn": "h2",
-        "name": "www.jaychou.site",
-        "dest": 5004,
-        "xver": 1
-      },
-      {
-        "dest": 5005,
-        "name": "password.jaychou.site",
-        "xver": 1
-      },
-      {
-        "alpn": "h2",
-        "name": "password.jaychou.site",
-        "dest": 5006,
-        "xver": 1
-      },
-      {
-        "dest": 5007,
-        "name": "bark.jaychou.site",
-        "xver": 1
-      },
-      {
-        "alpn": "h2",
-        "name": "bark.jaychou.site",
-        "dest": 5008,
-        "xver": 1
       }
     ]
   },
