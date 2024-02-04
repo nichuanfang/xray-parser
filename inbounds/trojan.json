@@ -8,19 +8,6 @@
         "password": "",
         "email": "love@example.com"
       }
-    ],
-    "fallbacks": [
-      {
-        "dest": 5001,
-        "name": "xtls.jaychou.site",
-        "xver": 1
-      },
-      {
-        "alpn": "h2",
-        "name": "xtls.jaychou.site",
-        "dest": 5002,
-        "xver": 1
-      }
     ]
   },
   "streamSettings": {
@@ -28,7 +15,6 @@
     "security": "tls",
     "tlsSettings": {
       "alpn": [
-        "h2",
         "http/1.1"
       ],
       "certificates": [
