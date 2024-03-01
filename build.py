@@ -136,7 +136,7 @@ def update_config():
         # 生成trojan配置文件
         with open('dist/trojan.txt', 'w+') as trojan:
             trojan.writelines(
-                f'trojan={DC_HOST}:{TROJAN_PORT}, password={TROJAN_PASSWORD}, over-tls=true, tls-verification=true, fast-open=false, udp-relay=true, tag=mysub')
+                f'trojan={DC_HOST}:{TROJAN_PORT}, password={TROJAN_PASSWORD}, over-tls=true, tls-verification=true, fast-open=false, udp-relay=false, tag=mysub')
 
 
 # 判断服务端配置是否存在 不存在直接中止构建
