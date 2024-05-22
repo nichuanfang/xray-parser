@@ -5,6 +5,13 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
+        "geosite:api.a8.hk"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "proxy",
+      "domain": [
         "geosite:geolocation-!cn"
       ]
     },
