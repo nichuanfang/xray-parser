@@ -48,19 +48,11 @@
 		},
 		{
 			"tag": "direct",
-			"protocol": "freedom",
-			"settings": {
-				"domainStrategy": "UseIP"
-			}
+			"protocol": "freedom"
 		},
 		{
 			"tag": "block",
-			"protocol": "blackhole",
-			"settings": {
-				"response": {
-					"type": "http"
-				}
-			}
+			"protocol": "blackhole"
 		}
 	],
 	"policy": null
