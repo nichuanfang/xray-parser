@@ -5,7 +5,7 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "geosite:api.a8.hk"
+        "api.a8.hk"
       ]
     },
     {
