@@ -9,3 +9,5 @@ dist/*.json
 dist/*.list
 dist/*.txt
 dist/*.yml
+/.idea/dictionaries
+/.idea/encodings.xml

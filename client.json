@@ -1,59 +1,72 @@
 {
-	"log": {
-		"access": "log/access.log",
-		"error": "log/error.log",
-		"loglevel": "warning",
-		"dnsLog": false
-	},
-	"inbounds": [
-		{
-			"listen": "127.0.0.1",
-			"port": 10808,
-			"protocol": "socks"
-		},
-		{
-			"listen": "127.0.0.1",
-			"port": 10809,
-			"protocol": "http"
-		}
-	],
-	"outbounds": [
-		{
-			"tag": "proxy",
-			"protocol": "vless",
-			"settings": {
-				"vnext": [
-					{
-						"address": "xray服务器ip",
-						"port": 0,
-						"users": [
-							{
-								"id": "xray的uuid",
-								"encryption": "none",
-								"flow": "xtls-rprx-vision"
-							}
-						]
-					}
-				]
-			},
-			"streamSettings": {
-				"network": "tcp",
-				"security": "tls",
-				"tlsSettings": {
-					"serverName": "换成你的域名",
-					"allowInsecure": false,
-					"fingerprint": "chrome"
-				}
-			}
-		},
-		{
-			"tag": "direct",
-			"protocol": "freedom"
-		},
-		{
-			"tag": "block",
-			"protocol": "blackhole"
-		}
-	],
-	"policy": null
+  "log": {
+    "access": "log/access.log",
+    "error": "log/error.log",
+    "loglevel": "warning",
+    "dnsLog": false
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "xray服务器ip",
+            "port": 0,
+            "users": [
+              {
+                "id": "xray的uuid",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "换成你的域名",
+          "allowInsecure": false,
+          "fingerprint": "chrome",
+          "alpn": ["h2", "http/1.1"]
+        },
+        "sockopt": {
+          "mtu": 1350,
+          "tcpFastOpen": true
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole"
+    }
+  ],
+  "policy": null,
+  "dns": {
+    "servers": [
+      "8.8.8.8",
+      "8.8.4.4",
+      "1.1.1.1",
+      "1.0.0.1"
+    ]
+  }
 }
