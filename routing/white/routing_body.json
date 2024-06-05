@@ -1,0 +1,12 @@
+{
+  "domainStrategy": "IPIfNonMatch",
+  "rules": [
+    {
+      "type": "field",
+      "outboundTag": "direct",
+      "protocol": [
+        "bittorrent"
+      ]
+    }
+  ]
+}

@@ -8,6 +8,13 @@ on:
         description: '更新客户端'
         required: false
         default: 'warning'
+      type:
+        description: '类型'
+        required: true
+        default: 'white'
+        options:
+          - 'white'
+          - 'black'
       tags:
         description: 'update client'
   push:
