@@ -95,10 +95,7 @@
     "servers": [
       {
         "address": "tcp+local://223.5.5.5:53",
-        "skipFallback": false,
-        "expectIPs": [
-          "geoip:cn"
-        ]
+        "skipFallback": false
       }
     ]
   }
