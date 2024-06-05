@@ -113,7 +113,8 @@
         ],
         "expectIPs": [
           "geoip:!cn"
-        ]
+        ],
+        "skipFallback": true
       },
       {
         "address": "223.5.5.5",
@@ -128,10 +129,13 @@
         ],
         "skipFallback": true
       },
-      "114.114.114.114",
+      {
+        "address": "114.114.114.114",
+        "skipFallback": false
+      },
       {
         "address": "localhost",
-        "skipFallback": true
+        "skipFallback": false
       }
     ]
   }
