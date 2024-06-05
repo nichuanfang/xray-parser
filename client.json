@@ -102,6 +102,10 @@
         "skipFallback": false
       },
       {
+        "address": "8.8.4.4",
+        "skipFallback": false
+      },
+      {
         "address": "localhost",
         "skipFallback": false
       }
