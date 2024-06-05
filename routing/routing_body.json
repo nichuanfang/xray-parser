@@ -3,10 +3,10 @@
   "rules": [
     {
       "type": "field",
-      "outboundTag": "direct",
-      "protocol": [
-        "bittorrent"
-      ]
+      "domain": [
+        "geosite:gfw"
+      ],
+      "outboundTag": "proxy"
     }
   ]
 }
