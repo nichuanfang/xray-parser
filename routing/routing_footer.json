@@ -3,19 +3,15 @@
   "rules": [
     {
       "type": "field",
-      "domain": [
-        "geosite:cn",
-        "geosite:private"
-      ],
-      "outboundTag": "direct"
+      "outboundTag": "proxy",
+      "ip": [
+        "geoip:telegram"
+      ]
     },
     {
       "type": "field",
-      "ip": [
-        "geoip:cn",
-        "geoip:private"
-      ],
-      "outboundTag": "direct"
+      "outboundTag": "direct",
+      "network": "tcp,udp"
     }
   ]
 }
