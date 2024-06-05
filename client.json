@@ -9,7 +9,6 @@
     {
       "listen": "127.0.0.1",
       "port": 10808,
-      "tag": "Socks-In",
       "protocol": "socks",
       "settings": {
         "ip": "127.0.0.1",
@@ -26,7 +25,6 @@
     },
     {
       "listen": "127.0.0.1",
-      "tag": "Http-In",
       "port": 10809,
       "protocol": "http",
       "sniffing": {
@@ -76,10 +74,6 @@
       }
     },
     {
-      "tag": "Dns-Out",
-      "protocol": "dns"
-    },
-    {
       "tag": "direct",
       "protocol": "freedom",
       "settings": {
@@ -98,39 +92,13 @@
   ],
   "policy": null,
   "dns": {
-    "hosts": {
-      "dns.google": "8.8.8.8",
-      "dns.pub": "119.29.29.29",
-      "dns.alidns.com": "223.5.5.5",
-      "geosite:category-ads-all": "127.0.0.1"
-    },
     "servers": [
       {
-        "address": "https://1.1.1.1/dns-query",
-        "domains": [
-          "geosite:geolocation-!cn",
-          "geosite:google@cn"
-        ],
-        "expectIPs": [
-          "geoip:!cn"
-        ],
-        "skipFallback": true
+        "address": "tcp+local://223.5.5.5:53",
+        "skipFallback": false
       },
       {
-        "address": "223.5.5.5",
-        "port": 53,
-        "domains": [
-          "geosite:cn",
-          "geosite:icloud",
-          "geosite:category-games@cn"
-        ],
-        "expectIPs": [
-          "geoip:cn"
-        ],
-        "skipFallback": true
-      },
-      {
-        "address": "114.114.114.114",
+        "address": "tcp+local://114.114.114.114:53",
         "skipFallback": false
       },
       {

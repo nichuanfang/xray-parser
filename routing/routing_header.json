@@ -10,16 +10,6 @@
     },
     {
       "type": "field",
-      "outboundTag": "Dns-Out",
-      "inboundTag": [
-        "Socks-In",
-        "Http-In"
-      ],
-      "network": "udp",
-      "port": 53
-    },
-    {
-      "type": "field",
       "domain": [
         "geosite:category-ads-all"
       ],
