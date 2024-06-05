@@ -44,10 +44,7 @@
   "fakeDns": null,
   "dns": {
     "servers": [
-      "8.8.8.8",
-      "8.8.4.4",
-      "1.1.1.1",
-      "1.0.0.1"
+      "https+local://1.1.1.1/dns-query"
     ]
   }
 }
