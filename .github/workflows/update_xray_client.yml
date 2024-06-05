@@ -3,20 +3,16 @@ name: Update Xray Client
 on:
   # 手动触发
   workflow_dispatch:
+  #可以通过 {{ github.event.inputs.type }} 来获取
     inputs:
-      logLevel:
-        description: '更新客户端'
-        required: false
-        default: 'warning'
       type:
         description: '类型'
         required: true
         default: 'white'
+        type: choice
         options:
           - 'white'
           - 'black'
-      tags:
-        description: 'update client'
   push:
     branches:
       - 'client'
