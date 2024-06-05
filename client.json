@@ -115,9 +115,8 @@
           "geoip:!cn"
         ]
       },
-      "8.8.8.8",
       {
-        "address": "114.114.114.114",
+        "address": "223.5.5.5",
         "port": 53,
         "domains": [
           "geosite:cn",
@@ -129,6 +128,7 @@
         ],
         "skipFallback": true
       },
+      "114.114.114.114",
       {
         "address": "localhost",
         "skipFallback": true
