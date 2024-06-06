@@ -12,12 +12,12 @@
     "decryption": "none",
     "fallbacks": [
       {
-        "dest": "metube.jaychou.site:443",
+        "dest": "5001",
         "xver": 0
       },
       {
         "alpn": "h2",
-        "dest": "password.jaychou.site:443",
+        "dest": "5002",
         "xver": 0
       }
     ]
