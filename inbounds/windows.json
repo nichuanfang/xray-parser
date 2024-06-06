@@ -13,12 +13,12 @@
     "fallbacks": [
       {
         "dest": "5001",
-        "xver": 0
+        "xver": 1
       },
       {
         "alpn": "h2",
         "dest": "5002",
-        "xver": 0
+        "xver": 1
       }
     ]
   },
