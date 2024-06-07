@@ -5,26 +5,13 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "full:www.icloud.com",
-        "domain:icloud-content.com",
-        "geosite:google"
-      ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "direct",
-      "domain": [
-        "geosite:tld-cn",
-        "geosite:icloud",
-        "geosite:category-games@cn"
+        "geosite:gfw"
       ]
     },
     {
       "type": "field",
       "outboundTag": "proxy",
-      "domain": [
-        "geosite:geolocation-!cn"
-      ]
+      "ip": ["geoip:telegram"]
     }
   ]
 }
