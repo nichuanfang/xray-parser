@@ -69,7 +69,7 @@
         },
         "sockopt": {
           "mtu": 1350,
-          "tcpFastOpen": true
+          "tcpFastOpen": false
         }
       }
     },
