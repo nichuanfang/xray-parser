@@ -11,8 +11,7 @@
     {
       "type": "field",
       "domain": [
-        "geosite:category-ads-all",
-        "update.coreelec.org"
+        "geosite:category-ads-all"
       ],
       "outboundTag": "block"
     }
