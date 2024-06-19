@@ -5,7 +5,8 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "geosite:gfw"
+        "geosite:gfw",
+        "copilot-proxy.githubusercontent.com"
       ]
     },
     {
