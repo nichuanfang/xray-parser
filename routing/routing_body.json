@@ -7,11 +7,6 @@
       "domain": [
         "geosite:gfw"
       ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "proxy",
-      "ip": ["geoip:telegram"]
     }
   ]
 }
