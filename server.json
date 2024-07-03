@@ -16,10 +16,7 @@
   "outbounds": [
     {
       "tag": "direct",
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIPv4"
-      }
+      "protocol": "freedom"
     },
     {
       "protocol": "blackhole",
@@ -44,7 +41,7 @@
   "fakeDns": null,
   "dns": {
     "servers": [
-      "tcp+local://1.1.1.1"
+      "127.0.0.1"
     ]
   }
 }
