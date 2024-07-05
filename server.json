@@ -3,7 +3,7 @@
     "loglevel": "warning",
     "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
-    "dnsLog": true
+    "dnsLog": false
   },
   "api": {
     "services": [
@@ -18,7 +18,7 @@
       "tag": "direct",
       "protocol": "freedom",
       "settings": {
-        "domainStrategy": "AsIs"
+        "domainStrategy": "UseIPv4"
       }
     },
     {
