@@ -5,6 +5,7 @@
       "type": "field",
       "outboundTag": "direct",
       "domain": [
+        "oaifree.com",
         "geosite:cn",
         "geosite:private"
       ]
