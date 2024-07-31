@@ -1,104 +1,132 @@
 {
-  "log": {
-    "loglevel": "warning",
-    "dnsLog": false
-  },
-  "inbounds": [
-    {
-      "listen": "127.0.0.1",
-      "port": 10808,
-      "protocol": "socks",
-      "tag": "Socks-In",
-      "settings": {
-        "ip": "127.0.0.1",
-        "udp": true,
-        "auth": "noauth"
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      }
+    "log": {
+        "loglevel": "warning",
+        "dnsLog": false
     },
-    {
-      "listen": "127.0.0.1",
-      "port": 10809,
-      "protocol": "http",
-      "tag": "Http-In",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "tag": "proxy",
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "xray服务器ip",
-            "port": 0,
-            "users": [
-              {
-                "id": "xray的uuid",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "tls",
-        "tlsSettings": {
-          "serverName": "换成你的域名",
-          "allowInsecure": false,
-          "fingerprint": "chrome",
-          "alpn": [
-            "h2",
-            "http/1.1"
-          ]
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 10808,
+            "protocol": "socks",
+            "tag": "Socks-In",
+            "settings": {
+                "ip": "127.0.0.1",
+                "udp": true,
+                "auth": "noauth"
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
         },
-        "sockopt": {
-          "mtu": 1350,
-          "tcpFastOpen": false
+        {
+            "listen": "127.0.0.1",
+            "port": 10809,
+            "protocol": "http",
+            "tag": "Http-In",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
         }
-      }
-    },
-    {
-      "tag": "Dns-Out",
-      "protocol": "dns"
-    },
-    {
-      "tag": "direct",
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIPv4"
-      }
-    },
-    {
-      "tag": "block",
-      "protocol": "blackhole",
-      "settings": {
-        "response": {
-          "type": "http"
+    ],
+    "outbounds": [
+        {
+            "tag": "proxy",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "xray服务器ip",
+                        "port": 0,
+                        "users": [
+                            {
+                                "id": "xray的uuid",
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "serverName": "换成你的域名",
+                    "allowInsecure": false,
+                    "fingerprint": "chrome",
+                    "alpn": [
+                        "h2",
+                        "http/1.1"
+                    ]
+                },
+                "sockopt": {
+                    "mtu": 1350,
+                    "tcpFastOpen": false
+                }
+            }
+        },
+        {
+            "tag": "Dns-Out",
+            "protocol": "dns"
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "UseIPv4"
+            }
+        },
+        {
+            "tag": "block",
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            }
         }
-      }
+    ],
+    "policy": null,
+    "dns": {
+        "hosts": {
+            "dns.google": "8.8.8.8",
+            "dns.pub": "119.29.29.29",
+            "dns.alidns.com": "223.5.5.5"
+        },
+        "servers": [
+            {
+                "address": "https://1.1.1.1/dns-query",
+                "domains": [
+                    "geosite:geolocation-!cn"
+                ],
+                "expectIPs": [
+                    "geoip:!cn"
+                ]
+            },
+            "8.8.8.8",
+            {
+                "address": "114.114.114.114",
+                "port": 53,
+                "domains": [
+                    "geosite:cn"
+                ],
+                "expectIPs": [
+                    "geoip:cn"
+                ],
+                "skipFallback": true
+            },
+            {
+                "address": "localhost",
+                "skipFallback": true
+            }
+        ]
     }
-  ],
-  "policy": null,
-  "dns": {
-    "servers": [
-      "180.184.1.1",
-      "114.114.114.114"
-    ]
-  }
 }
