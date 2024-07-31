@@ -92,7 +92,11 @@
   "dns": {
     "servers": [
       {
-        "address": "tcp+local://223.5.5.5:53",
+        "address": "180.184.1.1",
+        "skipFallback": false
+      },
+       {
+        "address": "8.8.4.4",
         "skipFallback": false
       }
     ]
