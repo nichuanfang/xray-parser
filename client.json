@@ -97,14 +97,8 @@
   "policy": null,
   "dns": {
     "servers": [
-      {
-        "address": "180.184.1.1",
-        "skipFallback": false
-      },
-       {
-        "address": "8.8.4.4",
-        "skipFallback": false
-      }
+      "180.184.1.1",
+      "114.114.114.114"
     ]
   }
 }
