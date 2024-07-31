@@ -8,6 +8,7 @@
       "listen": "127.0.0.1",
       "port": 10808,
       "protocol": "socks",
+      "tag": "Socks-In",
       "settings": {
         "ip": "127.0.0.1",
         "udp": true,
@@ -25,6 +26,7 @@
       "listen": "127.0.0.1",
       "port": 10809,
       "protocol": "http",
+      "tag": "Http-In",
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -70,6 +72,10 @@
           "tcpFastOpen": false
         }
       }
+    },
+    {
+      "tag": "Dns-Out",
+      "protocol": "dns"
     },
     {
       "tag": "direct",
