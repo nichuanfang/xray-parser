@@ -16,6 +16,11 @@
         "geoip:cn",
         "geoip:private"
       ]
+    },
+    {
+        "type": "field",
+        "outboundTag": "proxy",
+        "network": "tcp,udp"
     }
   ]
 }
