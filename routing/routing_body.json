@@ -2,13 +2,6 @@
   "domainStrategy": "IPIfNonMatch",
   "rules": [
     {
-        "type": "field",
-        "outboundTag": "proxy",
-        "domain": [
-          "geosite:google"
-        ]
-    },
-    {
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
