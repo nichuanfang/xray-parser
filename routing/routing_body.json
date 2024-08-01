@@ -5,26 +5,13 @@
       "type": "field",
       "outboundTag": "proxy",
       "domain": [
-        "full:www.icloud.com",
-        "domain:icloud-content.com",
-        "geosite:google"
+        "geosite:geolocation-!cn"
       ]
     },
     {
         "type": "field",
-        "outboundTag": "direct",
-        "domain": [
-          "geosite:tld-cn",
-          "geosite:icloud",
-          "geosite:category-games@cn"
-        ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "proxy",
-      "domain": [
-        "geosite:geolocation-!cn"
-      ]
+        "ip": ["180.184.1.1"],
+        "outboundTag": "direct"
     }
   ]
 }
