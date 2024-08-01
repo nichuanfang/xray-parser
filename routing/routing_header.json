@@ -8,11 +8,6 @@
     },
     {
         "type": "field",
-        "domain": ["geosite:google"],
-        "outboundTag": "proxy"
-    },
-    {
-        "type": "field",
         "domain": ["geosite:cn"],
         "outboundTag": "direct"
     }
