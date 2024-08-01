@@ -10,10 +10,21 @@
     },
     {
       "type": "field",
-      "outboundTag": "direct",
+      "outboundTag": "proxy",
       "domain": [
-        "geosite:tld-cn"
+        "full:www.icloud.com",
+        "domain:icloud-content.com",
+        "geosite:google"
       ]
+    },
+    {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "geosite:tld-cn",
+          "geosite:icloud",
+          "geosite:category-games@cn"
+        ]
     },
     {
       "type": "field",
