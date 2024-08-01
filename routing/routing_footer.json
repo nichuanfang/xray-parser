@@ -2,25 +2,9 @@
   "domainStrategy": "IPIfNonMatch",
   "rules": [
     {
-      "type": "field",
-      "outboundTag": "direct",
-      "domain": [
-        "geosite:cn",
-        "geosite:private"
-      ]
-    },
-    {
-      "type": "field",
-      "outboundTag": "direct",
-      "ip": [
-        "geoip:cn",
-        "geoip:private"
-      ]
-    },
-    {
         "type": "field",
-        "outboundTag": "proxy",
-        "network": "tcp,udp"
+        "ip": ["geoip:cn", "geoip:private"],
+        "outboundTag": "direct"
     }
   ]
 }
