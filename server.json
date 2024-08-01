@@ -5,14 +5,6 @@
     "error": "/var/log/xray/error.log",
     "dnsLog": false
   },
-  "api": {
-    "services": [
-      "HandlerService",
-      "LoggerService",
-      "StatsService"
-    ],
-    "tag": "api"
-  },
   "outbounds": [
     {
       "tag": "direct",
@@ -27,21 +19,29 @@
     }
   ],
   "routing": {
-    "domainStrategy": "AsIs",
+    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
         "type": "field",
-        "port": "80",
-        "network": "udp",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "ip": ["geoip:cn"],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "geosite:category-ads-all"
+        ],
         "outboundTag": "block"
       }
     ]
   },
-  "policy": null,
-  "transport": null,
-  "stats": null,
-  "reverse": null,
-  "fakeDns": null,
   "dns": {
     "servers": [
       "127.0.0.1"
