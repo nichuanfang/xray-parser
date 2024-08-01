@@ -39,18 +39,6 @@
         "h2",
         "http/1.1"
       ]
-    },
-    "sockopt": {
-      "mtu": 1350,
-      "tcpFastOpen": false
     }
-  },
-  "sniffing": {
-    "enabled": true,
-    "destOverride": [
-      "http",
-      "tls",
-      "quic"
-    ]
   }
 }
