@@ -73,7 +73,7 @@
 				"domains": ["geosite:geolocation-!cn"]
 			},
 			{
-				"address": "180.184.1.1",
+				"address": "202.102.192.68",
 				"domains": ["geosite:cn"],
 				"expectIPs": ["geoip:cn"]
 			},
