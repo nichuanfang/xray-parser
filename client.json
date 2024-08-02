@@ -77,10 +77,6 @@
 				"domains": ["geosite:cn"],
 				"expectIPs": ["geoip:cn"]
 			},
-			{
-				"address": "114.114.114.114",
-				"domains": ["geosite:cn"]
-			},
 			"localhost"
 		]
 	}
