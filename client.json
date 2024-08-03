@@ -65,10 +65,21 @@
 	],
 	"policy": null,
 	"dns": {
-		"servers": [
-			"1.1.1.1",
-			"localhost"
-		],
-		"queryStrategy": "UseIPv4"
-	}
+	        "servers": [
+	            {
+	                "address": "1.1.1.1",
+	                "domains": [
+	                    "geosite:geolocation-!cn"
+	                ]
+	            },
+	            {
+	                "address": "114.114.114.114",
+	                "domains": [
+	                    "geosite:cn"
+	                ]
+	            },
+	            "localhost"
+	        ],
+	        "queryStrategy": "UseIPv4"
+    	}
 }
