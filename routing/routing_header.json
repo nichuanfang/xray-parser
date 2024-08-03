@@ -3,6 +3,11 @@
   "rules": [
     {
         "type": "field",
+        "ip": ["1.1.1.1", "8.8.8.8"],
+        "outboundTag": "proxy"
+    },
+    {
+        "type": "field",
         "domain": ["geosite:cn"],
         "outboundTag": "direct"
     }
