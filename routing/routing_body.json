@@ -7,11 +7,6 @@
       "domain": [
         "geosite:geolocation-!cn"
       ]
-    },
-    {
-        "type": "field",
-        "ip": ["180.184.1.1"],
-        "outboundTag": "direct"
     }
   ]
 }
