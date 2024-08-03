@@ -3,13 +3,20 @@
   "rules": [
     {
         "type": "field",
-        "ip": ["1.1.1.1","8.8.8.8"],
-        "outboundTag": "proxy"
+        "outboundTag": "direct",
+        "protocol": ["bittorrent"]
     },
     {
         "type": "field",
-        "domain": ["geosite:cn"],
-        "outboundTag": "direct"
+        "outboundTag": "dns-out",
+        "inboundTag": ["socks-in", "http-in"],
+        "network": "udp",
+        "port": 53
+    },
+    {
+        "type": "field",
+        "outboundTag": "block",
+        "domain": ["geosite:category-ads-all"]
     }
   ]
 }
