@@ -72,7 +72,12 @@
 	                    "geosite:geolocation-!cn"
 	                ]
 	            },
-	            "114.114.114.114"
+	            {
+	                "address": "114.114.114.114",
+	                "domains": [
+	                    "geosite:cn"
+	                ]
+	            }
 	        ],
 	        "queryStrategy": "UseIPv4"
     	}
