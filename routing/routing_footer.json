@@ -1,10 +1,14 @@
 {
-  "domainStrategy": "IPIfNonMatch",
-  "rules": [
-    {
-        "type": "field",
-        "ip": ["geoip:cn", "geoip:private"],
-        "outboundTag": "direct"
-    }
-  ]
+	"domainStrategy": "IPIfNonMatch",
+	"rules": [{
+			"type": "field",
+			"outboundTag": "direct",
+			"ip": ["geoip:cn", "geoip:private"]
+		},
+		{
+			"type": "field",
+			"outboundTag": "proxy",
+			"network": "tcp,udp"
+		}
+	]
 }
