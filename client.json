@@ -67,7 +67,7 @@
 	"dns": {
 		"hosts": {
       			"baidu.com": "127.0.0.1",
-      			"dns.google": ["8.8.8.8"]
+      			"dns.google": "8.8.8.8"
     		},
 		"servers": [
 			"8.8.8.8",
