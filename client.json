@@ -72,7 +72,7 @@
 	                    "geosite:geolocation-!cn"
 	                ]
 	            },
-	            "localhost"
+	            "114.114.114.114"
 	        ],
 	        "queryStrategy": "UseIPv4"
     	}
