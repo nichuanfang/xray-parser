@@ -60,7 +60,7 @@
 	"policy": null,
 	"dns": {
 		"servers": [
-			"1.1.1.1",
+			"8.8.8.8",
 			"localhost"
 		]
 	}
