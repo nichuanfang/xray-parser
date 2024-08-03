@@ -65,13 +65,8 @@
 	],
 	"policy": null,
 	"dns": {
-		"hosts": {
-      			"baidu.com": "127.0.0.1",
-      			"dns.google": "8.8.8.8"
-    		},
 		"servers": [
 			"8.8.8.8",
-			"1.1.1.1",
 			"localhost"
 		],
 		"queryStrategy": "UseIPv4"
