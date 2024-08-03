@@ -3,7 +3,7 @@
   "rules": [
     {
         "type": "field",
-        "ip": ["1.1.1.1"],
+        "ip": ["8.8.8.8"],
         "outboundTag": "proxy"
     },
     {
