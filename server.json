@@ -8,11 +8,17 @@
   "outbounds": [
     {
       "tag": "direct",
-      "protocol": "freedom"
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIPv4"
+      }
     },
     {
       "protocol": "blackhole",
-      "tag": "block"
+      "tag": "block",
+      "settings": {
+        "type": "http"
+      }
     }
   ]
 }
