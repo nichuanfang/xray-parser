@@ -50,11 +50,17 @@
 		},
 		{
 			"tag": "direct",
-			"protocol": "freedom"
+			"protocol": "freedom",
+			"settings": {
+        			"domainStrategy": "UseIPv4"
+      			}
 		},
 		{
 			"tag": "block",
-			"protocol": "blackhole"
+			"protocol": "blackhole",
+			"settings": {
+        			"type": "http"
+      			}
 		}
 	],
 	"policy": null,
