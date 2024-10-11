@@ -5,20 +5,20 @@
     "error": "/var/log/xray/error.log",
     "dnsLog": false
   },
+  "dns": {
+    "servers": [
+      "https+local://1.1.1.1/dns-query",
+      "localhost"
+    ]
+  },
   "outbounds": [
     {
       "tag": "direct",
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIPv4"
-      }
+      "protocol": "freedom"
     },
     {
       "protocol": "blackhole",
-      "tag": "block",
-      "settings": {
-        "type": "http"
-      }
+      "tag": "block"
     }
   ]
 }
