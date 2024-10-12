@@ -5,12 +5,11 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"domain": [
-				"geosite:cn",
-				"geosite:tld-cn",
-				"geosite:google-cn",
+				"geosite:private",
 				"geosite:apple-cn",
-				"geosite:category-games@cn",
-				"geosite:private"
+				"geosite:google-cn",
+				"geosite:tld-cn",
+				"geosite:category-games@cn"
 			]
 		},
 		{
