@@ -4,11 +4,6 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"ip": ["geoip:cn", "geoip:private"]
-		},
-		{
-			"type": "field",
-			"outboundTag": "proxy",
-			"network": "tcp,udp"
 		}
 	]
 }

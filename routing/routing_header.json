@@ -8,13 +8,6 @@
     },
     {
         "type": "field",
-        "outboundTag": "dns-out",
-        "inboundTag": ["socks-in", "http-in"],
-        "network": "udp",
-        "port": 53
-    },
-    {
-        "type": "field",
         "outboundTag": "block",
         "domain": ["geosite:category-ads-all"]
     }
