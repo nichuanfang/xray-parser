@@ -83,8 +83,7 @@
                 ],
                 "expectIPs": [
                     "geoip:cn"
-                ],
-                "skipFallback": true
+                ]
             },
             {
                 "address": "114.114.114.114",
