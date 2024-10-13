@@ -60,17 +60,11 @@
 		},
 		{
 			"tag": "direct",
-			"protocol": "freedom",
-			"settings": {
-				"domainStrategy": "UseIPv4"
-			}
+			"protocol": "freedom"
 		},
 		{
 			"tag": "block",
-			"protocol": "blackhole",
-			"settings": {
-				"type": "http"
-			}
+			"protocol": "blackhole"
 		}
 	],
 	"policy": null,
@@ -80,9 +74,22 @@
                 "address": "https://1.1.1.1/dns-query",
                 "domains": [
                     "geosite:geolocation-!cn"
+                ]
+            },
+            {
+                "address": "119.29.29.29",
+                "domains": [
+                    "geosite:cn"
                 ],
                 "expectIPs": [
-                    "geoip:!cn"
+                    "geoip:cn"
+                ],
+                "skipFallback": true
+            },
+            {
+                "address": "114.114.114.114",
+                "domains": [
+                    "geosite:cn"
                 ]
             },
             "localhost"

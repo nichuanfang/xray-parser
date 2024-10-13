@@ -12,7 +12,11 @@
 		{
 			"type": "field",
 			"outboundTag": "direct",
-			"ip": ["geoip:cn", "geoip:private"]
+			"ip": [
+				"119.29.29.29",
+				"geoip:cn",
+				"geoip:private"
+			]
 		}
 	]
 }
