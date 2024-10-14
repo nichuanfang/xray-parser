@@ -1,15 +1,6 @@
 {
   "log": {
-    "loglevel": "warning",
-    "access": "/var/log/xray/access.log",
-    "error": "/var/log/xray/error.log",
-    "dnsLog": false
-  },
-  "dns": {
-    "servers": [
-      "https+local://1.1.1.1/dns-query",
-      "localhost"
-    ]
+    "loglevel": "warning"
   },
   "outbounds": [
     {
