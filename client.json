@@ -47,11 +47,7 @@
         "tlsSettings": {
           "serverName": "换成你的域名",
           "allowInsecure": false,
-          "fingerprint": "chrome",
-          "alpn": [
-            "h2",
-            "http/1.1"
-          ]
+          "fingerprint": "chrome"
         }
       }
     },
