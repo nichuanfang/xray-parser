@@ -1,97 +1,94 @@
 {
-	"log": {
-		"loglevel": "warning",
-		"dnsLog": false
-	},
-	"inbounds": [{
-			"tag": "socks-in",
-			"protocol": "socks",
-			"listen": "127.0.0.1",
-			"port": 10808,
-			"settings": {
-			    "ip": "127.0.0.1",
-			    "udp": true,
-			    "auth": "noauth"
-		        },
-			"sniffing": {
-		            "enabled": true,
-		            "destOverride": ["http", "tls"]
-		        }
-		},
-		{
-			"tag": "http-in",
-			"protocol": "http",
-			"listen": "127.0.0.1",
-			"port": 10809,
-			"sniffing": {
-		            "enabled": true,
-		            "destOverride": ["http", "tls"]
-		        }
-		}
-	],
-	"outbounds": [{
-			"tag": "proxy",
-			"protocol": "vless",
-			"settings": {
-				"vnext": [{
-					"address": "xray服务器ip",
-					"port": 0,
-					"users": [{
-						"id": "xray的uuid",
-						"encryption": "none",
-						"flow": "xtls-rprx-vision",
-						"level": 0
-					}]
-				}]
-			},
-			"streamSettings": {
-				"network": "tcp",
-				"security": "tls",
-				"tlsSettings": {
-					"serverName": "换成你的域名",
-					"allowInsecure": false,
-					"fingerprint": "chrome",
-					"alpn": [
-						"h2",
-						"http/1.1"
-					]
-				}
-			}
-		},
-		{
-			"tag": "direct",
-			"protocol": "freedom"
-		},
-		{
-			"tag": "block",
-			"protocol": "blackhole"
-		}
-	],
-	"policy": null,
-	"dns": {
-        "servers": [
-            {
-                "address": "https://1.1.1.1/dns-query",
-                "domains": [
-                    "geosite:geolocation-!cn"
-                ]
-            },
-            {
-                "address": "119.29.29.29",
-                "domains": [
-                    "geosite:cn"
-                ],
-                "expectIPs": [
-                    "geoip:cn"
-                ]
-            },
-            {
-                "address": "114.114.114.114",
-                "domains": [
-                    "geosite:cn"
-                ]
-            },
-            "localhost"
-        ]
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "socks-in",
+      "protocol": "socks",
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "settings": {
+        "ip": "127.0.0.1",
+        "udp": true,
+        "auth": "noauth"
+      }
+    },
+    {
+      "tag": "http-in",
+      "protocol": "http",
+      "listen": "127.0.0.1",
+      "port": 10809
     }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "xray服务器ip",
+            "port": 0,
+            "users": [
+              {
+                "id": "xray的uuid",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "level": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "换成你的域名",
+          "allowInsecure": false,
+          "fingerprint": "chrome",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole"
+    }
+  ],
+  "policy": null,
+  "dns": {
+    "servers": [
+      {
+        "address": "https://1.1.1.1/dns-query",
+        "domains": [
+          "geosite:geolocation-!cn"
+        ]
+      },
+      {
+        "address": "119.29.29.29",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ]
+      },
+      {
+        "address": "114.114.114.114",
+        "domains": [
+          "geosite:cn"
+        ]
+      },
+      "localhost"
+    ]
+  }
 }
