@@ -5,7 +5,10 @@
   "outbounds": [
     {
       "tag": "direct",
-      "protocol": "freedom"
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIPv4v6"
+      }
     },
     {
       "protocol": "blackhole",
@@ -14,7 +17,8 @@
   ],
   "dns": {
     "servers": [
-      "https+local://1.1.1.1/dns-query"
+      "https+local://1.1.1.1/dns-query",
+      "localhost"
     ]
   }
 }
