@@ -11,5 +11,10 @@
       "protocol": "blackhole",
       "tag": "block"
     }
-  ]
+  ],
+  "dns": {
+    "servers": [
+      "https+local://1.1.1.1/dns-query"
+    ]
+  }
 }
