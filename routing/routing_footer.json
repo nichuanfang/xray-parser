@@ -1,13 +1,13 @@
 {
 	"domainStrategy": "IPIfNonMatch",
-	"rules": [
-		{
-                "type": "field",
-                "outboundTag": "direct",
-                "domain": [
-					"geosite:private",
-                    "geosite:cn"
-                ]
+	"rules": [{
+			"type": "field",
+			"outboundTag": "direct",
+			"domain": [
+				"geosite:private",
+               			"domain:jaychou.site",
+				"geosite:cn"  
+			]
 		},
 		{
 			"type": "field",
