@@ -62,6 +62,9 @@
   ],
   "policy": null,
   "dns": {
+    "hosts": {
+      "domain:jaychou.site": "103.30.77.144",
+    },
     "servers": [
       {
         "address": "https://1.1.1.1/dns-query",
