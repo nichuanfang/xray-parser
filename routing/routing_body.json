@@ -4,7 +4,10 @@
 		{
 			"type": "field",
 			"outboundTag": "proxy",
-			"domain": ["geosite:geolocation-!cn"]
+			"domain": [
+				"domain:jaychou.site"
+				"geosite:geolocation-!cn",
+			]
 		}
 	]
 }
