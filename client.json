@@ -63,7 +63,7 @@
   "policy": null,
   "dns": {
     "hosts": {
-      "domain:jaychou.site": "103.30.77.144",
+      "domain:jaychou.site": "103.30.77.144"
     },
     "servers": [
       {
