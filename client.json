@@ -73,7 +73,7 @@
         ]
       },
       {
-        "address": "119.29.29.29",
+        "address": "https://doh.pub/dns-query",
         "domains": [
           "geosite:cn"
         ],
@@ -82,7 +82,7 @@
         ]
       },
       {
-        "address": "114.114.114.114",
+        "address": "https://dns.alidns.com/dns-query",
         "domains": [
           "geosite:cn"
         ]
