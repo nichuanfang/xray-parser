@@ -12,7 +12,6 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"ip": [
-				"119.29.29.29",
 				"geoip:cn",
 				"geoip:private"
 			]
