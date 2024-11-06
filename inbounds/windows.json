@@ -12,12 +12,12 @@
     "decryption": "none",
     "fallbacks": [
       {
-        "dest": "5001",
+        "dest": "103.30.77.144:5001",
         "xver": 1
       },
       {
         "alpn": "h2",
-        "dest": "5002",
+        "dest": "103.30.77.144:5002",
         "xver": 1
       }
     ]
