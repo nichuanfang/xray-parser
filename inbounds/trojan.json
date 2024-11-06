@@ -19,8 +19,8 @@
       ],
       "certificates": [
         {
-          "certificateFile": "/usr/local/bin/xray/cert/cert.pem",
-          "keyFile": "/usr/local/bin/xray/cert/key.pem"
+          "certificateFile": "/etc/letsencrypt/live/chuanfang.org/fullchain.pem",
+          "keyFile": "/etc/letsencrypt/live/chuanfang.org/privkey.pem"
         }
       ]
     }
