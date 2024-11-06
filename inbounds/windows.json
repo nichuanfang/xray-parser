@@ -12,12 +12,12 @@
     "decryption": "none",
     "fallbacks": [
       {
-        "dest": "nginx:5001",
+        "dest": "5001",
         "xver": 1
       },
       {
         "alpn": "h2",
-        "dest": "nginx:5002",
+        "dest": "5002",
         "xver": 1
       }
     ]
@@ -31,8 +31,8 @@
       "certificates": [
         {
           "ocspStapling": 3600,
-          "certificateFile": "/usr/local/bin/xray/cert/cert.pem",
-          "keyFile": "/usr/local/bin/xray/cert/key.pem"
+          "certificateFile": "/etc/letsencrypt/live/chuanfang.org/fullchain.pem",
+          "keyFile": "/etc/letsencrypt/live/chuanfang.org/privkey.pem"
         }
       ]
     },
