@@ -5,7 +5,7 @@
 			"type": "field",
 			"outboundTag": "proxy",
 			"domain": [
-				"domain:jaychou.site",
+				"domain:chuanfang.org",
 				"geosite:geolocation-!cn"
 			]
 		}
