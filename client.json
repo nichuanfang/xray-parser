@@ -74,13 +74,9 @@
         "address": "tcp+local://114.114.114.114",
         "domains": [
           "geosite:cn"
-        ],
-        "skipFallback": true
+        ]
       },
-      {
-        "address": "localhost",
-        "skipFallback": true
-      }
+      "localhost"
     ]
   }
 }
