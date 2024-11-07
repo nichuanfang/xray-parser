@@ -6,7 +6,7 @@
     {
       "tag": "direct",
       "protocol": "freedom",
-      "domainStrategy": "IPv4"
+      "domainStrategy": "UseIPv4"
     },
     {
       "protocol": "blackhole",
