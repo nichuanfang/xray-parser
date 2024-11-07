@@ -121,7 +121,7 @@ def update_config():
         client['routing'] = {'domainStrategy': strategy, 'rules': rules}
 
         # 生成window平台的config.json
-        client['outbounds'][0]['settings']['vnext'][0]['address'] = DC_HOST
+        client['outbounds'][0]['settings']['vnext'][0]['address'] = DC_DOMAIN
         client['outbounds'][0]['settings']['vnext'][0]['port'] = int(
             VLESS_PORT)
         client['outbounds'][0]['settings']['vnext'][0]['users'][0]['id'] = VLESS_UUID
