@@ -70,13 +70,13 @@
         ]
       },
       {
-        "address": "https://doh.pub/dns-query",
+        "address": "https+local://doh.pub/dns-query",
         "domains": [
           "geosite:cn"
         ]
       },
       {
-        "address": "https://dns.alidns.com/dns-query",
+        "address": "https+local://dns.alidns.com/dns-query",
         "domains": [
           "geosite:cn"
         ]
