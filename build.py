@@ -127,6 +127,12 @@ def update_config():
         client['outbounds'][0]['settings']['vnext'][0]['users'][0]['id'] = VLESS_UUID
         # 换成你的域名
         client['outbounds'][0]['streamSettings']['tlsSettings']['serverName'] = DC_DOMAIN
+
+        # "hosts": {
+        # "domain:chuanfang.org": "103.30.77.144"
+        #},
+        client['dns']['hosts'][f'domain:{DC_DOMAIN}'] = DC_HOST
+    
         # 持久化
         json.dump(client, open('dist/client-windows-config.json', 'w+'))
         # 生成ios平台的config.json
