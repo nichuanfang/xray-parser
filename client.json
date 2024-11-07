@@ -69,6 +69,7 @@
           "geosite:geolocation-!cn"
         ]
       },
+      "8.8.8.8",
       {
         "address": "https+local://doh.pub/dns-query",
         "domains": [
