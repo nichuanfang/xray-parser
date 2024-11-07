@@ -11,6 +11,6 @@
 	}, {
 		"type": "field",
 		"outboundTag": "direct",
-		"domain": ["geosite:apple-cn", "geosite:google-cn"]
+		"domain": ["geosite:apple-cn", "geosite:google-cn","domain:dogyun.com"]
 	}]
 }
