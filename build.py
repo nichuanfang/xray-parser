@@ -4,6 +4,7 @@
 import json
 import logging
 import os
+import re
 
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
@@ -51,6 +52,13 @@ def update_config():
         """
         return trojan_inbound['settings']['clients'][0]['password']
 
+    def get_root_domain(domain):
+        # 使用正则表达式匹配根域名
+        match = re.search(r'(\w+\.\w+)$', domain)
+        if match:
+            return match.group(1)
+        return domain  # 如果没有匹配到，返回原始域名
+    
     def get_trojan_port(server_config: dict, trojan_inbound: dict):
         """获取trojan端口号
 
@@ -131,7 +139,7 @@ def update_config():
         # "hosts": {
         # "domain:chuanfang.org": "103.30.77.144"
         #},
-        client['dns']['hosts'][f'domain:{DC_DOMAIN}'] = DC_HOST
+        client['dns']['hosts'][f'domain:{get_root_domain(DC_DOMAIN)}'] = DC_HOST
     
         # 持久化
         json.dump(client, open('dist/client-windows-config.json', 'w+'))
