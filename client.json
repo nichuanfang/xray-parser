@@ -62,26 +62,18 @@
   ],
   "policy": null,
   "dns": {
-    "hosts": {
-      "dns.google": "8.8.8.8",
-      "dns.pub": "119.29.29.29",
-      "dns.alidns.com": "223.5.5.5",
-      "geosite:category-ads-all": "127.0.0.1"
-    },
     "servers": [
       {
         "address": "1.1.1.1",
         "domains": [
-          "geosite:geolocation-!cn",
-          "geosite:google@cn"
+          "geosite:geolocation-!cn"
         ]
       },
       "8.8.8.8",
       {
         "address": "tcp+local://114.114.114.114",
         "domains": [
-          "geosite:cn",
-          "geosite:icloud"
+          "geosite:cn"
         ],
         "skipFallback": true
       },
