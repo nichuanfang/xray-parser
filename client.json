@@ -72,7 +72,7 @@
       },
       "8.8.8.8",
       {
-        "address": "https+local://doh.pub/dns-query",
+        "address": "tcp+local://114.114.114.114",
         "domains": [
           "geosite:cn",
           "geosite:icloud"
