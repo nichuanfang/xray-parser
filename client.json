@@ -66,18 +66,23 @@
       {
         "address": "https://1.1.1.1/dns-query",
         "domains": [
-          "geosite:geolocation-!cn"
+          "geosite:geolocation-!cn",
+          "geosite:google@cn"
         ]
       },
       "8.8.8.8",
       {
         "address": "https+local://doh.pub/dns-query",
         "domains": [
-          "geosite:cn"
-        ]
+          "geosite:cn",
+          "geosite:icloud"
+        ],
+        "skipFallback": true
       },
-      "https+local://dns.alidns.com/dns-query",
-      "localhost"
+      {
+        "address": "localhost",
+        "skipFallback": true
+      }
     ]
   }
 }
