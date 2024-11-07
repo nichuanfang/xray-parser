@@ -1,27 +1,16 @@
 {
-  "domainStrategy": "IPIfNonMatch",
-  "rules": [
-    {
-        "type": "field",
-        "outboundTag": "proxy",
-        "ip": [
-            "1.1.1.1",
-            "8.8.8.8"
-        ]
-    },
-    {
-        "type": "field",
-        "outboundTag": "direct",
-        "protocol": ["bittorrent"]
-    },
-    {
-			"type": "field",
-			"outboundTag": "direct",
-			"domain": [
-              "geosite:apple-cn",
-              "geosite:google-cn",
-              "geosite:tld-cn"
-            ]
-    }
-  ]
+	"domainStrategy": "IPIfNonMatch",
+	"rules": [{
+		"type": "field",
+		"outboundTag": "proxy",
+		"ip": ["1.1.1.1", "8.8.8.8"]
+	}, {
+		"type": "field",
+		"outboundTag": "direct",
+		"protocol": ["bittorrent"]
+	}, {
+		"type": "field",
+		"outboundTag": "direct",
+		"domain": ["geosite:apple-cn", "geosite:google-cn", "geosite:tld-cn"]
+	}]
 }
