@@ -1,6 +1,7 @@
 {
 	"domainStrategy": "IPIfNonMatch",
-	"rules": [{
+	"rules": [
+		{
 			"type": "field",
 			"outboundTag": "direct",
 			"domain": [
