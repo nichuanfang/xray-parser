@@ -68,15 +68,13 @@
         "domains": [
           "geosite:cn",
           "geosite:apple-cn",
-          "geosite:google-cn",
-          "fonts.googleapis.com"
+          "geosite:google-cn"
         ]
       },
       {
         "address": "https://1.1.1.1/dns-query",
         "domains": [
-          "geosite:geolocation-!cn",
-          "geosite:speedtest"
+          "geosite:geolocation-!cn"
         ]
       },
       "8.8.8.8",
