@@ -64,18 +64,22 @@
   "dns": {
     "servers": [
       {
-        "address": "1.1.1.1",
+        "address": "tcp+local://114.114.114.114",
         "domains": [
-          "geosite:geolocation-!cn"
+          "geosite:cn",
+          "geosite:apple-cn",
+          "geosite:google-cn",
+          "fonts.googleapis.com"
+        ]
+      },
+      {
+        "address": "https://1.1.1.1/dns-query",
+        "domains": [
+          "geosite:geolocation-!cn",
+          "geosite:speedtest"
         ]
       },
       "8.8.8.8",
-      {
-        "address": "tcp+local://114.114.114.114",
-        "domains": [
-          "geosite:cn"
-        ]
-      },
       "localhost"
     ]
   }
