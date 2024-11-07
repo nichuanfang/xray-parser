@@ -76,12 +76,7 @@
           "geosite:cn"
         ]
       },
-      {
-        "address": "https+local://dns.alidns.com/dns-query",
-        "domains": [
-          "geosite:cn"
-        ]
-      },
+      "https+local://dns.alidns.com/dns-query",
       "localhost"
     ]
   }
