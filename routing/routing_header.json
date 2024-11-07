@@ -5,11 +5,6 @@
         "type": "field",
         "outboundTag": "direct",
         "protocol": ["bittorrent"]
-    },
-    {
-        "type": "field",
-        "outboundTag": "block",
-        "domain": ["geosite:category-ads-all"]
     }
   ]
 }
