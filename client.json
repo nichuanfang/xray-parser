@@ -62,9 +62,6 @@
   ],
   "policy": null,
   "dns": {
-    "hosts": {
-      "domain:chuanfang.org": "103.30.77.144"
-    },
     "servers": [
       {
         "address": "https://1.1.1.1/dns-query",
@@ -76,9 +73,6 @@
         "address": "https://doh.pub/dns-query",
         "domains": [
           "geosite:cn"
-        ],
-        "expectIPs": [
-          "geoip:cn"
         ]
       },
       {
