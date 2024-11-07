@@ -34,7 +34,7 @@
               {
                 "id": "xray的uuid",
                 "encryption": "none",
-                "flow": "xtls-rprx-vision",
+                "flow": "xtls-rprx-vision-udp443",
                 "level": 0
               }
             ]
