@@ -62,6 +62,7 @@
   ],
   "policy": null,
   "dns": {
+    "hosts": {},
     "servers": [
       {
         "address": "1.1.1.1",
