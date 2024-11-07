@@ -71,7 +71,7 @@
         ]
       },
       {
-        "address": "tcp+local://114.114.114.114",
+        "address": "local://114.114.114.114",
         "domains": [
           "geosite:cn",
           "geosite:apple-cn",
