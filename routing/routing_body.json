@@ -6,7 +6,6 @@
 			"outboundTag": "proxy",
 			"domain": [
 				"domain:dogyun.com",
-				"domain:chuanfang.org",
 				"geosite:geolocation-!cn"
 			]
 		}
