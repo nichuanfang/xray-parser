@@ -5,10 +5,7 @@
   "outbounds": [
     {
       "tag": "direct",
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIPv4v6"
-      }
+      "protocol": "freedom"
     },
     {
       "protocol": "blackhole",
