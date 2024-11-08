@@ -10,6 +10,7 @@
 				"geosite:github",
 				"geosite:google-cn",
 				"geosite:telegram",
+				"domain:dogyun.com",
 				"geosite:geolocation-!cn",
 				"geosite:netflix",
 				"geosite:openai"
