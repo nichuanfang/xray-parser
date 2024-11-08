@@ -6,6 +6,42 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"protocol": ["bittorrent"]
-		}
+		},
+		{
+			"type": "field",
+			"outboundTag": "block",
+			"domain": [
+			  "domain:xcz.im",
+			  "domain:ads.fmdisk.com",
+			  "domain:ads.feemoo.com",
+			  "domain:ads.google.com",
+			  "domain:afd.l.google.com",
+			  "domain:mobileads.google.com",
+			  "domain:g1.tagtic.cn",
+			  "domain:log.tagtic.cn",
+			  "domain:pgdt.ugdtimg.com",
+			  "domain:sdownload.stargame.com",
+			  "keyword:googleads",
+			  "keyword:pagead",
+			  "keyword:umeng",
+			  "keyword:adnyg",
+			  "keyword:adwords",
+			  "keyword:analysis",
+			  "keyword:analytics",
+			  "keyword:duomeng",
+			  "keyword:dwtrack",
+			  "keyword:guanggao",
+			  "keyword:lianmeng",
+			  "keyword:monitor",
+			  "keyword:omgmta",
+			  "keyword:tracking",
+			  "keyword:uedas",
+			  "keyword:usage",
+			  "keyword:wlmonitor",
+			  "geosite:category-httpdns",
+			  "geosite:category-ads-all",
+			  "keyword:zjtoolbar"
+			]
+      }
 	]
 }

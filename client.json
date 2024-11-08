@@ -107,8 +107,7 @@
       {
         "address": "1.1.1.1",
         "domains": [
-          "geosite:geolocation-!cn",
-          "geosite:google-cn"
+          "geosite:geolocation-!cn"
         ],
         "expectIPs": [
           "geoip:!cn"
@@ -118,8 +117,7 @@
       {
         "address": "https://1.1.1.1/dns-query",
         "domains": [
-          "geosite:geolocation-!cn",
-          "geosite:google-cn"
+          "geosite:geolocation-!cn"
         ],
         "expectIPs": [
           "geoip:!cn"
@@ -133,9 +131,7 @@
       {
         "address": "localhost",
         "domains": [
-          "geosite:cn",
-          "geosite:geolocation-cn",
-          "geosite:apple-cn"
+          "geosite:cn"
         ],
         "expectIPs": [
           "geoip:cn"
@@ -145,9 +141,7 @@
       {
         "address": "local://223.5.5.5",
         "domains": [
-          "geosite:cn",
-          "geosite:geolocation-cn",
-          "geosite:apple-cn"
+          "geosite:cn"
         ],
         "expectIPs": [
           "geoip:cn"
@@ -157,9 +151,7 @@
       {
         "address": "local://119.29.29.29",
         "domains": [
-          "geosite:cn",
-          "geosite:geolocation-cn",
-          "geosite:apple-cn"
+          "geosite:cn"
         ],
         "expectIPs": [
           "geoip:cn"
@@ -169,9 +161,7 @@
       {
         "address": "local://114.114.114.114",
         "domains": [
-          "geosite:cn",
-          "geosite:geolocation-cn",
-          "geosite:apple-cn"
+          "geosite:cn"
         ],
         "expectIPs": [
           "geoip:cn"
@@ -181,9 +171,7 @@
       {
         "address": "https+local://223.5.5.5/dns-query",
         "domains": [
-          "geosite:cn",
-          "geosite:geolocation-cn",
-          "geosite:apple-cn"
+          "geosite:cn"
         ],
         "expectIPs": [
           "geoip:cn"
@@ -193,9 +181,7 @@
       {
         "address": "8.8.8.8",
         "domains": [
-          "geosite:cn",
-          "geosite:geolocation-cn",
-          "geosite:apple-cn"
+          "geosite:cn"
         ],
         "expectIPs": [
           "geoip:cn"

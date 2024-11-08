@@ -10,10 +10,21 @@
 				"geosite:github",
 				"geosite:google-cn",
 				"geosite:telegram",
+				"geosite:geolocation-!cn",
 				"geosite:netflix",
-				"geosite:openai",
-				"geosite:geolocation-!cn"
+				"geosite:openai"
 			]
-		}
+		},
+		{
+			"type": "field",
+			"outboundTag": "proxy",
+			"ip": [
+			  "1.1.1.1",
+			  "8.8.8.8",
+			  "geoip:telegram",
+			  "geoip:netflix",
+			  "geoip:twitter"
+			]
+      }
 	]
 }
