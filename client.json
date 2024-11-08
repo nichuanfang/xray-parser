@@ -161,6 +161,27 @@
         ],
         "skipFallback": true
       },
+      {
+        "address": "https+local://223.5.5.5/dns-query",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": false
+      },
+      {
+        "address": "8.8.8.8",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": false,
+        "clientIP": "114.114.114.114"
+      },
       "8.8.8.8"
     ],
     "queryStrategy": "UseIPv4",
