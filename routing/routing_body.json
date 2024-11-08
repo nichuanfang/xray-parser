@@ -1,11 +1,17 @@
 {
 	"domainStrategy": "IPIfNonMatch",
+	"domainMatcher": "hybrid",
 	"rules": [
 		{
 			"type": "field",
 			"outboundTag": "proxy",
 			"domain": [
-				"domain:dogyun.com",
+				"geosite:google",
+				"geosite:google-cn",
+				"geosite:telegram",
+				"geosite:netflix",
+				"geosite:github",
+				"geosite:openai",
 				"geosite:geolocation-!cn"
 			]
 		}

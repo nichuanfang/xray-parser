@@ -8,17 +8,38 @@
       "protocol": "socks",
       "listen": "127.0.0.1",
       "port": 10808,
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": true
+      },
       "settings": {
-        "ip": "127.0.0.1",
+        "auth": "noauth",
         "udp": true,
-        "auth": "noauth"
+        "allowTransparent": false
       }
     },
     {
       "tag": "http-in",
       "protocol": "http",
       "listen": "127.0.0.1",
-      "port": 10809
+      "port": 10809,
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": true
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
     }
   ],
   "outbounds": [
@@ -53,44 +74,125 @@
     },
     {
       "tag": "direct",
-      "protocol": "freedom"
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP",
+        "userLevel": 0
+      }
     },
     {
       "tag": "block",
-      "protocol": "blackhole"
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
     }
   ],
-  "policy": null,
+  "policy": {
+    "system": {
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
   "dns": {
     "hosts": {
-      "dns.google": "8.8.8.8",
-      "dns.pub": "119.29.29.29",
-      "dns.alidns.com": "223.5.5.5"
+      "dns.google": [
+        "8.8.8.8",
+        "8.8.4.4"
+      ]
     },
     "servers": [
+      {
+        "address": "localhost",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "local://223.5.5.5",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "local://119.29.29.29",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "local://114.114.114.114",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "https+local://223.5.5.5/dns-query",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": false
+      },
+      {
+        "address": "8.8.8.8",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": false,
+        "clientIP": "114.114.114.114"
+      },
+      {
+        "address": "1.1.1.1",
+        "domains": [
+          "geosite:geolocation-!cn"
+        ],
+        "expectIPs": [
+          "geoip:!cn"
+        ],
+        "skipFallback": false
+      },
       {
         "address": "https://1.1.1.1/dns-query",
         "domains": [
           "geosite:geolocation-!cn"
         ],
-        "expectIPs": ["geoip:!cn"]
+        "expectIPs": [
+          "geoip:!cn"
+        ],
+        "skipFallback": false,
+        "queryStrategy": "UseIPv4"
       },
       "8.8.8.8",
-      {
-        "address": "local://114.114.114.114",
-        "port": 53,
-        "domains": [
-          "geosite:cn",
-          "geosite:apple-cn",
-          "geosite:google-cn"
-        ],
-        "expectIPs": ["geoip:cn"],
-        "skipFallback": true
-      },
-      {
-        "address": "localhost",
-        "skipFallback": true
-      }
-    ]
+      "8.8.4.4",
+      "1.1.1.1"
+    ],
+    "queryStrategy": "UseIPv4",
+    "disableCache": false,
+    "disableFallback": false,
+    "disableFallbackIfMatch": false
   }
 }

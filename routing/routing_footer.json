@@ -1,12 +1,22 @@
 {
 	"domainStrategy": "IPIfNonMatch",
+	"domainMatcher": "hybrid",
 	"rules": [
 		{
 			"type": "field",
 			"outboundTag": "direct",
 			"domain": [
 				"geosite:private",
-				"geosite:cn"
+				"geosite:geolocation-cn",
+				"geosite:cn",
+				"geosite:bilibili",
+				"geosite:apple-cn",
+				"domain:ip6-localhost",
+				"domain:ip6-loopback",
+				"domain:local",
+				"domain:localhost",
+				"domain:cdn.jsdelivr.net",
+				"keyword:moutai"
 			]
 		},
 		{
@@ -14,7 +24,11 @@
 			"outboundTag": "direct",
 			"ip": [
 				"geoip:cn",
-				"geoip:private"
+				"geoip:private",
+				"::1/128",
+				"fc00::/7",
+				"fe80::/10",
+				"fd00::/8"
 			]
 		}
 	]
