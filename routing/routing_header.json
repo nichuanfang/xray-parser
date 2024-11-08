@@ -6,15 +6,6 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"protocol": ["bittorrent"]
-		},
-		{
-			"type": "field",
-			"outboundTag": "direct",
-			"domain": [
-				"domain:wangchujiang.com",
-				"domain:sspai.com",
-				"domain:cnblogs.com"
-			]
 		}
 	]
 }
