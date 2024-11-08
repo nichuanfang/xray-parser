@@ -7,10 +7,10 @@
 			"outboundTag": "proxy",
 			"domain": [
 				"geosite:google",
+				"geosite:github",
 				"geosite:google-cn",
 				"geosite:telegram",
 				"geosite:netflix",
-				"geosite:github",
 				"geosite:openai",
 				"geosite:geolocation-!cn"
 			]
