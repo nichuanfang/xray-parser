@@ -8,14 +8,6 @@
       "protocol": "socks",
       "listen": "127.0.0.1",
       "port": 10808,
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "routeOnly": true
-      },
       "settings": {
         "auth": "noauth",
         "udp": true,
@@ -27,14 +19,6 @@
       "protocol": "http",
       "listen": "127.0.0.1",
       "port": 10809,
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ],
-        "routeOnly": true
-      },
       "settings": {
         "auth": "noauth",
         "udp": true,
