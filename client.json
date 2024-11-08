@@ -111,17 +111,6 @@
         "skipFallback": false
       },
       {
-        "address": "https://1.1.1.1/dns-query",
-        "domains": [
-          "geosite:geolocation-!cn"
-        ],
-        "expectIPs": [
-          "geoip:!cn"
-        ],
-        "skipFallback": false,
-        "queryStrategy": "UseIPv4"
-      },
-      {
         "address": "localhost",
         "domains": [
           "geosite:cn"
