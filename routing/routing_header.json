@@ -11,7 +11,9 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"domain": [
-				"domain:sspai.com"
+				"domain:wangchujiang.com",
+				"domain:sspai.com",
+				"domain:cnblogs.com"
 			]
 		}
 	]
