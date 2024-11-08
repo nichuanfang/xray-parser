@@ -107,7 +107,7 @@
       },
       "8.8.8.8",
       {
-        "address": "local://114.114.114.114",
+        "address": "tcp+local://114.114.114.114",
         "domains": [
           "geosite:cn"
         ],
