@@ -105,88 +105,26 @@
     },
     "servers": [
       {
-        "address": "1.1.1.1",
-        "domains": [
-          "geosite:geolocation-!cn"
-        ],
-        "expectIPs": [
-          "geoip:!cn"
-        ],
-        "skipFallback": false
-      },
-      {
         "address": "https://1.1.1.1/dns-query",
-        "domains": [
-          "geosite:geolocation-!cn"
-        ],
-        "expectIPs": [
-          "geoip:!cn"
-        ],
-        "skipFallback": false,
-        "queryStrategy": "UseIPv4"
+        "domains": ["geosite:geolocation-!cn"],
+        "expectIPs": ["geoip:!cn"]
       },
       "8.8.8.8",
-      "1.1.1.1",
       {
         "address": "localhost",
         "domains": [
           "geosite:cn"
         ],
-        "expectIPs": [
-          "geoip:cn"
-        ],
-        "skipFallback": true
-      },
-      {
-        "address": "local://223.5.5.5",
-        "domains": [
-          "geosite:cn"
-        ],
-        "expectIPs": [
-          "geoip:cn"
-        ],
-        "skipFallback": true
-      },
-      {
-        "address": "local://119.29.29.29",
-        "domains": [
-          "geosite:cn"
-        ],
-        "expectIPs": [
-          "geoip:cn"
-        ],
+        "expectIPs": ["geoip:cn"],
         "skipFallback": true
       },
       {
         "address": "local://114.114.114.114",
+        "port": 53,
         "domains": [
           "geosite:cn"
-        ],
-        "expectIPs": [
-          "geoip:cn"
         ],
         "skipFallback": true
-      },
-      {
-        "address": "https+local://223.5.5.5/dns-query",
-        "domains": [
-          "geosite:cn"
-        ],
-        "expectIPs": [
-          "geoip:cn"
-        ],
-        "skipFallback": false
-      },
-      {
-        "address": "8.8.8.8",
-        "domains": [
-          "geosite:cn"
-        ],
-        "expectIPs": [
-          "geoip:cn"
-        ],
-        "skipFallback": false,
-        "clientIP": "114.114.114.114"
       }
     ],
     "queryStrategy": "UseIPv4",

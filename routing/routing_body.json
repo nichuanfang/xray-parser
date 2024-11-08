@@ -8,13 +8,12 @@
 			"domain": [
 				"geosite:google",
 				"geosite:github",
-				"geosite:google-cn",
 				"geosite:youtube",
 				"geosite:telegram",
 				"domain:dogyun.com",
-				"geosite:geolocation-!cn",
 				"geosite:netflix",
-				"geosite:openai"
+				"geosite:openai",
+				"geosite:geolocation-!cn"
 			]
 		},
 		{
