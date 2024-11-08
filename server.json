@@ -16,6 +16,7 @@
   "dns": {
     "servers": [
       "https+local://1.1.1.1/dns-query",
+      "https://dns.google/dns-query",
       "localhost"
     ]
   }
