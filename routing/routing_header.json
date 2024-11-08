@@ -6,6 +6,13 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"protocol": ["bittorrent"]
+		},
+		{
+			"type": "field",
+			"outboundTag": "direct",
+			"domain": [
+				"domain:sspai.com"
+			]
 		}
 	]
 }
