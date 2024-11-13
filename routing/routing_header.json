@@ -1,11 +1,5 @@
 {
 	"domainStrategy": "IPIfNonMatch",
 	"domainMatcher": "hybrid",
-	"rules": [
-		{
-			"type": "field",
-			"outboundTag": "direct",
-			"protocol": ["bittorrent"]
-		}
-	]
+	"rules": []
 }

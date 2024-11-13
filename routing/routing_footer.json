@@ -6,12 +6,12 @@
 			"type": "field",
 			"outboundTag": "direct",
 			"domain": [
-				  "geosite:geolocation-cn",
-				  "geosite:cn",
-				  "geosite:private",
-				  "domain:ip6-localhost",
-				  "domain:ip6-loopback",
-				  "domain:cdn.jsdelivr.net"
+				"geosite:cn",
+				"geosite:geolocation-cn",
+				"geosite:private",
+				"domain:ip6-localhost",
+				"domain:ip6-loopback",
+				"domain:cdn.jsdelivr.net"
 			]
 		},
 		{

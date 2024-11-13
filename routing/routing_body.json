@@ -24,10 +24,7 @@
 			"outboundTag": "proxy",
 			"ip": [
 			  "1.1.1.1",
-			  "8.8.8.8",
-			  "geoip:telegram",
-			  "geoip:netflix",
-			  "geoip:twitter"
+			  "8.8.8.8"
 			]
       }
 	]
