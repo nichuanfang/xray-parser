@@ -110,6 +110,16 @@
         ],
         "skipFallback": true
       },
+      {
+        "address": "local://114.114.114.114",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "skipFallback": true
+      },
       "8.8.8.8"
     ],
     "queryStrategy": "UseIPv4",
